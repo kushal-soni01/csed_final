@@ -1,0 +1,65 @@
+.container {
+	background-color: black;
+	height: 140vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+video {
+	height: 170px;
+	width: 170px;
+	transition: all 0.2s ease;
+	position: relative;
+	top: -10%;
+}
+
+.content {
+	text-align: center;
+	position: relative;
+	top: -11.5%;
+}
+
+.greet {
+	margin: 25px 0 10px 0;
+}
+
+.gradient-bg {
+	background: #833ab4;
+	background: linear-gradient(
+		135deg,
+		#f27121,
+		#e94057,
+		#8a2387,
+		#4a00e0,
+		#3bc8c7
+	);
+	position: absolute;
+	top: 0;
+	height: 140vh;
+	width: 100%;
+	opacity: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.about-us-content {
+	position: relative;
+	top: 300px;
+	font-size: clamp(18px, 4.5vw, 30px);
+	width: 75%;
+	opacity: 0;
+	font-weight: bolder;
+}
+
+.box {
+	height: 100vh;
+}
+
+/*
+*/
