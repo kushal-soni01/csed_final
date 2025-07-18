@@ -1,10 +1,7 @@
 import React from "react";
-import {
-	useLocation,
-	BrowserRouter as Router,
-	Routes,
-	Route,
-} from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 import GlassNav from "./components/GlassNav";
 import Home from "./pages/Home";
 import Events from "./pages/Events";
@@ -14,21 +11,24 @@ import JoinUs from "./pages/JoinUs";
 import Footer from "./components/Footer";
 import "./App.css";
 
-// const ScrollToTop = () => {
-// 	const { pathname } = useLocation();
-
-// 	useEffect(() => {
-// 		window.scrollTo(0, 0);
-// 	}, [pathname]);
-
-// 	return null;
-// };
-
 function App() {
+	useEffect(() => {
+		window.onbeforeunload = function () {
+			window.scrollTo(0, 0);
+		};
+
+		const fadeDiv = document.getElementById("reload-fade");
+		if (fadeDiv) {
+			setTimeout(() => {
+				fadeDiv.classList.add("hide");
+			}, 100);
+		}
+	}, []);
 	return (
 		<>
+			<div id="reload-fade"></div>
 			<Router>
-				{/* <ScrollToTop /> */}
+				<ScrollToTop />
 				<GlassNav />
 				<Routes>
 					<Route path="/" element={<Home />} />

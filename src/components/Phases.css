@@ -32,7 +32,7 @@
 		background-clip: text;
 		-webkit-background-clip: text;
 		color: transparent;
-		font-size: clamp(25px, 6 vw, 64px);
+		font-size: clamp(25px, 6vw, 64px);
 	}
 }
 

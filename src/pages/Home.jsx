@@ -1,5 +1,7 @@
 import React from "react";
 import HomeHero from "../components/HomeHero";
+import FloatingText from "../components/FloatingText";
+import ProjectBG from "../content/alex-knight-2EJCSULRwC8-unsplash.jpg";
 import Phases from "../components/Phases";
 
 export default function Home() {
@@ -7,7 +9,7 @@ export default function Home() {
 		<>
 			<HomeHero />
 			<Phases
-				heading="So, What is CSED?"
+				heading="About CSED?"
 				tagline_1="A place where spark"
 				tagline_2="turn into stars."
 				content="CSED CLUB GLA helps the hustling startups and young
@@ -19,6 +21,12 @@ export default function Home() {
 				from experienced mentors, crucial funding opportunities, and a
 				robust network that can change the course of their journey
 				forever!"
+			/>
+			<FloatingText
+				source={ProjectBG}
+				mainContent="Artificial Intellignence"
+				contentLine1="The CSED Club nurtures startup mindsets through mentorship, resources, and networking opportunities.
+                It hosts events and connects students with leaders to build impactful ventures."
 			/>
 			<Phases
 				tagline_1="Join Our Community &"

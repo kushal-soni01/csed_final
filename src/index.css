@@ -21,4 +21,5 @@ body {
 	color: #dbf9ff;
 	width: 100%;
 	scroll-behavior: smooth;
+	overflow-x: hidden;
 }

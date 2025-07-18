@@ -3,6 +3,23 @@
 	text-align: center;
 	scroll-behavior: smooth;
 }
+/* App.css */
+#reload-fade {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	z-index: 9999;
+	opacity: 1;
+	transition: opacity 0.5s ease-in-out;
+	pointer-events: none;
+}
+
+#reload-fade.hide {
+	opacity: 0;
+}
 
 nav {
 	position: fixed;
