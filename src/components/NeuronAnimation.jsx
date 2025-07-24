@@ -59,7 +59,7 @@ const NeuronAnimation = () => {
 		};
 
 		anim.csedCoords = getCoordinatesForShape(
-			"CSED CLUB",
+			"CSED",
 			canvas.width,
 			canvas.height,
 			115
