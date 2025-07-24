@@ -13,12 +13,31 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+	--primary-bg: #000000; /* Deep black background */
+	--secondary-bg: #1a1a1a; /* Slightly lighter black for cards/sections */
+	--primary-text: #f0f6fc; /* Light text for headings and main content */
+	--secondary-text: #c9d1d9; /* Grayer text for subheadings and descriptions */
+	--tertiary-text: #8b949e; /* Even lighter gray for minor details */
+	--accent-blue: #58a6ff;
+	--accent-purple: #7c3aed;
+	--accent-cyan: #06b6d4;
+	--button-gradient: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-blue) 50%, var(--accent-cyan) 100%);
+	--button-gradient-hover: linear-gradient(135deg, #8b5cf6 0%, #60a5fa 50%, #22d3ee 100%);
+	--border-color-light: rgba(255, 255, 255, 0.1);
+	--border-color-dark: rgba(110, 118, 129, 0.2);
+	--shadow-color-dark: rgba(0, 0, 0, 0.25);
+	--shadow-color-light: rgba(240, 246, 252, 0.1);
+}
+
 body {
 	margin: 0;
 	min-width: 320px;
 	min-height: 100vh;
-	background: #000000;
-	color: #dbf9ff;
+	background: var(--primary-bg); /* Use CSS variable */
+	color: var(--primary-text); /* Use CSS variable */
+	/* background: #000000;
+    color: #dbf9ff; */
 	width: 100%;
 	scroll-behavior: smooth;
 	overflow-x: hidden;

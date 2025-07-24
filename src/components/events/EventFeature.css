@@ -1,0 +1,265 @@
+@import './SharedBackgroundAnimations.css';
+/* EventFeature.css */
+
+/* Base container for the entire feature section */
+.event-feature-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically align items in the center */
+  background: transparent; /* Changed to transparent to reveal background shapes */
+  color: var(--primary-text); /* Light text color */
+  padding: 4rem 2rem; /* Padding around the container */
+  gap: 2rem; /* Space between flex items */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  width: 100%; /* Full width */
+  min-height: 80vh; /* Minimum height for visual appeal */
+  box-sizing: border-box; /* Include padding in element's total width/height */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Media Section (Left side - contains image and video) */
+.media-section {
+  flex: 2; /* Takes 2 parts of the available space (approx 40% in a 2:3 ratio) */
+  position: relative; /* Needed for absolute positioning of media wrappers on desktop */
+  width: 100%; /* Take full width of its flex item */
+  max-width: 500px; /* Limit max width for better screen fitting */
+  aspect-ratio: 16 / 9; /* Use aspect ratio instead of padding-bottom */
+  display: flex; /* Still flex for centering media-wrapper */
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* Allow shadows to show outside */
+  border-radius: 0.75rem; /* Rounded corners for the section */
+}
+
+/* Base styles for individual media wrappers (image and video) */
+.media-wrapper {
+  position: absolute; /* Default to absolute for desktop overlap */
+  width: 80%; /* Adjusted size for better proportions and 16:9 aspect ratio */
+  aspect-ratio: 16 / 9; /* Modern CSS aspect ratio property */
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px var(--shadow-color-dark); /* Subtle default shadow */
+  border: 2px solid var(--border-color-dark);
+  /* Smooth transitions for scale, opacity, z-index, shadow, and border */
+  transition: transform 0.3s ease, opacity 0.3s ease, z-index 0.01s linear, box-shadow 0.3s ease, border-color 0.3s ease;
+  transform-origin: center center; /* Ensure scaling is from the center */
+  overflow: hidden; /* Ensure content inside stays within rounded corners */
+}
+
+/* Specific positioning for image and video wrappers to create the overlap on desktop */
+.media-image-wrapper {
+  top: 0%;
+  left: 0%;
+  z-index: 1; /* Default z-index for image, behind video */
+}
+
+.media-video-wrapper {
+  bottom: -8%;
+  right: -10%;
+  z-index: 2; /* Default z-index for video, in front of image */
+}
+
+/* Styles for the actual image and video elements */
+.media-image, .media-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container without distortion */
+  border-radius: 0.75rem; /* Inherit rounded corners */
+  transition: opacity 0.3s ease; /* Smooth opacity transition for loading states */
+}
+
+/* Hover effects for media elements */
+.media-image-wrapper.media-hovered,
+.media-video-wrapper.media-hovered {
+  transform: scale(1.08); /* Slightly increased scale for more pop */
+  z-index: 10; /* Bring to front */
+  opacity: 1; /* Ensure full visibility */
+  /* More pronounced shadow and a glow effect on hover */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(88, 166, 255, 0.3);
+  border-color: var(--accent-blue); /* Highlight border */
+}
+
+/* Dimming effect for non-hovered media */
+.media-dimmed {
+  opacity: 0.3; /* Make non-hovered media semi-transparent */
+  /* Ensure dimmed items revert to the subtle default shadow */
+  box-shadow: 0 4px 10px var(--shadow-color-dark);
+  border-color: var(--border-color-dark);
+}
+
+/* Text Section (Right side) */
+.text-section {
+  flex: 3; /* Takes 3 parts of the available space (approx 60% in a 2:3 ratio) */
+  padding-left: 3rem; /* Left padding for separation */
+  box-sizing: border-box; /* Include padding in element's total width/height */
+}
+
+.text-section h2 {
+  font-size: 2.8rem;
+  font-weight: 800; /* Extra bold */
+  margin-bottom: 1rem;
+}
+
+.text-section .subheading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--secondary-text); /* Grayer text */
+  margin-bottom: 1.5rem;
+}
+
+.text-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--secondary-text); /* Lighter gray text */
+  max-width: 500px; /* Max width for readability on wide screens */
+  width: 100%; /* Ensure it takes full available width up to max-width */
+}
+
+/* Stats Section (Info Blocks) */
+.stats-section {
+  display: grid; /* Use CSS Grid for flexible layout */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Reduced from 130px to 120px */
+  gap: 1.5rem; /* Space between grid items */
+  margin-top: 2.5rem;
+  width: 100%; /* Ensure it takes full available width */
+}
+
+.stat-box {
+  background: rgba(26, 26, 26, 0.5); /* Changed to translucent secondary-bg */
+  padding: 1.2rem; /* Reduced from 1.5rem to 1.2rem */
+  border-radius: 0.75rem;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions for hover */
+  border: 1px solid var(--border-color-dark);
+  box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.stat-box:hover {
+  transform: translateY(-10px); /* Lift box on hover */
+  background: var(--primary-bg);
+  border-color: var(--accent-blue);
+  box-shadow: 0 8px 25px rgba(88, 166, 255, 0.15);
+}
+
+.stat-box .number {
+  font-size: 2.2rem; /* Reduced from 2.5rem to 2.2rem */
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.stat-box .label {
+  font-size: 0.9rem; /* Reduced from 1rem to 0.9rem */
+  color: var(--secondary-text);
+}
+
+/* Responsive Design for smaller screens (e.g., tablets and large mobiles) */
+@media (max-width: 900px) {
+  .event-feature-container {
+    flex-direction: column; /* Stack items vertically */
+    text-align: center; /* Center text content */
+    padding: 3rem 1rem; /* Adjust padding */
+    gap: 3rem; /* Increase gap when stacked */
+  }
+
+  .media-section {
+    /* On mobile, stack children vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start;
+    width: 100%; /* Take full width of its parent container on mobile */
+    max-width: none; /* Remove max-width constraint on mobile */
+    margin: 0 auto 2rem auto; /* Center it and add bottom margin */
+    aspect-ratio: auto; /* Remove aspect ratio constraint on mobile */
+    height: auto; /* Allow height to be determined by content */
+    min-height: auto; /* Ensure no fixed min-height is interfering */
+    overflow: visible; /* Allow content to overflow for shadows */
+    position: static; /* Crucial: Reset position to static for normal flow stacking */
+  }
+
+  /* Hide the image wrapper on mobile */
+  .media-image-wrapper {
+    display: none;
+  }
+
+  /* Adjust video wrapper to take full space when image is hidden */
+  .media-video-wrapper {
+    position: relative; /* Change to relative positioning for stacking */
+    width: 90%; /* Take 90% width of media-section */
+    max-width: 400px; /* Optional: Set a max-width for the video card */
+    aspect-ratio: 16 / 9; /* Use aspect ratio for mobile too */
+    margin: 0 auto; /* Center the video card */
+    /* Ensure these are reset from desktop absolute positioning */
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    z-index: auto; /* Reset z-index to default for stacking */
+  }
+
+  /* No need for margin-bottom on last-child in media-section since only one is visible */
+  .media-section > *:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Hover effects still apply to the video */
+  .media-video-wrapper.media-hovered {
+    z-index: 10; /* Still bring to front on hover */
+  }
+
+  .text-section {
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-section p {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stats-section {
+    justify-content: center;
+    padding: 0 1rem;
+  }
+}
+
+/* Further adjustments for very small screens (e.g., mobile portrait) */
+@media (max-width: 500px) {
+  .event-feature-container {
+    padding: 2rem 0.5rem;
+  }
+
+  .text-section h2 {
+    font-size: 2rem;
+  }
+
+  .text-section .subheading {
+    font-size: 1rem;
+  }
+
+  .text-section p {
+    font-size: 0.95rem;
+    max-width: 95%;
+  }
+
+  .stat-box .number {
+    font-size: 2rem;
+  }
+
+  .stat-box .label {
+    font-size: 0.9rem;
+  }
+
+  .media-section {
+    width: 95%;
+  }
+
+  .media-video-wrapper { /* Only video is visible on small mobile */
+    aspect-ratio: 16 / 9; /* Use aspect ratio instead of padding-bottom */
+    width: 100%;
+  }
+}

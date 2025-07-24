@@ -39,8 +39,8 @@ nav {
 .footer {
 	height: 35vh;
 	width: 100%;
-	background-color: #323941;
-	color: honeydew;
+	background-color: var(--secondary-bg);
+	color: var(--primary-text);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -51,7 +51,7 @@ nav {
 	}
 	.links,
 	a {
-		color: honeydew;
+		color: var(--primary-text);
 		text-decoration: none;
 		margin: 5px;
 	}

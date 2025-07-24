@@ -1,0 +1,466 @@
+/* SharedBackgroundAnimations.css */
+
+/* Hero Background Shapes Animation */
+.hero-background-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure it's always behind content */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Content should be above background */
+.events_greet,
+.events_letter_container,
+.events_slogan {
+  position: relative;
+  z-index: 10;
+}
+
+/* Base shape styles - Beautiful translucent hollow shapes for hero */
+.hero-shape {
+  position: absolute;
+  opacity: 0.6; /* Increased opacity for more brightness */
+}
+
+/* Triangles - Beautiful hollow triangles with glow effects */
+.hero-triangle {
+  width: 28px;
+  height: 28px;
+  position: relative;
+}
+
+.hero-triangle::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.hero-triangle-1 {
+  top: 12%;
+  left: 8%;
+  color: var(--accent-purple);
+  animation: hero-float-slow 22s infinite ease-in-out;
+}
+
+.hero-triangle-1::before {
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 26px solid transparent;
+  border-bottom-color: currentColor;
+  box-shadow: inset 0 -4px 0 transparent, 0 0 8px rgba(124, 58, 237, 0.25);
+}
+
+.hero-triangle-2 {
+  top: 50%;
+  right: 10%;
+  color: var(--accent-cyan);
+  animation: hero-rotate-slow 28s infinite linear;
+}
+
+.hero-triangle-2::before {
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 32px solid transparent;
+  border-bottom-color: currentColor;
+  box-shadow: inset 0 -4px 0 transparent, 0 0 10px rgba(6, 182, 212, 0.25);
+}
+
+.hero-triangle-3 {
+  bottom: 20%;
+  left: 12%;
+  color: var(--accent-green);
+  animation: hero-float-slow 25s infinite ease-in-out 3s;
+}
+
+.hero-triangle-3::before {
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 22px solid transparent;
+  border-bottom-color: currentColor;
+  box-shadow: inset 0 -3px 0 transparent, 0 0 7px rgba(16, 185, 129, 0.25);
+}
+
+.hero-triangle-4 {
+  top: 70%;
+  right: 25%;
+  color: var(--accent-blue);
+  animation: hero-pulse-slow 20s infinite ease-in-out 1s;
+}
+
+.hero-triangle-4::before {
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 28px solid transparent;
+  border-bottom-color: currentColor;
+  box-shadow: inset 0 -4px 0 transparent, 0 0 9px rgba(88, 166, 255, 0.25);
+}
+
+/* Squares - Beautiful hollow squares with subtle glow */
+.hero-square {
+  border-radius: 4px;
+  border: 3px solid;
+  background: transparent;
+  box-shadow: 0 0 12px var(--shadow-color-dark), inset 0 0 12px var(--shadow-color-light);
+  backdrop-filter: blur(2px);
+}
+
+.hero-square-1 {
+  top: 25%;
+  right: 18%;
+  width: 24px;
+  height: 24px;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3), inset 0 0 8px rgba(124, 58, 237, 0.2);
+  animation: hero-pulse-slow 21s infinite ease-in-out;
+}
+
+.hero-square-2 {
+  bottom: 35%;
+  left: 6%;
+  width: 28px;
+  height: 28px;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 18px rgba(6, 182, 212, 0.3), inset 0 0 10px rgba(6, 182, 212, 0.2);
+  animation: hero-scale-slow 28s infinite ease-in-out 2s;
+}
+
+.hero-square-3 {
+  top: 65%;
+  left: 40%;
+  width: 20px;
+  height: 20px;
+  border-color: var(--accent-green);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.3), inset 0 0 7px rgba(16, 185, 129, 0.2);
+  animation: hero-rotate-slow 32s infinite linear 4s;
+}
+
+.hero-square-4 {
+  bottom: 18%;
+  right: 35%;
+  width: 26px;
+  height: 26px;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 16px rgba(88, 166, 255, 0.3), inset 0 0 9px rgba(88, 166, 255, 0.2);
+  animation: hero-glow-slow 23s infinite ease-in-out 1s;
+}
+
+/* Circles - Beautiful hollow circles with subtle glow effects */
+.hero-circle {
+  border-radius: 50%;
+  border: 3px solid;
+  background: transparent;
+  box-shadow: 0 0 12px var(--shadow-color-dark), inset 0 0 12px var(--shadow-color-light);
+  backdrop-filter: blur(2px);
+}
+
+.hero-circle-1 {
+  top: 30%;
+  left: 5%;
+  width: 26px;
+  height: 26px;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 18px rgba(88, 166, 255, 0.35), inset 0 0 10px rgba(88, 166, 255, 0.25);
+  animation: hero-glow-slow 19s infinite ease-in-out;
+}
+
+.hero-circle-2 {
+  bottom: 25%;
+  right: 8%;
+  width: 32px;
+  height: 32px;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.35), inset 0 0 12px rgba(124, 58, 237, 0.25);
+  animation: hero-float-slow 26s infinite ease-in-out 1s;
+}
+
+.hero-circle-3 {
+  top: 18%;
+  right: 30%;
+  width: 22px;
+  height: 22px;
+  border-color: var(--accent-green);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.35), inset 0 0 8px rgba(16, 185, 129, 0.25);
+  animation: hero-pulse-slow 27s infinite ease-in-out 5s;
+}
+
+.hero-circle-4 {
+  bottom: 45%;
+  left: 30%;
+  width: 28px;
+  height: 28px;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 19px rgba(6, 182, 212, 0.35), inset 0 0 10px rgba(6, 182, 212, 0.25);
+  animation: hero-scale-slow 22s infinite ease-in-out 3s;
+}
+
+/* Hexagons - Beautiful hollow hexagons with subtle glow */
+.hero-hexagon {
+  width: 28px;
+  height: 24px;
+  position: relative;
+  background: transparent;
+  border: 3px solid;
+  border-radius: 4px;
+  box-shadow: 0 0 12px var(--shadow-color-dark), inset 0 0 12px var(--shadow-color-light);
+  backdrop-filter: blur(2px);
+}
+
+.hero-hexagon:before,
+.hero-hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.hero-hexagon:before {
+  bottom: 100%;
+  border-bottom: 8px solid transparent;
+  border-bottom-color: inherit;
+}
+
+.hero-hexagon:after {
+  top: 100%;
+  border-top: 8px solid transparent;
+  border-top-color: inherit;
+}
+
+.hero-hexagon-1 {
+  top: 22%;
+  right: 22%;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.3), inset 0 0 9px rgba(6, 182, 212, 0.2);
+  animation: hero-rotate-slow 30s infinite linear;
+}
+
+.hero-hexagon-2 {
+  bottom: 30%;
+  left: 20%;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 16px rgba(88, 166, 255, 0.3), inset 0 0 9px rgba(88, 166, 255, 0.2);
+  animation: hero-float-slow 23s infinite ease-in-out 2s;
+}
+
+.hero-hexagon-3 {
+  top: 55%;
+  right: 45%;
+  border-color: var(--accent-green);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.3), inset 0 0 9px rgba(16, 185, 129, 0.2);
+  animation: hero-pulse-slow 26s infinite ease-in-out 4s;
+}
+
+/* Diamonds - Beautiful hollow diamonds with subtle glow */
+.hero-diamond {
+  width: 24px;
+  height: 24px;
+  transform: rotate(45deg);
+  background: transparent;
+  border: 3px solid;
+  border-radius: 4px;
+  box-shadow: 0 0 12px var(--shadow-color-dark), inset 0 0 12px var(--shadow-color-light);
+  backdrop-filter: blur(2px);
+}
+
+.hero-diamond-1 {
+  top: 40%;
+  right: 40%;
+  border-color: var(--accent-green);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.3), inset 0 0 8px rgba(16, 185, 129, 0.2);
+  animation: hero-scale-slow 26s infinite ease-in-out;
+}
+
+.hero-diamond-2 {
+  bottom: 40%;
+  left: 45%;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 14px rgba(124, 58, 237, 0.3), inset 0 0 8px rgba(124, 58, 237, 0.2);
+  animation: hero-pulse-slow 22s infinite ease-in-out 2s;
+}
+
+.hero-diamond-3 {
+  top: 75%;
+  left: 65%;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.3), inset 0 0 8px rgba(6, 182, 212, 0.2);
+  animation: hero-rotate-slow 29s infinite linear 3s;
+}
+
+/* Tech symbols - Beautiful translucent tech symbols with subtle glow */
+.hero-tech-symbol {
+  position: absolute;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  opacity: 0.8; /* Increased opacity for more brightness */
+  color: var(--accent-blue);
+  text-shadow: 0 0 10px rgba(88, 166, 255, 0.3), 0 0 20px rgba(88, 166, 255, 0.15);
+  filter: drop-shadow(0 0 6px rgba(88, 166, 255, 0.25));
+}
+
+.hero-symbol-1 {
+  top: 15%;
+  left: 12%;
+  font-size: 20px;
+  animation: hero-glow-slow 24s infinite ease-in-out;
+}
+
+.hero-symbol-2 {
+  bottom: 22%;
+  right: 18%;
+  font-size: 22px;
+  animation: hero-float-slow 27s infinite ease-in-out 1s;
+}
+
+.hero-symbol-3 {
+  top: 60%;
+  left: 55%;
+  font-size: 18px;
+  animation: hero-pulse-slow 20s infinite ease-in-out 3s;
+}
+
+.hero-symbol-4 {
+  bottom: 55%;
+  left: 18%;
+  font-size: 16px;
+  color: var(--accent-green);
+  animation: hero-glow-slow 22s infinite ease-in-out 2s;
+}
+
+.hero-symbol-5 {
+  top: 35%;
+  right: 28%;
+  font-size: 17px;
+  color: var(--accent-purple);
+  animation: hero-float-slow 25s infinite ease-in-out 4s;
+}
+
+/* Simple dots */
+.hero-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(240, 246, 252, 0.9); /* Increased opacity for more brightness */
+}
+
+.hero-dot-1 {
+  top: 28%;
+  left: 25%;
+  animation: hero-twinkle 12s infinite ease-in-out;
+}
+
+.hero-dot-2 {
+  bottom: 32%;
+  right: 25%;
+  animation: hero-twinkle 14s infinite ease-in-out 2s;
+}
+
+.hero-dot-3 {
+  top: 68%;
+  left: 35%;
+  animation: hero-twinkle 17s infinite ease-in-out 4s;
+}
+
+.hero-dot-4 {
+  bottom: 48%;
+  left: 50%;
+  animation: hero-twinkle 13s infinite ease-in-out 1s;
+}
+
+.hero-dot-5 {
+  top: 45%;
+  right: 35%;
+  animation: hero-twinkle 15s infinite ease-in-out 3s;
+}
+
+.hero-dot-6 {
+  bottom: 65%;
+  right: 55%;
+  animation: hero-twinkle 11s infinite ease-in-out 5s;
+}
+
+.hero-dot-7 {
+  top: 78%;
+  left: 22%;
+  animation: hero-twinkle 16s infinite ease-in-out 2s;
+}
+
+.hero-dot-8 {
+  bottom: 12%;
+  right: 22%;
+  animation: hero-twinkle 18s infinite ease-in-out 4s;
+}
+
+/* Hero Background Animations */
+@keyframes hero-float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-35px); }
+}
+
+@keyframes hero-rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes hero-pulse-slow {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+@keyframes hero-scale-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+}
+
+@keyframes hero-glow-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.55; }
+}
+
+@keyframes hero-twinkle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.8); }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .hero-background-shapes {
+    opacity: 0.5;
+  }
+
+  .hero-shape {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+
+  .hero-tech-symbol {
+    font-size: clamp(10px, 2.5vw, 14px);
+    opacity: 0.15;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  /* Further reduce background shapes for very small screens */
+  .hero-background-shapes {
+    opacity: 0.3;
+  }
+
+  .hero-shape {
+    opacity: 0.15;
+    transform: scale(0.5);
+  }
+
+  .hero-tech-symbol {
+    font-size: clamp(8px, 2vw, 12px);
+    opacity: 0.1;
+  }
+} 
