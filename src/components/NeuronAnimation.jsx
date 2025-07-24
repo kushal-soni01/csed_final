@@ -217,27 +217,27 @@ const NeuronAnimation = () => {
 		});
 
 		// --- CHANGE 4: UPDATE SCROLLTRIGGER TO RESET OPACITY ---
-		ScrollTrigger.create({
-			trigger: ".App-header",
-			start: "top top",
-			end: "bottom top",
-			scrub: 1.5,
-			animation: anim.scrollTimeline,
-			onEnter: () => {
-				anim.mainTimeline.pause();
-			},
-			onLeaveBack: () => {
-				anim.mainTimeline.restart();
-				// Instantly reset text opacity to 1 when back at the top
-				gsap.set(anim.subtext, { opacity: 1 });
-			},
-			onEnterBack: () => {
-				anim.mainTimeline.pause();
-			},
-			onLeave: () => {
-				gsap.to(anim.neurons, { opacity: 1, duration: 0.1 });
-			},
-		});
+		// ScrollTrigger.create({
+		// 	trigger: ".App-header",
+		// 	start: "top top",
+		// 	end: "bottom top",
+		// 	scrub: 1.5,
+		// 	animation: anim.scrollTimeline,
+		// 	onEnter: () => {
+		// 		anim.mainTimeline.pause();
+		// 	},
+		// 	onLeaveBack: () => {
+		// 		anim.mainTimeline.restart();
+		// 		// Instantly reset text opacity to 1 when back at the top
+		// 		gsap.set(anim.subtext, { opacity: 1 });
+		// 	},
+		// 	onEnterBack: () => {
+		// 		anim.mainTimeline.pause();
+		// 	},
+		// 	onLeave: () => {
+		// 		gsap.to(anim.neurons, { opacity: 1, duration: 0.1 });
+		// 	},
+		// });
 
 		return () => {
 			anim.mainTimeline?.kill();

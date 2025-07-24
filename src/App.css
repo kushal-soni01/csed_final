@@ -142,7 +142,7 @@ nav {
 		grid-row-start: 8;
 		margin-top: 10px;
 		text-align: center;
-		width: 100%;
+		/* width: 100%; */
 	}
 	.footer .social_links_section a {
 		margin-right: 10px;
