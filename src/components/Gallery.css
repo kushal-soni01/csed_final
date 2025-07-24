@@ -1,0 +1,133 @@
+/* CSEDProjectsGallery.css */
+.component-container {
+	width: 100vw;
+	min-height: 100vh;
+	background: #0f0f0f;
+	color: #fff;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.gallery-title {
+	font-size: 2.7rem;
+	text-align: center;
+	margin: 2.5rem 0 2rem 0;
+	font-weight: 700;
+	letter-spacing: 1px;
+	opacity: 0;
+	transform: translateY(-60px);
+	/* Animation handled by GSAP */
+}
+
+@keyframes fadeSlide {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.project-section {
+	width: 90%;
+	/* min-height: 60vh; */
+	margin: 0 auto;
+	position: sticky;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #1e1e1e;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18),
+		0 1.5px 6px 0 rgba(0, 0, 0, 0.12);
+	border-radius: 18px;
+	border: 1.5px solid #232323;
+	transition: background 0.3s, box-shadow 0.3s, border 0.3s;
+	cursor: pointer;
+	z-index: 2;
+	margin-bottom: 2.5rem;
+	overflow: hidden;
+}
+
+.project-section:first-of-type {
+	margin-top: 1.5rem;
+}
+
+.project-section h2 {
+	font-size: 2.1rem;
+	margin-bottom: 1.2rem;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+}
+
+.project-section img {
+	width: 80%;
+	max-width: 800px;
+	border-radius: 10px;
+	margin-bottom: 1.2rem;
+	box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.18);
+	object-fit: cover;
+}
+
+.project-details {
+	max-width: 80%;
+	text-align: center;
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+	transition: opacity 0.5s, height 0.5s;
+	color: #e0e0e0;
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+}
+
+.project-section.show-details .project-details {
+	opacity: 1;
+	height: auto;
+	margin-top: 0.5rem;
+}
+
+.project-section:focus {
+	outline: 2px solid #8ecae6;
+}
+
+@media (max-width: 900px) {
+	.project-section {
+		min-height: 50vh;
+		width: 98%;
+		padding: 1.2rem 0.5rem;
+	}
+	.gallery-title {
+		font-size: 2.1rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.component-container {
+		min-height: 100vh;
+		padding: 0 0.2rem;
+	}
+	.project-section {
+		min-height: 40vh;
+		width: 100%;
+		padding: 0.7rem 0.2rem;
+		border-radius: 10px;
+	}
+	.gallery-title {
+		font-size: 1.3rem;
+		margin: 1.2rem 0 1rem 0;
+	}
+	.project-section h2 {
+		font-size: 1.2rem;
+	}
+	.project-section img {
+		width: 98%;
+		max-width: 98vw;
+	}
+	.project-details {
+		font-size: 0.98rem;
+	}
+}

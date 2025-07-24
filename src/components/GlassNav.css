@@ -78,6 +78,7 @@
 	justify-content: center;
 	gap: 15px;
 	flex: 2;
+	position: relative;
 	li:hover {
 		transform: scale(1.12);
 	}

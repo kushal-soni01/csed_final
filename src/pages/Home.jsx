@@ -1,4 +1,5 @@
 import React from "react";
+import NeuronAnimation from "../components/NeuronAnimation";
 import HomeHero from "../components/HomeHero";
 import FloatingText from "../components/FloatingText";
 import ProjectBG from "../content/alex-knight-2EJCSULRwC8-unsplash.jpg";
@@ -7,7 +8,8 @@ import Phases from "../components/Phases";
 export default function Home() {
 	return (
 		<>
-			<HomeHero />
+			<NeuronAnimation />
+			{/* <HomeHero /> */}
 			<Phases
 				heading="About CSED?"
 				tagline_1="A place where spark"
