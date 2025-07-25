@@ -1,0 +1,84 @@
+@import './SharedBackgroundAnimations.css';
+/* The container is transparent and centers its content */
+.reveal-container {
+  padding: 1rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Animation Logic --- */
+.reveal-container > * {
+  opacity: 0;
+  transform: translateY(30px);
+  /* Smoother, more elegant transition with refined easing */
+  transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1), 
+              transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+  /* Ensure elements reset properly */
+  will-change: opacity, transform;
+}
+
+/* Force reset state when not visible - prevents stuck animations */
+.reveal-container:not(.visible) > * {
+  opacity: 0 !important;
+  transform: translateY(30px) !important;
+}
+
+/* Exit Stagger - smoother exit timing */
+.reveal-container:not(.visible) > *:nth-child(1) { transition-delay: 0.15s; }
+.reveal-container:not(.visible) > *:nth-child(2) { transition-delay: 0.1s; }
+.reveal-container:not(.visible) > *:nth-child(3) { transition-delay: 0.05s; }
+.reveal-container:not(.visible) > *:nth-child(4) { transition-delay: 0s; }
+.reveal-container:not(.visible) > *:nth-child(n+5) { transition-delay: 0s; }
+
+/* Entrance Stagger - smoother entrance timing */
+.reveal-container.visible > * {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.reveal-container.visible > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-container.visible > *:nth-child(2) { transition-delay: 0.15s; }
+.reveal-container.visible > *:nth-child(3) { transition-delay: 0.25s; }
+.reveal-container.visible > *:nth-child(4) { transition-delay: 0.35s; }
+.reveal-container.visible > *:nth-child(n+5) { transition-delay: 0.45s; }
+
+/* Fallback for elements that have been visible - ensures they stay visible */
+.reveal-container.has-been-visible.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* --- Content & Typography --- */
+.reveal-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.reveal-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.reveal-container ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.reveal-container li {
+  margin-bottom: 0.5rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .reveal-container h2 {
+    font-size: 2rem;
+  }
+
+  .reveal-container p {
+    font-size: 1rem;
+  }
+}
