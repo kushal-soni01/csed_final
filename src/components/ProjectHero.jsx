@@ -8,9 +8,6 @@ import "./ProjectHero.css";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CSSPlugin);
 
-// const arr = ["innovation", "ideas", "dreams", "the"
-//     "future", "minds"]
-
 export default function ProjectHero() {
 	const scrollRef = useRef();
 	const tl = gsap.timeline();
@@ -128,16 +125,21 @@ export default function ProjectHero() {
 			scrollTrigger: {
 				trigger: ".project-hero-container",
 				start: "92px",
-				end: "190px",
+				end: "175px",
 				scrub: true,
 			},
 		});
-		gsap.from(".entry-bg", {
-			scale: 0.5,
-			autoAlpha: 0,
-			ease: "expo.in",
-			duration: 1,
-		});
+		// gsap.from(".entry-bg", {
+		// 	scale: 0.5,
+		// 	autoAlpha: 0,
+		// 	ease: "expo.in",
+		// 	scrollTrigger: {
+		// 		trigger: ".project-hero-container",
+		// 		start: "173px",
+		// 		end: "210px",
+		// 		scrub: 1,
+		// 	},
+		// });
 	}, []);
 
 	useEffect(() => {
@@ -161,7 +163,7 @@ export default function ProjectHero() {
 
 	return (
 		<>
-			<div className="entry-bg"></div>
+			{/* <div className="entry-bg"></div> */}
 			<div className="project-hero-container" ref={scrollRef}>
 				<span className="project_greet">
 					We welcome you to the CSED CLUB
@@ -198,6 +200,64 @@ export default function ProjectHero() {
 					</div>
 				</span>
 			</div>
+			<div className="project-gallery"></div>
+			{/* <div className="video-gallery-container">
+				<div id="video-box1">
+					<video
+						src={null}
+						style={{
+							height: "250px",
+							background: "aqua",
+							width: "250px",
+						}}
+					></video>
+					<span>Project Name</span>
+				</div>
+				<div id="video-box2">
+					<video
+						src={null}
+						style={{
+							height: "250px",
+							width: "250px",
+							background: "aqua",
+						}}
+					></video>
+					<span>Project Name</span>
+				</div>
+				<div id="video-box3">
+					<video
+						src={null}
+						style={{
+							height: "250px",
+							width: "250px",
+							background: "aqua",
+						}}
+					></video>
+					<span>Project Name</span>
+				</div>
+				<div id="video-box4">
+					<video
+						src={null}
+						style={{
+							height: "250px",
+							width: "250px",
+							background: "aqua",
+						}}
+					></video>
+					<span>Project Name</span>
+				</div>
+				<div id="video-box5">
+					<video
+						src={null}
+						style={{
+							height: "250px",
+							width: "250px",
+							background: "aqua",
+						}}
+					></video>
+					<span>Project Name</span>
+				</div>
+			</div> */}
 		</>
 	);
 }

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import "./GlassNav.css";
 
 const GlassNav = () => {
@@ -7,7 +9,6 @@ const GlassNav = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	const navItems = [
-		{ name: "About Us", to: "/about" },
 		{ name: "Team", to: "/team" },
 		{ name: "Events", to: "/events" },
 		{ name: "Projects", to: "/projects" },
@@ -27,6 +28,21 @@ const GlassNav = () => {
 	const toggleMobileMenu = () => {
 		setIsMobileMenuOpen(!isMobileMenuOpen);
 	};
+
+	useGSAP(() => {
+		gsap.from(".glass-overlay", {
+			backgroundColor: "transparent",
+			ease: "power2.inOut",
+			scrollTrigger: {
+				trigger: ".glass-nav",
+				start: "top top",
+				end: "bottom top",
+				scrub: true,
+			},
+		});
+	});
+
+	const location = useLocation();
 
 	return (
 		<div
@@ -67,19 +83,24 @@ const GlassNav = () => {
 						</div>
 
 						{/* Navigation Items */}
-						<ul className="nav-list">
-							{navItems.map((item) => (
-								<li key={item.name}>
-									<Link
-										to={item.to}
-										className={`nav-item`}
-										onClick={closeMenu}
-									>
-										{item.name}
-									</Link>
-								</li>
-							))}
-						</ul>
+						<div
+							className="nav-indicator-container"
+							style={{ position: "relative", flex: 2 }}
+						>
+							<ul className="nav-list">
+								{navItems.map((item) => (
+									<li key={item.name}>
+										<Link
+											to={item.to}
+											className={`nav-item`}
+											onClick={closeMenu}
+										>
+											{item.name}
+										</Link>
+									</li>
+								))}
+							</ul>
+						</div>
 
 						{/* Theme Switch */}
 						<div className="theme-switch-section">

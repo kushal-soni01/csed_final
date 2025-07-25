@@ -94,6 +94,26 @@ body {
 	color: transparent;
 }
 
+/* .entry-bg {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #232323;
+	z-index: 2;
+} */
+
+/* .video-gallery-container {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 250px;
+	overflow-x: hidden;
+} */
+
 @media (width>768px) {
 	.project_greet {
 		font-size: clamp(16px, 3.7vh, 32px);

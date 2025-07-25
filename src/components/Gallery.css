@@ -1,0 +1,149 @@
+/* CSEDProjectsGallery.css */
+.component-container {
+	width: 100vw;
+	min-height: 100vh;
+	background: #000000;
+	color: #fff;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.gallery-title {
+	font-size: 2.7rem;
+	text-align: center;
+	margin: 2.5rem 0 2rem 0;
+	font-weight: 700;
+	letter-spacing: 1px;
+	/* opacity: 0; */
+	transform: translateY(-60px);
+	animation: fadeSlide 0.3s ease-in-out 2.5s 1 forwards normal;
+	/* Animation handled by GSAP */
+}
+
+@keyframes fadeSlide {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.project-section {
+	width: 85%;
+	height: 86vh;
+	margin: 0 auto;
+	position: sticky;
+	z-index: 2;
+	top: 70px;
+	background: #232323;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18),
+		0 1.5px 6px 0 rgba(0, 0, 0, 0.12);
+	border-radius: 18px;
+	border: 1.5px solid #232323;
+	transition: background 0.3s, box-shadow 0.3s, border 0.3s;
+	cursor: pointer;
+	z-index: 2;
+	margin-bottom: 2.5rem;
+	overflow: hidden;
+}
+
+.project-section:first-of-type {
+	margin-top: 1.5rem;
+}
+
+.project-section h2 {
+	font-size: 2.1rem;
+	margin-bottom: 1.2rem;
+	font-weight: 600;
+	text-align: left;
+	letter-spacing: 0.5px;
+	position: relative;
+	left: 60px;
+	transition: color 0.2s ease;
+}
+
+.project-section:hover {
+	h2 {
+		color: pink;
+	}
+}
+
+.project-section img {
+	width: 90%;
+	height: 72vh;
+	border-radius: 10px;
+	margin-bottom: 1.2rem;
+	box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.18);
+	object-fit: cover;
+}
+img.dimmed {
+	opacity: 0.4;
+	filter: blur(2px) brightness(50%);
+	transition: opacity 0.3s;
+}
+
+.project-details {
+	max-width: 80%;
+	text-align: left;
+	opacity: 0;
+	height: 0;
+	transition: all 0.5s;
+	color: #e0e0e0;
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+	position: absolute;
+	top: 100px;
+	left: 80px;
+}
+
+.project-section.show-details .project-details {
+	opacity: 1;
+	height: auto;
+	margin-top: 0.5rem;
+	max-width: 70%;
+	min-width: 45%;
+}
+
+.project-section:focus {
+	outline: 2px solid #8ecae6;
+}
+
+@media (max-width: 900px) {
+	.project-section {
+		min-height: 50vh;
+		width: 98%;
+		padding: 1.2rem 0.5rem;
+	}
+	.gallery-title {
+		font-size: 2.1rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.component-container {
+		min-height: 100vh;
+		padding: 0 0.2rem;
+	}
+	.project-section {
+		min-height: 40vh;
+		width: 100%;
+		padding: 0.7rem 0.2rem;
+		border-radius: 10px;
+	}
+	.gallery-title {
+		font-size: 1.3rem;
+		margin: 1.2rem 0 1rem 0;
+	}
+	.project-section h2 {
+		font-size: 1.2rem;
+	}
+	.project-section img {
+		width: 98%;
+		max-width: 98vw;
+	}
+	.project-details {
+		font-size: 0.98rem;
+	}
+}
