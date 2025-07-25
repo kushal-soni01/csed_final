@@ -2,9 +2,8 @@
 .component-container {
 	width: 100vw;
 	min-height: 100vh;
-	background: #0f0f0f;
+	background: #000000;
 	color: #fff;
-	overflow: hidden;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -18,8 +17,9 @@
 	margin: 2.5rem 0 2rem 0;
 	font-weight: 700;
 	letter-spacing: 1px;
-	opacity: 0;
+	/* opacity: 0; */
 	transform: translateY(-60px);
+	animation: fadeSlide 0.3s ease-in-out 2.5s 1 forwards normal;
 	/* Animation handled by GSAP */
 }
 
@@ -31,16 +31,13 @@
 }
 
 .project-section {
-	width: 90%;
-	/* min-height: 60vh; */
+	width: 85%;
+	height: 86vh;
 	margin: 0 auto;
 	position: sticky;
-	top: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background: #1e1e1e;
+	z-index: 2;
+	top: 70px;
+	background: #232323;
 	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18),
 		0 1.5px 6px 0 rgba(0, 0, 0, 0.12);
 	border-radius: 18px;
@@ -60,34 +57,53 @@
 	font-size: 2.1rem;
 	margin-bottom: 1.2rem;
 	font-weight: 600;
+	text-align: left;
 	letter-spacing: 0.5px;
+	position: relative;
+	left: 60px;
+	transition: color 0.2s ease;
+}
+
+.project-section:hover {
+	h2 {
+		color: pink;
+	}
 }
 
 .project-section img {
-	width: 80%;
-	max-width: 800px;
+	width: 90%;
+	height: 72vh;
 	border-radius: 10px;
 	margin-bottom: 1.2rem;
 	box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.18);
 	object-fit: cover;
 }
+img.dimmed {
+	opacity: 0.4;
+	filter: blur(2px) brightness(50%);
+	transition: opacity 0.3s;
+}
 
 .project-details {
 	max-width: 80%;
-	text-align: center;
+	text-align: left;
 	opacity: 0;
 	height: 0;
-	overflow: hidden;
-	transition: opacity 0.5s, height 0.5s;
+	transition: all 0.5s;
 	color: #e0e0e0;
 	font-size: 1.1rem;
 	margin-bottom: 1rem;
+	position: absolute;
+	top: 100px;
+	left: 80px;
 }
 
 .project-section.show-details .project-details {
 	opacity: 1;
 	height: auto;
 	margin-top: 0.5rem;
+	max-width: 70%;
+	min-width: 45%;
 }
 
 .project-section:focus {

@@ -4,6 +4,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ProjectsImg from "../content/Projects.jpg";
 import "./Gallery.css";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,88 +63,90 @@ export default function Gallery(props) {
 	const containerRef = useRef(null);
 	const titleRef = useRef(null);
 
-	useEffect(() => {
-		const container = containerRef.current;
-		const sections = container.querySelectorAll(".project-section");
-		const title = titleRef.current;
+	// useGSAP(() => {
+	// 	const container = containerRef.current;
+	// 	const sections = container.querySelectorAll(".project-section");
+	// 	const title = titleRef.current;
 
-		// Title animation
-		gsap.fromTo(
-			title,
-			{ opacity: 0, y: -60 },
-			{
-				opacity: 1,
-				y: 0,
-				duration: 1.2,
-				ease: "power2.out",
-				scrollTrigger: {
-					trigger: container,
-					start: "top center",
-				},
-			}
-		);
+	// 	// Title animation
+	// 	gsap.fromTo(
+	// 		title,
+	// 		{ opacity: 0, y: -60 },
+	// 		{
+	// 			opacity: 1,
+	// 			y: 0,
+	// 			duration: 1.2,
+	// 			ease: "power2.out",
+	// 			scrollTrigger: {
+	// 				trigger: container,
+	// 				start: "top center",
+	// 			},
+	// 		}
+	// 	);
 
-		// Pin the container for the duration of all sections
-		gsap.to(container, {
-			scrollTrigger: {
-				trigger: container,
-				start: "top top",
-				end: () => `+=${sections.length * 100}vh`,
-				scrub: true,
-				// pin: true,
-				// anticipatePin: 1,
-			},
-		});
+	// 	// Pin the container for the duration of all sections
+	// 	gsap.to(container, {
+	// 		scrollTrigger: {
+	// 			trigger: container,
+	// 			start: "top top",
+	// 			end: () => `+=${sections.length * 100}vh`,
+	// 			scrub: true,
+	// 			// pin: true,
+	// 			// anticipatePin: 1,
+	// 		},
+	// 	});
 
-		// Overlapping sticky sections
-		sections.forEach((section, i) => {
-			gsap.fromTo(
-				section,
-				{ yPercent: 100, zIndex: i + 2 },
-				{
-					yPercent: 0,
-					zIndex: i + 2,
-					scrollTrigger: {
-						trigger: container,
-						start: () => `top top+=${i * 100}vh`,
-						end: () => `top top+=${(i + 1) * 100}vh`,
-						scrub: true,
-					},
-				}
-			);
-		});
-	}, []);
+	// 	// Overlapping sticky sections
+	// 	sections.forEach((section, i) => {
+	// 		gsap.fromTo(
+	// 			section,
+	// 			{ yPercent: 100, zIndex: i + 2 },
+	// 			{
+	// 				yPercent: 0,
+	// 				zIndex: i + 2,
+	// 				scrollTrigger: {
+	// 					trigger: container,
+	// 					start: () => `top top+=${i * 100}vh`,
+	// 					end: () => `top top+=${(i + 1) * 100}vh`,
+	// 					scrub: true,
+	// 				},
+	// 			}
+	// 		);
+	// 	});
+	// }, []);
 
 	const toggleDetails = (e) => {
 		e.currentTarget.classList.toggle("show-details");
+		const img = e.currentTarget.querySelector("img");
+		if (img) {
+			img.classList.toggle("dimmed");
+		}
 	};
 
 	return (
 		<div className="component-container" ref={containerRef}>
 			<h1 className="gallery-title" ref={titleRef}>
-				{props.title || "{CSED Projects Gallery}"}
+				{props.title || "{Gallery}"}
 			</h1>
-			<div className="project-gallery">
-				{projects.map((project, idx) => (
-					<div
-						className="project-section"
-						key={idx}
-						onClick={toggleDetails}
-						tabIndex={0}
-						aria-label={`Project: ${project.name}`}
-					>
-						<h2>{project.name}</h2>
-						<img src={project.image} alt={project.name} />
-						<div className="project-details">
-							<p className="desc">{project.desc}</p>
-							<p className="members">
-								<strong>Members:</strong>{" "}
-								{project.members.join(", ")}
-							</p>
-						</div>
+			{projects.map((project, idx) => (
+				<div
+					className="project-section"
+					key={idx}
+					onClick={toggleDetails}
+					tabIndex={0}
+					aria-label={`Project: ${project.name}`}
+				>
+					<h2>{project.name}</h2>
+					<img src={project.image} alt={project.name} />
+					<div className="project-details">
+						<p className="desc">{project.desc}</p>
+						<p className="members">
+							<strong>Members:</strong>{" "}
+							{project.members.join(", ")}
+						</p>
 					</div>
-				))}
-			</div>
+				</div>
+			))}
 		</div>
 	);
 }
