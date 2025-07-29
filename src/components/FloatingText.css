@@ -26,3 +26,16 @@
 	width: 40%;
 	font-weight: bolder;
 }
+
+.contentLine1 {
+	font-size: clamp(20, 4.5vw, 44px);
+}
+
+@media (max-width: 768px) {
+	.contentLine1 {
+		text-align: start;
+		font-weight: normal;
+		display: block;
+		width: 150%;
+	}
+}

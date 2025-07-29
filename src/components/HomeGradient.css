@@ -1,0 +1,28 @@
+.GradientContainer {
+	height: 100vh;
+	width: 100vw;
+	background: #833ab4;
+	background: linear-gradient(
+		135deg,
+		#f27121,
+		#e94057,
+		#8a2387,
+		#4a00e0,
+		#3bc8c7
+	);
+	display: flex;
+	justify-content: space-around;
+	gap: 200px;
+	align-items: center;
+}
+
+.logoLetter {
+	font-size: 120px;
+	text-align: left;
+	font-weight: 700;
+	line-height: 80px;
+	span {
+		font-size: 60px;
+		font-weight: normal;
+	}
+}

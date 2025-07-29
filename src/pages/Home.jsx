@@ -1,15 +1,15 @@
 import React from "react";
 import NeuronAnimation from "../components/NeuronAnimation";
-import HomeHero from "../components/HomeHero";
 import FloatingText from "../components/FloatingText";
 import ProjectBG from "../content/alex-knight-2EJCSULRwC8-unsplash.jpg";
+import HomeGradient from "../components/HomeGradient";
 import Phases from "../components/Phases";
 
 export default function Home() {
 	return (
 		<>
 			<NeuronAnimation />
-			{/* <HomeHero /> */}
+			<HomeGradient />
 			<Phases
 				heading="About CSED?"
 				tagline_1="A place where spark"
@@ -24,6 +24,17 @@ export default function Home() {
 				robust network that can change the course of their journey
 				forever!"
 			/>
+			<FloatingText
+				source={ProjectBG}
+				mainContent="Artificial Intellignence"
+				contentLine1="The CSED Club nurtures startup mindsets through mentorship, resources, and networking opportunities.
+                It hosts events and connects students with leaders to build impactful ventures."
+			/>
+			<Phases
+				tagline_1="Join Our Community &"
+				tagline_3="Explore the world of innovation"
+				content="The CSED Club drives innovation and technological growth within the department. It organizes hackathons, workshops, and speaker sessions to equip students with practical, industry-relevant skills. By fostering collaboration and creativity, the club transforms ideas into impactful projects. Join us to explore, build, and lead in the evolving world of technology."
+			/>{" "}
 			<FloatingText
 				source={ProjectBG}
 				mainContent="Artificial Intellignence"

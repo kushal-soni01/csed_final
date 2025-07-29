@@ -83,8 +83,9 @@ nav {
 		height: 30px;
 		width: 30px;
 		i {
-			font-size: 20px;
+			font-size: 16px;
 			transform: rotate(-90deg);
+			font-weight: 1000;
 			transition: all 0.3s cubic-bezier(0.94, 0.7, 0, 0.52);
 		}
 	}

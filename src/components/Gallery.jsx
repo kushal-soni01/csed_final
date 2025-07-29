@@ -1,12 +1,7 @@
 // CSEDProjectsGallery.jsx
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import React from "react";
 import ProjectsImg from "../content/Projects.jpg";
 import "./Gallery.css";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
 	{
@@ -60,61 +55,6 @@ const projects = [
 ];
 
 export default function Gallery(props) {
-	const containerRef = useRef(null);
-	const titleRef = useRef(null);
-
-	// useGSAP(() => {
-	// 	const container = containerRef.current;
-	// 	const sections = container.querySelectorAll(".project-section");
-	// 	const title = titleRef.current;
-
-	// 	// Title animation
-	// 	gsap.fromTo(
-	// 		title,
-	// 		{ opacity: 0, y: -60 },
-	// 		{
-	// 			opacity: 1,
-	// 			y: 0,
-	// 			duration: 1.2,
-	// 			ease: "power2.out",
-	// 			scrollTrigger: {
-	// 				trigger: container,
-	// 				start: "top center",
-	// 			},
-	// 		}
-	// 	);
-
-	// 	// Pin the container for the duration of all sections
-	// 	gsap.to(container, {
-	// 		scrollTrigger: {
-	// 			trigger: container,
-	// 			start: "top top",
-	// 			end: () => `+=${sections.length * 100}vh`,
-	// 			scrub: true,
-	// 			// pin: true,
-	// 			// anticipatePin: 1,
-	// 		},
-	// 	});
-
-	// 	// Overlapping sticky sections
-	// 	sections.forEach((section, i) => {
-	// 		gsap.fromTo(
-	// 			section,
-	// 			{ yPercent: 100, zIndex: i + 2 },
-	// 			{
-	// 				yPercent: 0,
-	// 				zIndex: i + 2,
-	// 				scrollTrigger: {
-	// 					trigger: container,
-	// 					start: () => `top top+=${i * 100}vh`,
-	// 					end: () => `top top+=${(i + 1) * 100}vh`,
-	// 					scrub: true,
-	// 				},
-	// 			}
-	// 		);
-	// 	});
-	// }, []);
-
 	const toggleDetails = (e) => {
 		e.currentTarget.classList.toggle("show-details");
 		const img = e.currentTarget.querySelector("img");
@@ -124,10 +64,8 @@ export default function Gallery(props) {
 	};
 
 	return (
-		<div className="component-container" ref={containerRef}>
-			<h1 className="gallery-title" ref={titleRef}>
-				{props.title || "{Gallery}"}
-			</h1>
+		<div className="component-container">
+			<h1 className="gallery-title">{props.title || "{Gallery}"}</h1>
 			{projects.map((project, idx) => (
 				<div
 					className="project-section"
