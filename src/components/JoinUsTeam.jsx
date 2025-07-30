@@ -8,7 +8,7 @@ import "./JoinUsTeam.css";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function JoinUsTeam(props) {
-	const secRef = useRef(null);
+	const secRef = props.sectionRef || useRef(null);
 	const headingRef = useRef(null);
 	const descRef = useRef(null);
 	const deptRef = useRef(null);
