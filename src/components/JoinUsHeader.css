@@ -13,8 +13,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: beige;
-	color: black;
+	background: #232323;
+	color: white;
 	border-radius: 20px;
+	font-weight: 800;
 	font-size: 44px;
+	cursor: pointer;
 }
