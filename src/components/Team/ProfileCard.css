@@ -1,0 +1,561 @@
+/* Profile Card Styles with Advanced Gradients */
+
+.pc-card-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 400px;
+	margin: 0;
+	perspective: 1000px;
+	/* Ensure CSS variables are inherited */
+	--pointer-x: 50%;
+	--pointer-y: 50%;
+	--rotate-x: 0deg;
+	--rotate-y: 0deg;
+	/* Add smooth initial state to prevent jerky animations */
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Grid container centering for cards */
+.hierarchy-mentor-head,
+.hierarchy-mentor-senior,
+.hierarchy-mentor-regular,
+.hierarchy-executive,
+.hierarchy-secretary,
+.hierarchy-head,
+.hierarchy-regular {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+/* Override any potential conflicts for member cards */
+.member-row,
+.leader-row,
+.executive-row,
+.secretary-row,
+.mentor-row {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+/* Ensure card wrapper has proper sizing for mouse detection */
+.pc-card-wrapper {
+	position: relative;
+	min-height: 450px;
+}
+
+.pc-card {
+	position: relative;
+	width: 100%;
+	max-width: 350px;
+	height: 450px;
+	background: linear-gradient(
+		135deg,
+		rgba(0, 0, 0, 0.95) 0%,
+		rgba(20, 20, 40, 0.9) 50%,
+		rgba(0, 0, 0, 0.95) 100%
+	);
+	border-radius: 20px;
+	padding: 1.5rem;
+	cursor: pointer;
+	transition: transform 0.1s ease-out,
+		border 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+		box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+	transform-style: preserve-3d;
+	backdrop-filter: blur(20px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	/* Apply transform continuously, not just on hover */
+	transform: translate3d(0, 0, 0) rotateX(var(--rotate-y, 0deg))
+		rotateY(var(--rotate-x, 0deg));
+	/* Add smooth initial state to prevent jerky animations */
+	opacity: 1;
+}
+
+.pc-card:hover,
+.pc-card.active {
+	transform: translate3d(0, 0, 0.1px) rotateX(var(--rotate-y))
+		rotateY(var(--rotate-x));
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.pc-inside {
+	display: none;
+}
+
+.pc-shine {
+	display: none;
+}
+
+.pc-glare {
+	display: none;
+}
+
+/* Animation for the gradient effects */
+@keyframes holo-bg {
+	0% {
+		background-position: 0% 50%;
+	}
+	25% {
+		background-position: 100% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	75% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes sunpillar {
+	0% {
+		background-position: 0% 0%, 0% 0%, center;
+	}
+	50% {
+		background-position: 100% 100%, 50% 50%, center;
+	}
+	100% {
+		background-position: 200% 200%, 100% 100%, center;
+	}
+}
+
+.pc-avatar-content {
+	position: relative;
+	z-index: 10;
+	margin-bottom: 1rem;
+	flex-shrink: 0;
+	pointer-events: auto;
+}
+
+.avatar {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 3px solid rgba(255, 255, 255, 0.2);
+	transition: all 0.3s ease;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.pc-card:hover .avatar,
+.pc-card.active .avatar {
+	border-color: rgba(255, 255, 255, 0.4);
+	box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+	transform: scale(1.05);
+}
+
+.pc-content {
+	position: relative;
+	z-index: 10;
+	width: 100%;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	pointer-events: auto;
+}
+
+.pc-details {
+	text-align: center;
+	width: 100%;
+}
+
+.pc-details h3 {
+	color: #ffffff;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
+	line-height: 1.2;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	hyphens: auto;
+	text-align: center;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.team-department-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.position-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.member-team-box,
+.member-department-box,
+.member-position-box {
+	font-size: 12px;
+	padding: 6px 12px;
+	border-radius: 8px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	text-align: center;
+	white-space: nowrap;
+	transition: all 0.3s ease;
+}
+
+.member-team-box {
+	background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.member-department-box {
+	background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.member-position-box {
+	background: linear-gradient(135deg, #ec4899, #be185d);
+	color: #fff;
+	padding: 8px 16px;
+	font-size: 13px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.pc-card:hover .member-team-box,
+.pc-card.active .member-team-box,
+.pc-card:hover .member-department-box,
+.pc-card.active .member-department-box,
+.pc-card:hover .member-position-box,
+.pc-card.active .member-position-box {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.social-buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.social-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	color: #ffffff;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	pointer-events: auto;
+	position: relative;
+	z-index: 100;
+}
+
+.social-btn:hover {
+	transform: translateY(-3px) scale(1.1);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.github-btn:hover {
+	background: linear-gradient(135deg, #333, #000);
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+.linkedin-btn:hover {
+	background: linear-gradient(135deg, #0077b5, #005885);
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+.social-btn svg {
+	transition: transform 0.3s ease;
+}
+
+.social-btn:hover svg {
+	transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+	.pc-card {
+		max-width: 320px;
+		height: 420px;
+		padding: 1.25rem;
+	}
+
+	.avatar {
+		width: 110px;
+		height: 110px;
+	}
+
+	.pc-details h3 {
+		font-size: 1.4rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.pc-card-wrapper {
+		max-width: 300px;
+	}
+
+	.pc-card {
+		max-width: 300px;
+		height: 400px;
+		padding: 1rem;
+	}
+
+	.avatar {
+		width: 100px;
+		height: 100px;
+		border-width: 2px;
+	}
+
+	.pc-details h3 {
+		font-size: 1.3rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.member-team-box,
+	.member-department-box {
+		font-size: 12px;
+		padding: 5px 10px;
+	}
+
+	.member-position-box {
+		font-size: 13px;
+		padding: 6px 14px;
+	}
+
+	.social-btn {
+		width: 36px;
+		height: 36px;
+	}
+
+	.social-btn svg {
+		width: 14px;
+		height: 14px;
+	}
+
+	/* Disable complex hover effects on mobile */
+	.pc-shine {
+		display: none;
+	}
+}
+
+@media (max-width: 480px) {
+	.pc-card-wrapper {
+		max-width: 280px;
+	}
+
+	.pc-card {
+		max-width: 280px;
+		height: 380px;
+		padding: 0.875rem;
+	}
+
+	.avatar {
+		width: 90px;
+		height: 90px;
+	}
+
+	.pc-details h3 {
+		font-size: 1.2rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.team-department-row {
+		gap: 0.25rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.member-team-box,
+	.member-department-box {
+		font-size: 11px;
+		padding: 4px 8px;
+	}
+
+	.member-position-box {
+		font-size: 12px;
+		padding: 5px 12px;
+	}
+
+	.social-buttons {
+		gap: 0.75rem;
+		margin-top: 0.75rem;
+	}
+
+	.social-btn {
+		width: 32px;
+		height: 32px;
+	}
+
+	.social-btn svg {
+		width: 12px;
+		height: 12px;
+	}
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+	.pc-card {
+		border: 2px solid rgba(255, 255, 255, 0.3);
+		background: rgba(0, 0, 0, 0.8);
+	}
+
+	.pc-details h3 {
+		text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+	}
+
+	.member-team-box,
+	.member-department-box,
+	.member-position-box {
+		border: 2px solid rgba(255, 255, 255, 0.4);
+	}
+}
+
+/* Reduced motion adjustments */
+@media (prefers-reduced-motion: reduce) {
+	.pc-card,
+	.avatar,
+	.social-btn,
+	.member-team-box,
+	.member-department-box,
+	.member-position-box,
+	.pc-shine,
+	.pc-glare,
+	.pc-inside {
+		transition: none;
+	}
+
+	.pc-card:hover .social-btn,
+	.pc-card:hover .member-team-box,
+	.pc-card:hover .member-department-box,
+	.pc-card:hover .member-position-box {
+		transform: none;
+	}
+}
+
+/* Focus states for accessibility */
+.pc-card:focus-visible {
+	outline: 2px solid #3b82f6;
+	outline-offset: 2px;
+}
+
+.social-btn:focus-visible {
+	outline: 2px solid #3b82f6;
+	outline-offset: 2px;
+}
+
+/* CRITICAL: Hierarchy-specific card sizes - highest specificity overrides */
+.hierarchy-president .pc-card {
+	max-width: 500px !important;
+	width: 100% !important;
+	min-width: 350px !important;
+}
+
+.hierarchy-secretary .pc-card {
+	max-width: 500px !important;
+	width: 100% !important;
+	min-width: 350px !important;
+}
+
+.hierarchy-vice-president .pc-card {
+	max-width: 450px !important;
+	width: 100% !important;
+	min-width: 350px !important;
+}
+
+/* Additional specific targeting for Secretary positions */
+.hierarchy-secretary.leader-row .pc-card,
+.hierarchy-secretary.secretary-row .pc-card,
+.secretary-row .hierarchy-secretary .pc-card {
+	max-width: 500px !important;
+	width: 100% !important;
+	min-width: 350px !important;
+}
+
+/* Additional specific targeting for President positions */
+.hierarchy-president.leader-row .pc-card,
+.hierarchy-president.executive-row .pc-card,
+.executive-row .hierarchy-president .pc-card {
+	max-width: 500px !important;
+	width: 100% !important;
+	min-width: 350px !important;
+}
+
+/* CRITICAL: Responsive overrides for hierarchy-specific sizes */
+@media (max-width: 1200px) {
+	.hierarchy-president .pc-card {
+		max-width: 450px !important;
+		transform: scale(1) !important;
+	}
+
+	.hierarchy-secretary .pc-card,
+	.hierarchy-secretary.leader-row .pc-card,
+	.hierarchy-secretary.secretary-row .pc-card {
+		max-width: 450px !important;
+		transform: scale(1) !important;
+	}
+
+	.hierarchy-vice-president .pc-card {
+		max-width: 400px !important;
+		transform: scale(1) !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.hierarchy-president .pc-card {
+		max-width: 350px !important;
+		transform: scale(1) !important;
+	}
+
+	.hierarchy-secretary .pc-card,
+	.hierarchy-secretary.leader-row .pc-card,
+	.hierarchy-secretary.secretary-row .pc-card {
+		max-width: 350px !important;
+		transform: scale(1) !important;
+	}
+
+	.hierarchy-vice-president .pc-card {
+		max-width: 330px !important;
+		transform: scale(1) !important;
+	}
+}
+
+@media (max-width: 480px) {
+	.hierarchy-president .pc-card,
+	.hierarchy-secretary .pc-card,
+	.hierarchy-secretary.leader-row .pc-card,
+	.hierarchy-secretary.secretary-row .pc-card,
+	.hierarchy-vice-president .pc-card {
+		max-width: 280px !important;
+		transform: scale(1) !important;
+	}
+}

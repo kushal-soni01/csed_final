@@ -18,11 +18,6 @@
 	background: transparent;
 }
 
-.dark-mode .glass-nav {
-	--bg-color: rgba(0, 0, 0, 0.25);
-	--highlight: rgba(255, 255, 255, 0.15);
-}
-
 .glass-filter,
 .glass-overlay,
 .glass-specular {
@@ -62,6 +57,10 @@
 	width: 100%;
 }
 
+.logo-section {
+	margin-left: 20px;
+}
+
 .logo {
 	color: var(--text);
 	text-decoration: none;
@@ -70,18 +69,24 @@
 	letter-spacing: 1px;
 }
 
+.nav-indicator-container {
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 20px;
+}
+
 .nav-list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	gap: 15px;
-	flex: 2;
 	position: relative;
-	li:hover {
-		transform: scale(1.12);
-	}
+}
+
+.nav-list li:hover {
+	transform: scale(1.12);
 }
 
 .nav-item {
@@ -91,39 +96,20 @@
 	font-size: 16px;
 	padding: 8px 16px;
 	border-radius: 8px;
-	transition: all 0.3s ease-in;
+	transition: all 0.3s ease;
 	white-space: nowrap;
 }
 
 .nav-item:hover {
 	background-color: rgba(255, 255, 255, 0.1);
 	box-shadow: 3px 3px 20px #4286f41e;
+	scale: 1.2;
+	color: rgb(97, 97, 222);
+	font-size: 16px;
 }
 
 .nav-item.active {
 	background-color: rgba(255, 255, 255, 0.2);
-}
-
-.theme-switch-section {
-	display: flex;
-	justify-content: flex-end;
-}
-
-.theme-switch {
-	background: none;
-	border: none;
-	color: var(--text);
-	cursor: pointer;
-	padding: 8px;
-	border-radius: 8px;
-	transition: background-color 0.2s ease;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.theme-switch:hover {
-	background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Mobile Navigation */
@@ -191,9 +177,10 @@
 	list-style: none;
 	margin: 0;
 	padding: 16px 0;
-	li {
-		margin: 8px 0;
-	}
+}
+
+.mobile-nav-list li {
+	margin: 8px 0;
 }
 
 .mobile-nav-item {
@@ -215,13 +202,16 @@
 }
 
 /* Responsive Design */
-@media (max-width: 850px) {
+@media (max-width: 768px) {
 	.desktop-nav {
 		display: none;
 	}
 
 	.mobile-nav {
-		display: flex;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(1, 1fr);
+		gap: 8px;
 	}
 
 	.open {
@@ -229,7 +219,7 @@
 	}
 }
 
-@media (min-width: 850px) {
+@media (min-width: 768px) {
 	.desktop-nav {
 		display: flex;
 	}

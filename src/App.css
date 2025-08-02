@@ -44,6 +44,8 @@ nav {
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(5, 1fr);
 	gap: 8px;
+	position: relative;
+	z-index: 100;
 	div:first-child {
 		align-items: start;
 		gap: 3px;

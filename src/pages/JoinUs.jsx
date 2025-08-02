@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import JoinUsHeader from "../components/JoinUsHeader";
 import JoinUsTeam from "../components/JoinUsTeam";
+import RegisterationForm from "../components/RegisterationForm";
 
 export default function JoinUs() {
 	// Remove curly braces from title props for matching
@@ -52,6 +53,7 @@ export default function JoinUs() {
 					sectionRef={sectionRefs[idx]}
 				/>
 			))}
+			<RegisterationForm />
 		</>
 	);
 }
