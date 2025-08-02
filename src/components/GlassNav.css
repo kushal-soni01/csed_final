@@ -104,8 +104,9 @@
 	background-color: rgba(255, 255, 255, 0.1);
 	box-shadow: 3px 3px 20px #4286f41e;
 	scale: 1.2;
-	color: rgb(97, 97, 222);
+	color: rgba(0, 0, 255, 0.851);
 	font-size: 16px;
+	font-weight: 600;
 }
 
 .nav-item.active {

@@ -35,12 +35,6 @@ export default function () {
 						<i className="fa-brands fa-linkedin fa- l"></i>
 						Linkedin
 					</a>
-					<a href="/">
-						<i className="fa-brands fa-discord"></i>Discord
-					</a>
-					<a href="/">
-						<i className="fa-brands fa-square-x-twitter"></i>X
-					</a>
 				</div>
 				<div className="contact_section">
 					<h3>CONTACT</h3>
