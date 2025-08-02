@@ -5,6 +5,7 @@ import TeamHero from "./TeamHero.jsx";
 import ProfileCardComponent from "./ProfileCard.jsx";
 import GlobalBackground from "./GlobalBackground.jsx";
 import "./CSEDClubShowcase.css";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,27 @@ const CSEDClubShowcase = () => {
 	const teamsHeaderRef = useRef(null);
 	const teamsTitleRef = useRef(null);
 	const teamsSubtitleRef = useRef(null);
+
+	useGSAP(() => {
+		gsap.fromTo(
+			".particle-navbar",
+			{
+				opacity: 0,
+				yPercent: "-100",
+			},
+			{
+				opacity: 1,
+				yPercent: 0,
+				ease: "power2.out",
+				scrollTrigger: {
+					trigger: ".teams-section",
+					start: "top top",
+					end: "+=100px",
+					scrub: 1,
+				},
+			}
+		);
+	});
 
 	useEffect(() => {
 		// GSAP Animation for Teams Header - Ultra subtle for smooth scrolling
@@ -102,19 +124,19 @@ const CSEDClubShowcase = () => {
 			const viewportHeight = window.innerHeight;
 
 			// Show navbar when teams section is near the top of viewport
-			if (teamsSectionTop <= viewportHeight * 0.3 && !showNavbar) {
-				console.log("Showing navbar - reached teams section");
-				setNavbarAnimating(true);
-				setTimeout(() => {
-					setShowNavbar(true);
-				}, 100);
-			}
-			// Hide navbar when teams section is far below viewport (user scrolled back up)
-			else if (teamsSectionTop > viewportHeight * 0.8 && showNavbar) {
-				console.log("Hiding navbar - left teams section");
-				setShowNavbar(false);
-				setNavbarAnimating(false);
-			}
+			// if (teamsSectionTop <= viewportHeight * 0.3 && !showNavbar) {
+			// 	console.log("Showing navbar - reached teams section");
+			// 	setNavbarAnimating(true);
+			// 	setTimeout(() => {
+			// 		setShowNavbar(true);
+			// 	}, 100);
+			// }
+			// // Hide navbar when teams section is far below viewport (user scrolled back up)
+			// else if (teamsSectionTop > viewportHeight * 0.8 && showNavbar) {
+			// 	console.log("Hiding navbar - left teams section");
+			// 	setShowNavbar(false);
+			// 	setNavbarAnimating(false);
+			// }
 		};
 
 		// Add scroll listener
@@ -227,10 +249,10 @@ const CSEDClubShowcase = () => {
 		switch (position) {
 			case "President":
 			case "Vice President":
-				return "team-card-container hierarchy-executive leader-row executive-row"; // Executive row - 1 card per row on mobile, 2 on large screens only
+				return "team-card-container hierarchy-executive leader-row executive-row upper-executive"; // Executive row - 1 card per row on mobile, 2 on large screens only
 			case "General Secretary":
 			case "Joint Secretary":
-				return "team-card-container hierarchy-secretary leader-row secretary-row"; // Secretary row - exactly 2 cards per row
+				return "team-card-container hierarchy-secretary leader-row secretary-row lower-executive"; // Secretary row - exactly 2 cards per row
 			case "Head":
 			case "Co-Head":
 				return "team-card-container hierarchy-head leader-row"; // 4 cards per row
@@ -338,14 +360,18 @@ const CSEDClubShowcase = () => {
 			title: "Snr. Technical Mentor",
 			avatarUrl:
 				"https://via.placeholder.com/300x400/dc2626/ffffff?text=NV",
-			linkedin: "https://linkedin.com/in/ms-neha-verma",
 		},
 		{
 			name: "Mr. Devendra Kumar Rathode",
 			title: "Snr. Technical Mentor",
 			avatarUrl:
 				"https://via.placeholder.com/300x400/f59e0b/ffffff?text=VS",
-			linkedin: "https://linkedin.com/in/dr-vikash-singh",
+		},
+		{
+			name: "Lovely Yadav",
+			title: "Student Mentor",
+			avatarUrl:
+				"https://via.placeholder.com/300x400/10b981/ffffff?text=LY",
 		},
 	];
 
@@ -361,16 +387,12 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Karan Pal",
 						title: "IoT Developer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/4f46e5/ffffff?text=AC",
-						linkedin: "https://linkedin.com/in/alexander-chen",
-						github: "https://github.com/alexander-chen",
+						avatarUrl: "/images/team/karan.jpg",
 					},
 					{
 						name: "Khush Pandit",
 						title: "Hardware Engineer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/7c3aed/ffffff?text=MP",
+						avatarUrl: "/images/team/khush.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/khush-pandit-9b6473256/",
 						github: "https://github.com/khushpandit",
@@ -378,18 +400,16 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Kushal Soni",
 						title: "IoT Engineer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/7c3aed/ffffff?text=MP",
-						linkedin: "https://linkedin.com/in/maya-patel",
-						github: "https://github.com/maya-patel",
+						avatarUrl: "/images/team/kushal.jpg",
+						linkedin: "https://www.linkedin.com/in/soni-kushal/",
+						github: "https://github.com/kushal-soni01",
 					},
 				],
 				AIML: [
 					{
 						name: "Akshat Gupta",
 						title: "AI/ML Engineer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/7c3aed/ffffff?text=AG",
+						avatarUrl: "/images/team/akshat.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/akshat-gupta-88b129325/?original_referer=&originalSubdomain=in",
 						github: "https://github.com/akshat-gupta-111",
@@ -397,8 +417,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Utkarsh Agarwal",
 						title: "Ai/ML Engineer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/06b6d4/ffffff?text=UA",
+						avatarUrl: "/images/team/utkarsh.jpg",
 						linkedin: "https://linkedin.com/in/utkarsh-agarwal",
 						github: "https://github.com/Utkarsh45650",
 					},
@@ -408,26 +427,22 @@ const CSEDClubShowcase = () => {
 						name: "Arju Shrivastava",
 						title: "Full-stack Developer",
 						position: "Head",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/10b981/ffffff?text=LB",
-						linkedin: "https://linkedin.com/in/liam-brown",
-						github: "https://github.com/zmy-shaurya/",
+						avatarUrl: "/images/team/arju.jpg",
 					},
 					{
 						name: "Shaurya Pratap Singh",
 						title: "Full-stack Developer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/8b5cf6/ffffff?text=CF",
+						avatarUrl: "/images/team/shaurya.jpg",
 						linkedin: "https://www.linkedin.com/in/Zmy-Shaurya/",
-						github: "https://github.com/caleb-foster",
+						github: "https://github.com/zmy-shaurya/",
 					},
 					{
 						name: "Kavya Upadhyay",
 						title: "Full-stack Developer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/8b5cf6/ffffff?text=CF",
-						linkedin: "https://linkedin.com/in/caleb-foster",
-						github: "https://github.com/caleb-foster",
+						avatarUrl: "/images/team/kavya.jpg",
+						linkedin:
+							"https://www.linkedin.com/in/kavya-upadhyay-7600362b0/",
+						github: "https://github.com/Kavya-Upadhyay",
 					},
 				],
 			},
@@ -444,47 +459,41 @@ const CSEDClubShowcase = () => {
 						name: "Anmol Sharma",
 						title: "CR/PR Head",
 						position: "Head",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/6366f1/ffffff?text=CM",
+						avatarUrl: "/images/team/anmol.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/anmol-sharma-26a67b324",
 						github: "https://github.com/AnmolSharma1711",
 					},
 					{
-						name: "Keerti",
-						title: "CR/PR",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/a855f7/ffffff?text=JW",
-						linkedin:
-							"https://www.linkedin.com/in/keerti-yaduvanshi-4813b9280/",
-						github: "https://github.com/Keerti-12",
-					},
-					{
 						name: "Debraj Mondal",
 						title: "CR/PR",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/0ea5e9/ffffff?text=AT",
+						avatarUrl: "/images/team/debraj.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/debraj-mondal-9ba1b52b2/",
 						github: "https://github.com/debraj1505",
 					},
 					{
-						name: "Shresth Soni",
+						name: "Keerti",
 						title: "CR/PR",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/059669/ffffff?text=LM",
+						avatarUrl: "/images/team/keerti.jpg",
 						linkedin:
-							"https://www.linkedin.com/in/shresth-soni-965910326/",
-						github: "https://github.com/shresth-soni",
+							"https://www.linkedin.com/in/keerti-yaduvanshi-4813b9280/",
+						github: "https://github.com/Keerti-12",
 					},
 					{
 						name: "Krish Kumar",
 						title: "CR/PR",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/dc2626/ffffff?text=HJ",
+						avatarUrl: "/images/team/krish.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/krish-kumar-194562358/",
-						github: "https://github.com/harper-jackson",
+					},
+					{
+						name: "Shresth Soni",
+						title: "CR/PR",
+						avatarUrl: "/images/team/shresth.jpg",
+						linkedin:
+							"https://www.linkedin.com/in/shresth-soni-965910326/",
+						github: "https://github.com/shresth-soni",
 					},
 				],
 				"Event & Hospitality": [
@@ -492,8 +501,7 @@ const CSEDClubShowcase = () => {
 						name: "Shilpi Tiwari",
 						title: "Event Coordinator",
 						position: "Head",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/d97706/ffffff?text=MW",
+						avatarUrl: "/images/team/shilpi.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/shilpi-tiwari-416180328/",
 						github: "https://github.com/Shilpi82",
@@ -512,67 +520,55 @@ const CSEDClubShowcase = () => {
 						name: "Devansh Kumar Dhangar",
 						title: "Head",
 						position: "Head",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/1e40af/ffffff?text=LC",
+						avatarUrl: "/images/team/devansh.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/devansh-kumar-dhangar-837b55223/",
-						github: "https://github.com/logan-clark",
+						github: "https://github.com/Roccodevil",
 					},
 					{
 						name: "Piyush Maurya",
 						title: "Venue Coordinator",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/be185d/ffffff?text=AL",
-						linkedin: "https://linkedin.com/in/aria-lewis",
-						github: "https://github.com/aria-lewis",
+						avatarUrl: "/images/team/piyush.jpg",
 					},
 					{
 						name: "Kashish Gangwar",
 						title: "Event Planning Specialist",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/14b8a6/ffffff?text=JA",
-						linkedin: "https://linkedin.com/in/jacob-adams",
-						github: "https://github.com/jacob-adams",
+						avatarUrl: "/images/team/kashish.jpg",
+						linkedin:
+							"https://www.linkedin.com/in/kashish-gangwar-366b88329",
+						github: "https://github.com/kashishgangwar/c-assignment",
 					},
 					{
 						name: "Kaushal Kumar",
 						title: "Venue Coordinator",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/be185d/ffffff?text=AL",
-						linkedin: "https://linkedin.com/in/aria-lewis",
-						github: "https://github.com/aria-lewis",
+						avatarUrl: "/images/team/kaushal.jpg",
+						linkedin:
+							"www.linkedin.com/in/ kaushal-kumar-613139348",
+						github: "https://github.com/kosu-11",
 					},
 					{
 						name: "Krishna Upadhyay",
 						title: "Venue Coordinator",
 						avatarUrl:
 							"https://via.placeholder.com/300x400/be185d/ffffff?text=AL",
-						linkedin: "https://linkedin.com/in/aria-lewis",
-						github: "https://github.com/aria-lewis",
 					},
 					{
 						name: "Aavya Agarwal",
 						title: "Venue Coordinator",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/be185d/ffffff?text=AL",
-						linkedin: "https://linkedin.com/in/aria-lewis",
-						github: "https://github.com/aria-lewis",
+						avatarUrl: "/images/team/avya.jpg",
 					},
 					{
 						name: "Kush Somvanshi",
 						title: "Venue Coordinator",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/be185d/ffffff?text=AL",
-						linkedin: "https://linkedin.com/in/aria-lewis",
-						github: "https://github.com/aria-lewis",
+						avatarUrl: "/images/team/kush.jpg",
 					},
 					{
 						name: "Kirtan Agarwal",
 						title: "Venue Coordinator",
 						avatarUrl:
 							"https://via.placeholder.com/300x400/be185d/ffffff?text=AL",
-						linkedin: "https://linkedin.com/in/aria-lewis",
-						github: "https://github.com/aria-lewis",
+						linkedin:
+							"https://www.linkedin.com/in/kirtan-agrwal-925428357?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 					},
 				],
 				Data: [
@@ -580,33 +576,28 @@ const CSEDClubShowcase = () => {
 						name: "Kishlay Kumar",
 						title: "Data Analyst",
 						position: "Head",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/047857/ffffff?text=CR",
-						linkedin: "https://linkedin.com/in/carter-robinson",
-						github: "https://github.com/carter-robinson",
+						avatarUrl: "/images/team/kishlay.jpg",
+						linkedin:
+							"https://www.linkedin.com/in/kishlay-kumar-19318a210?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+						github: "https://github.com/beyondcode776",
 					},
 					{
 						name: "Amrita Singh",
 						title: "Database Administrator",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/7c3aed/ffffff?text=LW",
+						avatarUrl: "/images/team/amrita.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/amrita-singh-308333326/",
-						github: "https://github.com/luna-walker",
+						github: "https://github.com/Amritasingh600",
 					},
 					{
 						name: "Ansh Agarwal",
 						title: "Data Scientist",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/0891b2/ffffff?text=JH",
-						linkedin: "https://linkedin.com/in/jackson-hall",
-						github: "https://github.com/jackson-hall",
+						avatarUrl: "/images/team/ansh.jpg",
 					},
 					{
 						name: "Kanishka Gautam",
 						title: "Analytics Lead",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/ea580c/ffffff?text=SY",
+						avatarUrl: "/images/team/kanishka.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/kanishka-gautam-708bbb341/",
 						github: "https://github.com/kanishkagautam2005",
@@ -626,43 +617,37 @@ const CSEDClubShowcase = () => {
 						name: "Shivendra Kumar",
 						title: "UI/UX Designer",
 						position: "Head",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/8b5cf6/ffffff?text=GK",
-						linkedin: "https://linkedin.com/in/gabriel-king",
-						github: "https://github.com/gabriel-king",
+						avatarUrl: "/images/team/shivendra.jpg",
+						linkedin:
+							"https://www.linkedin.com/in/shivendra-kumar-467b9a2a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+						github: "https://github.com/SHIVENDRA3030",
 					},
 					{
 						name: "Tanmay Pathak",
 						title: "Graphic Designer",
 						position: "Head",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/ec4899/ffffff?text=ZW",
-						linkedin: "https://linkedin.com/in/zoe-wright",
-						github: "https://github.com/zoe-wright",
+						avatarUrl: "/images/team/tanmay.jpg",
 					},
 					{
 						name: "Kritika Sharan",
 						title: "Visual Designer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/06b6d4/ffffff?text=JS",
-						linkedin: "https://linkedin.com/in/julian-scott",
-						github: "https://github.com/julian-scott",
+						avatarUrl: "/images/team/kritika.jpg",
+						linkedin: "https://github.com/krittx",
+						github: "https://www.linkedin.com/in/kritika-sharan-ab32a3221?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 					},
 					{
 						name: "Dhanvi Sharma",
 						title: "Brand Designer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/10b981/ffffff?text=NG",
-						linkedin: "https://linkedin.com/in/nora-green",
-						github: "https://github.com/nora-green",
+						avatarUrl: "/images/team/dhanvi.jpg",
+						linkedin:
+							"https://www.linkedin.com/in/dhanvi-sharma-2ba47126b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+						github: "https://github.com/Dhanvi00",
 					},
 					{
 						name: "Shivam Baghel",
 						title: "Motion Graphics Designer",
 						avatarUrl:
 							"https://via.placeholder.com/300x400/f59e0b/ffffff?text=AR",
-						linkedin: "https://linkedin.com/in/alex-rivera",
-						github: "https://github.com/alex-rivera",
 					},
 				],
 				Content: [
@@ -670,8 +655,7 @@ const CSEDClubShowcase = () => {
 						name: "Muskan Singh",
 						title: "Content Writer",
 						position: "Head",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/6366f1/ffffff?text=CC",
+						avatarUrl: "/images/team/muskan.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/muskan-singh-454405314/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 						github: "https://github.com/Muskansingh-ms",
@@ -679,24 +663,22 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Ankush Kaushik",
 						title: "Copy Writer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/a855f7/ffffff?text=HM",
-						linkedin: "https://linkedin.com/in/ankush-kaushik",
-						github: "https://github.com/ankush-kaushik",
+						avatarUrl: "/images/team/ankush.jpg",
+						linkedin: "www.linkedin.com/in/ankush212",
+						github: "https://github.com/ankushman",
 					},
 					{
 						name: "Apoorv Mehrotra",
 						title: "Technical Writer",
 						avatarUrl:
 							"https://via.placeholder.com/300x400/0ea5e9/ffffff?text=GP",
-						linkedin: "https://linkedin.com/in/apoorv-mehrotra",
-						github: "https://github.com/apoorv-mehrotra",
+						linkedin: "https://www.linkedin.com/in/its-apoorv-?",
+						github: "https://github.com/programmerbeast2004",
 					},
 					{
 						name: "Anwesha Kumari",
 						title: "Content Strategist",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/059669/ffffff?text=SR",
+						avatarUrl: "/images/team/anvesha.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/anwesha-kumari-3a55a3326/",
 						github: "https://github.com/Anweshakumari77",
@@ -716,8 +698,7 @@ const CSEDClubShowcase = () => {
 						name: "Shubh Singhal",
 						title: "Club President",
 						position: "President",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/ff6b6b/ffffff?text=SC",
+						avatarUrl: "/images/team/shubh.jpg",
 						linkedin: "https://www.linkedin.com/in/shubh-singhal-/",
 						github: "https://github.com/Shubh-Singhal-Taken",
 					},
@@ -725,8 +706,7 @@ const CSEDClubShowcase = () => {
 						name: "Sparsh Sharma",
 						title: "Vice President",
 						position: "Vice President",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/4ecdc4/ffffff?text=RK",
+						avatarUrl: "/images/team/sparsh.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/sparsh-sharma-356761289/",
 						github: "https://github.com/ryan-kumar",
@@ -735,21 +715,18 @@ const CSEDClubShowcase = () => {
 						name: "Aditya Yadav",
 						title: "Secretary",
 						position: "General Secretary",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/45b7d1/ffffff?text=ER",
+						avatarUrl: "/images/team/aditya.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/aditya-yadav-570846289/",
-						github: "https://github.com/emily-rodriguez",
 					},
 					{
 						name: "Bhoomika Agarwal",
 						title: "Treasurer",
 						position: "Joint Secretary",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/f9ca24/ffffff?text=JP",
+						avatarUrl: "/images/team/bhoomika.jpg",
 						linkedin:
-							"https://www.linkedin.com/in/bhoomika-agarwal-981196326/",
-						github: "https://github.com/jason-park",
+							"https://www.linkedin.com/in/bhoomika-agarwal-981196326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+						github: "https://github.com/bhoomikaa9",
 					},
 				],
 			},
