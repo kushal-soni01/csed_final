@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function () {
 	return (
@@ -13,17 +14,30 @@ export default function () {
 				</div>
 				<div className="our_projects_section">
 					<h3>OUR PROJECTS</h3>
-					<span className="project_name">Project 1</span>
-					<span className="project_name">Project 2</span>
-					<span className="project_name">Project 3</span>
-					<span className="project_name">Project 4</span>
+					<Link to="/Projects">
+						<span className="project_name">SafeStop</span>
+					</Link>
+					<Link to="/Projects">
+						<span className="project_name">VoiceLight</span>
+					</Link>
+					<Link to="/Projects">
+						<span className="project_name">GrimeRover</span>
+					</Link>
 				</div>
 				<div className="useful_links_section">
 					<h3>USEFUL LINKS</h3>
-					<span className="page_link">Home</span>
-					<span className="page_link">Team</span>
-					<span className="page_link">Events</span>
-					<span className="page_link">Project</span>
+					<Link to="/">
+						<span className="page_link">Home</span>
+					</Link>
+					<Link to="/team">
+						<span className="page_link">Team</span>
+					</Link>
+					<Link to="/events">
+						<span className="page_link">Events</span>
+					</Link>
+					<Link to="/projects">
+						<span className="page_link">Project</span>
+					</Link>
 				</div>
 				<div className="social_links_section">
 					<h3>SOCIAL</h3>
