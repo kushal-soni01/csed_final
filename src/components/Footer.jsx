@@ -15,13 +15,16 @@ export default function () {
 				<div className="our_projects_section">
 					<h3>OUR PROJECTS</h3>
 					<Link to="/Projects">
-						<span className="project_name">SafeStop</span>
-					</Link>
-					<Link to="/Projects">
-						<span className="project_name">VoiceLight</span>
-					</Link>
-					<Link to="/Projects">
 						<span className="project_name">GrimeRover</span>
+					</Link>
+					<Link to="/Projects">
+						<span className="project_name">Drone</span>
+					</Link>
+					<Link to="/Projects">
+						<span className="project_name">RC Car</span>
+					</Link>
+					<Link to="/Projects">
+						<span className="project_name">Aaroi</span>
 					</Link>
 				</div>
 				<div className="useful_links_section">
