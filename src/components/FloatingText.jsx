@@ -51,10 +51,13 @@ export default function FloatingText(props) {
 
 	return (
 		<section className="scroll-container" ref={containerRef}>
-			<img
-				src={ProjectBG}
-				alt="Background"
+			<video
+				src={props.source}
 				className="scroll-background"
+				loop
+				muted
+				autoPlay
+				playsInline
 			/>
 			<div className="floating-text" ref={textRef}>
 				<h1 className="main-head-text">{props.mainContent}</h1>

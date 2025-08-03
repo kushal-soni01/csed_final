@@ -32,6 +32,7 @@
 	span {
 		font-size: 50px;
 		font-weight: normal;
+		position: relative;
 	}
 }
 
@@ -99,7 +100,7 @@
 }
 
 .stat-card {
-	background: rgba(26, 26, 46, 0.8);
+	background: rgba(0, 0, 0, 0.779) !important;
 	border: 2px solid rgba(100, 255, 218, 0.2);
 	border-radius: 20px;
 	padding: 40px 30px;
@@ -120,7 +121,7 @@
 .stat-card:hover {
 	border-color: var(--accent-color);
 	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px var(--accent-color);
-	background: rgba(26, 26, 46, 0.95);
+	background: rgba(26, 26, 46, 0.95) !important;
 }
 
 .stat-card:nth-child(1) {
@@ -379,7 +380,9 @@
 	min-width: 350px;
 	height: 350px;
 	border-radius: 20px;
-	background-color: black;
+	background: url("/images/People/Anoop.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .imp-data-area {

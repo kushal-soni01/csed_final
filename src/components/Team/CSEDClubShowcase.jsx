@@ -6,6 +6,7 @@ import ProfileCardComponent from "./ProfileCard.jsx";
 import GlobalBackground from "./GlobalBackground.jsx";
 import "./CSEDClubShowcase.css";
 import { useGSAP } from "@gsap/react";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1030,7 +1031,9 @@ const CSEDClubShowcase = () => {
 								className="apply-now-btn"
 							>
 								<div className="overline-effect"></div>
-								<span>Apply Now</span>
+								<span>
+									<Link to="/join">Apply Now</Link>
+								</span>
 								<div className="underline-effect"></div>
 							</button>
 						</div>
@@ -1039,9 +1042,9 @@ const CSEDClubShowcase = () => {
 			</div>
 
 			{/* Application Modal */}
-			{showApplicationForm && (
+			{/* {showApplicationForm && (
 				<ApplicationModal onClose={closeApplicationForm} />
-			)}
+			)} */}
 		</div>
 	);
 };

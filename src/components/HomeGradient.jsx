@@ -1,12 +1,17 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import "./HomeGradient.css";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { scale } from "framer-motion";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HomeGradient() {
 	const containerRef = useRef(null);
 	const statsRefs = useRef([]);
 	const [hasAnimated, setHasAnimated] = useState(false);
+	const timelin = gsap.timeline();
 
 	const statsData = [
 		{
@@ -108,6 +113,98 @@ export default function HomeGradient() {
 		};
 	}, [hasAnimated, statsData]);
 
+	useGSAP(() => {
+		timelin
+			.fromTo(
+				".GradientContainer",
+				{
+					opacity: 0,
+				},
+				{
+					opacity: 1,
+					scrollTrigger: {
+						trigger: ".GradientContainer",
+						start: "top bottom",
+						end: "top top",
+						scrub: 1,
+					},
+				}
+			)
+			.fromTo(
+				".lead-text",
+				{
+					opacity: 0,
+					left: "-1000px",
+				},
+				{
+					opacity: 0.85,
+					left: "2px",
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: ".GradientContainer",
+						start: "top center",
+						end: "top top",
+						scrub: 1,
+					},
+				}
+			)
+			.fromTo(
+				".clubtext",
+				{
+					yPercent: 100,
+					opacity: 0,
+				},
+				{
+					yPercent: 0,
+					opacity: 1,
+					ease: "power2.out",
+					duration: 1,
+					scrollTrigger: {
+						trigger: ".GradientContainer",
+						start: "top top",
+						end: "+=80px",
+						scrub: 1,
+					},
+				}
+			)
+			.fromTo(
+				".imp-image-area",
+				{
+					scale: 0.3,
+					opacity: 0,
+				},
+				{
+					scale: 1,
+					opacity: 1,
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: ".imp-people-intro",
+						start: "top top",
+						end: "+=10px",
+						scrub: 1,
+					},
+				}
+			)
+			.fromTo(
+				".imp-data-area",
+				{
+					yPercent: 100,
+					opacity: 0,
+				},
+				{
+					yPercent: 0,
+					opacity: 1,
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: ".imp-people-intro",
+						start: "top top",
+						end: "+=30px",
+						scrub: 1,
+					},
+				}
+			);
+	});
+
 	const handleStatHover = (index, isHovering) => {
 		const element = statsRefs.current[index];
 
@@ -133,16 +230,16 @@ export default function HomeGradient() {
 			<div className="data-details">
 				<div className="csedFullForm">
 					<div className="logoLetter">
-						C<span>enter for</span>
+						C<span className="lead-text">enter for</span>
 					</div>
 					<div className="logoLetter">
-						S<span>kills &</span>
+						S<span className="lead-text">kills &</span>
 					</div>
 					<div className="logoLetter">
-						E<span>ntrepreneurship</span>
+						E<span className="lead-text">ntrepreneurship</span>
 					</div>
 					<div className="logoLetter">
-						D<span>evelopment</span>
+						D<span className="lead-text">evelopment</span>
 					</div>
 					<div className="clubtext">
 						Community that exists to make a meaningful impact in the
@@ -192,7 +289,7 @@ export default function HomeGradient() {
 			<div className="imp-people-intro">
 				<div className="imp-image-area"></div>
 				<div className="imp-data-area">
-					<h1 className="imp-title">Prof. Anoo p Kumar Gupta</h1>
+					<h1 className="imp-title">Prof. Anoop Kumar Gupta</h1>
 					<h3 className="imp-sub-title">
 						Vice Chancellor & Director Institute of Applied Sciences
 						& Humanities Department of English

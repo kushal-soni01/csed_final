@@ -1833,3 +1833,8 @@
 		grid-column: span 2 / span 2;
 	}
 }
+
+a {
+	text-decoration: none;
+	color: inherit;
+}

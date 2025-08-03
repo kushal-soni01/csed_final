@@ -25,10 +25,10 @@ export default function Home() {
 				forever!"
 			/>
 			<FloatingText
-				source={ProjectBG}
-				mainContent="Artificial Intellignence"
-				contentLine1="The CSED Club nurtures startup mindsets through mentorship, resources, and networking opportunities.
-                It hosts events and connects students with leaders to build impactful ventures."
+				source="/images/event/homeevent.mp4"
+				mainContent="Events & Activities"
+				contentLine1="Our goal is to bridge the gap between learning and doing by helping members gain real-world skills, inspire others, and grow together through collaboration and contribution.
+                CSED club is where it all begins — a place where learning, leading, and contributing go hand in hand. "
 			/>
 			<Phases
 				tagline_1="Join Our Community &"
