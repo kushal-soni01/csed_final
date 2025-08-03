@@ -9,10 +9,8 @@ import HorizontalEventBar from "../components/events/horizontalEventBar";
 
 export default function App() {
 	const eventData = {
-		imageUrl:
-			"https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-		videoUrl:
-			"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+		imageUrl: "/images/event/EventBack.jpg",
+		videoUrl: "/images/event/frontVideo.mp4",
 		heading: "About Our Annual Tech Summit",
 		subheading: "INNOVATION HUB, TECH UNIVERSITY",
 		description:
@@ -113,7 +111,7 @@ export default function App() {
 			id: 1,
 			title: "Navis Dockerum - The ultimate Docker Challenge",
 			date: "April 14, 2024",
-			image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=400&fit=crop&crop=entropy",
+			image: "/images/event/navis.jpg",
 			summary:
 				"Navis Dockerum invited participants to dive hands-on into the world of Docker, building and deploying containers in real time.",
 			description:
@@ -141,7 +139,7 @@ export default function App() {
 			id: 2,
 			title: "AI/IoT Survival Challenge ",
 			date: "January 31, 2025",
-			image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=400&fit=crop&crop=entropy",
+			image: "/images/event/aiiot.jpg",
 			summary:
 				"The “AI/IoT Survival Challenge” plunged participants into real-world crisis scenarios, where they leveraged AI and IoT technologies to engineer smart, resilient solutions. ",
 			description:
@@ -157,7 +155,7 @@ export default function App() {
 				{
 					id: 1,
 					name: "Pres. Shubh Singhal",
-					title: "President of CSED Clubr",
+					title: "President of CSED Club",
 					bio: "Dr. Sarah Johnson is a renowned expert in artificial intelligence with over 15 years of experience leading AI research teams at top tech companies. She has published over 50 papers on machine learning and neural networks.",
 					image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face",
 					linkedin: "https://linkedin.com/in/sarahjohnson",
@@ -169,7 +167,7 @@ export default function App() {
 			id: 3,
 			title: "Versio Custodia – Finally, Git Made Sense!",
 			date: "November 30, 2024",
-			image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=400&fit=crop&crop=entropy",
+			image: "/images/event/versio.jpg",
 			summary:
 				"The Git and GitHub Workshop provided hands-on training in version control and collaborative coding best practices.",
 			description:
@@ -206,7 +204,7 @@ export default function App() {
 			id: 4,
 			title: "Wissenaire Future – Workshop of Communication protocols",
 			date: "November 4, 2024",
-			image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=400&fit=crop&crop=entropy",
+			image: "/images/event/wissenaire.jpg",
 			summary:
 				"Wissenaire Future unlocked the secrets of communication protocols with live decoding and hands-on data exchange projects. ",
 			description:
@@ -235,7 +233,7 @@ export default function App() {
 			id: 5,
 			title: "Tech driven Entrepreneurship – Mastering the Market of Industry 4.0 ",
 			date: "September 21, 2024",
-			image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=400&fit=crop&crop=entropy",
+			image: "/images/event/techdriven.jpg",
 			summary:
 				"Tech Driven Entrepreneurship” immersed participants in the evolving landscape of Industry 4.0, blending innovation with practical business strategies. ",
 			description:
@@ -315,35 +313,17 @@ export default function App() {
 	const horizontalEventData = [
 		{
 			id: 1,
-			date: "4 Aug",
+			date: "22 Aug",
 			time: "10:00-3:00",
 			title: "Workshop 1",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam veritatis, consectetur adipiscing elit.",
+			description: "Something Delecious is being cooked for you 🍽️.",
 		},
 		{
 			id: 2,
-			date: "8 Aug",
-			time: "10:00-3:00",
-			title: "The Future of JS",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam veritatis, consectetur adipiscing elit.",
-		},
-		{
-			id: 3,
-			date: "14 Aug",
-			time: "10:00-3:00",
-			title: "Javascript Ecosystem",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam veritatis, consectetur adipiscing elit.",
-		},
-		{
-			id: 4,
-			date: "26 Aug",
-			time: "10:00-3:00",
-			title: "Javascript Algorithm",
-			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam veritatis, consectetur adipiscing elit.",
+			date: "22 Aug",
+			time: "2:00-6:00",
+			title: "Workshop 2",
+			description: "Something Delecious is being cooked for you 👨🏻‍💻.",
 		},
 	];
 

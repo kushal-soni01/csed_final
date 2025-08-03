@@ -337,41 +337,43 @@ const CSEDClubShowcase = () => {
 		{
 			name: "Dr. Anoop Gupta",
 			title: "Chief Patron",
-			avatarUrl:
-				"https://via.placeholder.com/300x400/2563eb/ffffff?text=RK",
+			// avatarUrl:
+			// 	"https://via.placeholder.com/300x400/2563eb/ffffff?text=RK",
 			linkedin: "https://www.linkedin.com/in/anoop-gupta-61236717/",
 		},
 		{
 			name: "Mr. Pushkar Sharma",
 			title: "Patron",
+			// linkedin: "https://www.linkedin.com/in/pushkar-sharma-3ba943178/",
 			avatarUrl:
-				"https://via.placeholder.com/300x400/7c3aed/ffffff?text=PS",
-			linkedin: "https://www.linkedin.com/in/pushkar-sharma-3ba943178/",
+				"https://via.placeholder.com/300x400/059669/ffffff?text=DG",
 		},
 		{
 			name: "Mr. Deepansh Goyal",
 			title: "Mentor",
-			avatarUrl:
-				"https://via.placeholder.com/300x400/059669/ffffff?text=AG",
+			// avatarUrl:
+			// 	"https://via.placeholder.com/300x400/7c3aed/ffffff?text=AS",
 			linkedin: "https://www.linkedin.com/in/deepansh-goyal-359022196/",
 		},
 		{
 			name: "Mr. Mridul Bajpayee",
 			title: "Snr. Technical Mentor",
-			avatarUrl:
-				"https://via.placeholder.com/300x400/dc2626/ffffff?text=NV",
+			// avatarUrl:
+			// 	"https://via.placeholder.com/300x400/dc2626/ffffff?text=NV",
 		},
 		{
 			name: "Mr. Devendra Kumar Rathode",
 			title: "Snr. Technical Mentor",
+			// avatarUrl:
+			// 	"https://via.placeholder.com/300x400/f59e0b/ffffff?text=VS",
 			avatarUrl:
-				"https://via.placeholder.com/300x400/f59e0b/ffffff?text=VS",
+				"https://via.placeholder.com/300x400/10b981/ffffff?text=LY",
 		},
 		{
 			name: "Lovely Yadav",
 			title: "Student Mentor",
-			avatarUrl:
-				"https://via.placeholder.com/300x400/10b981/ffffff?text=LY",
+			// avatarUrl:
+			// 	"https://via.placeholder.com/300x400/10b981/ffffff?text=LY",
 		},
 	];
 
@@ -510,8 +512,7 @@ const CSEDClubShowcase = () => {
 						name: "Shubham Singh",
 						title: "Hospitality Manager",
 						position: "Head",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/7c2d12/ffffff?text=EH",
+						avatarUrl: "/images/team/shubham.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/shubham-kumar-singh-981874338/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 						github: "https://github.com/shubhamsingh900",
@@ -546,12 +547,11 @@ const CSEDClubShowcase = () => {
 							"www.linkedin.com/in/ kaushal-kumar-613139348",
 						github: "https://github.com/kosu-11",
 					},
-					{
-						name: "Krishna Upadhyay",
-						title: "Venue Coordinator",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/be185d/ffffff?text=AL",
-					},
+					// {
+					// 	name: "Krishna Upadhyay",
+					// 	title: "Venue Coordinator",
+					// 	avatarUrl: "/images/team/krishna.jpg",
+					// },
 					{
 						name: "Aavya Agarwal",
 						title: "Venue Coordinator",
@@ -565,8 +565,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Kirtan Agarwal",
 						title: "Venue Coordinator",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/be185d/ffffff?text=AL",
+						avatarUrl: "/images/team/kirtan.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/kirtan-agrwal-925428357?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 					},
@@ -646,8 +645,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Shivam Baghel",
 						title: "Motion Graphics Designer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/f59e0b/ffffff?text=AR",
+						avatarUrl: "/images/team/shivam.jpg",
 					},
 				],
 				Content: [
@@ -670,8 +668,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Apoorv Mehrotra",
 						title: "Technical Writer",
-						avatarUrl:
-							"https://via.placeholder.com/300x400/0ea5e9/ffffff?text=GP",
+						avatarUrl: "/images/team/apoorv.jpg",
 						linkedin: "https://www.linkedin.com/in/its-apoorv-?",
 						github: "https://github.com/programmerbeast2004",
 					},

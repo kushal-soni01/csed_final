@@ -144,6 +144,11 @@ export default function HomeGradient() {
 					<div className="logoLetter">
 						D<span>evelopment</span>
 					</div>
+					<div className="clubtext">
+						Community that exists to make a meaningful impact in the
+						lives of young learners who have that fire to grow,
+						build, and innovate.
+					</div>
 				</div>
 				<div className="stats-section">
 					<div className="stats-container" ref={containerRef}>
@@ -187,11 +192,12 @@ export default function HomeGradient() {
 			<div className="imp-people-intro">
 				<div className="imp-image-area"></div>
 				<div className="imp-data-area">
-					<h1 className="imp-title">Prof. Anup Kumar Gupta</h1>
+					<h1 className="imp-title">Prof. Anoo p Kumar Gupta</h1>
 					<h3 className="imp-sub-title">
 						Vice Chancellor & Director Institute of Applied Sciences
 						& Humanities Department of English
 					</h3>
+					<h3 className="imp-sub-title">Chief Parton of CSED Club</h3>
 					<span className="imp-desc">
 						<p>
 							Prof. Anup Kumar Gupta serves as the Vice Chancellor

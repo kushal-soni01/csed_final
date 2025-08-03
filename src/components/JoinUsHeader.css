@@ -8,12 +8,13 @@
 }
 
 .teamCell {
+	background-size: cover;
 	height: 50vh;
 	width: 28vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #232323;
+	/* background: #232323; */
 	color: white;
 	border-radius: 20px;
 	font-weight: 800;

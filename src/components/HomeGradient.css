@@ -20,6 +20,10 @@
 	);
 }
 
+.csedFullForm {
+	margin-left: 20px;
+}
+
 .logoLetter {
 	font-size: 100px;
 	text-align: left;
@@ -29,6 +33,12 @@
 		font-size: 50px;
 		font-weight: normal;
 	}
+}
+
+.clubtext {
+	font-size: 20px;
+	text-align: left;
+	margin-left: 10px;
 }
 
 .stats-section {
@@ -263,6 +273,11 @@
 	.stat-label {
 		font-size: 1.1rem;
 	}
+	.imp-people-intro {
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+	}
 }
 
 @media (max-width: 480px) {
@@ -357,12 +372,23 @@
 	justify-content: center;
 	align-items: center;
 	padding: 0 40px;
-	gap: 20px;
+	gap: 80px;
 }
 
 .imp-image-area {
-	width: 800px;
-	height: 400px;
+	min-width: 350px;
+	height: 350px;
 	border-radius: 20px;
 	background-color: black;
+}
+
+.imp-data-area {
+	width: 60%;
+	h3 {
+		text-align: left;
+	}
+}
+
+.imp-desc {
+	text-align: left;
 }
