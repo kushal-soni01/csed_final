@@ -190,7 +190,7 @@
 }
 
 /* Responsive Grid Adjustments */
-@media (min-width: 576px) {
+@media (min-width: 768px) {
 	.teams-grid {
 		grid-template-columns: repeat(2, 1fr);
 		gap: 2rem;
@@ -210,7 +210,6 @@
 
 @media (min-width: 768px) {
 	.teams-grid {
-		grid-template-columns: repeat(4, 1fr);
 		gap: 2.5rem;
 	}
 
@@ -1214,13 +1213,13 @@
 /* Proper spacing for executive cards (President/VP) */
 @media (min-width: 768px) {
 	.hierarchy-executive:nth-child(2) {
-		margin-left: -50px !important;
+		margin-left: -20px !important;
 	}
 }
 
 @media (min-width: 992px) {
 	.hierarchy-executive:nth-child(2) {
-		margin-left: -75px !important;
+		margin-left: -45px !important;
 	}
 }
 
@@ -1817,8 +1816,20 @@
 	grid-column: span 2 / span 2;
 }
 
-@media (600px<width<1200px) {
+@media (350px<width<1200px) {
 	.upper-executive {
-		margin-left: 30px;
+		margin-left: 16px;
+		margin-bottom: 80px !important;
+	}
+}
+
+@media (630px<width>630px) {
+	.mentor-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (width<630px) {
+	.mentor-row {
+		grid-column: span 2 / span 2;
 	}
 }
