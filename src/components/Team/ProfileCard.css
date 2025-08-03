@@ -30,6 +30,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
+	flex-wrap: wrap; /* Add flex-wrap to prevent horizontal overflow */
 }
 
 /* Override any potential conflicts for member cards */
@@ -41,6 +42,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
+	flex-wrap: wrap; /* Add flex-wrap to prevent horizontal overflow */
 }
 
 /* Ensure card wrapper has proper sizing for mouse detection */
@@ -54,12 +56,6 @@
 	width: 100%;
 	max-width: 350px;
 	height: 450px;
-	background: linear-gradient(
-		135deg,
-		rgba(0, 0, 0, 0.95) 0%,
-		rgba(20, 20, 40, 0.9) 50%,
-		rgba(0, 0, 0, 0.95) 100%
-	);
 	border-radius: 20px;
 	padding: 1.5rem;
 	cursor: pointer;
@@ -82,12 +78,61 @@
 	opacity: 1;
 }
 
+/* Background image for card */
+.pc-card-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(
+		135deg,
+		rgba(0, 0, 0, 0.95) 0%,
+		rgba(20, 20, 40, 0.9) 50%,
+		rgba(0, 0, 0, 0.95) 100%
+	);
+	border-radius: 20px;
+	transition: transform 0.3s ease;
+	z-index: 1;
+}
+
+/* Enhanced vignette overlay for better text readability */
+.pc-card-vignette {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: radial-gradient(
+		ellipse at center,
+		transparent 0%,
+		transparent 20%,
+		rgba(0, 0, 0, 0.3) 60%,
+		rgba(0, 0, 0, 0.8) 100%
+	);
+	border-radius: 20px;
+	z-index: 2;
+	transition: opacity 0.3s ease;
+}
+
 .pc-card:hover,
 .pc-card.active {
 	transform: translate3d(0, 0, 0.1px) rotateX(var(--rotate-y))
 		rotateY(var(--rotate-x));
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Hover effects for background scaling */
+.pc-card:hover .pc-card-background,
+.pc-card.active .pc-card-background {
+	transform: scale(1.05);
+}
+
+/* Enhanced vignette on hover for better focus */
+.pc-card:hover .pc-card-vignette,
+.pc-card.active .pc-card-vignette {
+	opacity: 0.7;
 }
 
 .pc-inside {

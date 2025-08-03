@@ -230,6 +230,8 @@ const ProfileCard = ({
   return (
     <div ref={wrapRef} className="pc-card-wrapper">
       <div ref={cardRef} className="pc-card">
+        <div className="pc-card-background"></div>
+        <div className="pc-card-vignette"></div>
         <div className="pc-avatar-content">
           <img 
             className="avatar" 
