@@ -5,35 +5,49 @@ import "./Gallery.css";
 
 const projects = [
 	{
-		name: "SafeStop: Intelligent Anti-Braking System",
-		image: ProjectsImg,
-		desc: "SafeStop is a microcontroller-based anti-braking system designed to enhance vehicle safety using an Arduino Uno and servo motors. The system detects sudden braking conditions and intelligently regulates braking force through servo actuation, minimizing the risk of wheel lock-up or skidding. This project simulates core concepts of Anti-lock Braking Systems (ABS) in real-world vehicles and showcases how embedded systems can improve control and safety in braking mechanisms.",
-		members: ["Anmol Sharma", "Akshat Gupta", "Keerti", "Kushal Soni"],
-		mentors: [
-			"Mr. Deepansh Goyal",
-			"Mr. Shubh Singhal",
-			"Mr. Aditya Yadav",
-			"Mr. Devansh Dhangar",
-		],
-	},
-	{
-		name: "VoiceLight: Smart LED Response System",
-		image: ProjectsImg,
-		desc: "VoiceLight is an Arduino Mega-based interactive system that uses a microphone to detect and respond to spoken traffic light commands. When the user says “green light,” the multi-color LED glows green; when “red light” is spoken, it switches to red. This voice-responsive control system demonstrates basic natural language interaction with embedded electronics and highlights the potential of speech-based automation in signaling and accessibility-focused applications.",
-		members: ["Amrita Singh", "Bhoomika Agrawal", "Utkarsh Agrawal"],
-		mentors: [
-			"Mr. Shubh Singhal",
-			"Mr. Aditya Yadav",
-			"Mr. Debraj Mondal",
-			"Mr. Devansh Dhangar",
-		],
-	},
-	{
-		name: "GrimeRover: Smart Inspection Robot for Hazardous Spaces",
-		image: ProjectsImg,
+		name: "GrimeRover",
+		image: "/images/projects/grimerover.jpg",
 		desc: "This rover is a small robot made to go into places that are dirty narrow, or ot unsafe for people - like inside drains or under the ground. It can move by itself or be controlled from far away, It has a camera to show what's happening around it and can check if the air or water in that area is dirty or dangerous. This robot helps in finding problems like blockagesm bad smells, or harmful gases, without sending any person inside. It's useful fir keeping cities clean and safe.",
 		members: ["Chaitanya Srivastava", "Vedant Sharma", "Reet Bharadwaj"],
 		mentors: ["Dr. Ram Manohar Nisarg", "Mr. Devendra Rathore"],
+	},
+	{
+		name: "Drone",
+		image: "images/projects/drone.jpg",
+		desc: "VoiceLight is an Arduino Mega-based interactive system that uses a microphone to detect and respond to spoken traffic light commands. When the user says “green light,” the multi-color LED glows green; when “red light” is spoken, it switches to red. This voice-responsive control system demonstrates basic natural language interaction with embedded electronics and highlights the potential of speech-based automation in signaling and accessibility-focused applications.",
+		members: [
+			"Shubh Singhal",
+			"Sparsh Sharma",
+			"Aditya Yadav",
+			"Krishna Mittal",
+			"Ansh Agrawal",
+			"Kavya Upadhyay",
+			"Manas",
+		],
+		mentors: ["Mr. Devendra Kumar Rathore", "Dr. Ram Manohar Nisarg"],
+	},
+	{
+		name: "RC Car",
+		image: "images/projects/rccar.jpg",
+		desc: "SafeStop is a microcontroller-based anti-braking system designed to enhance vehicle safety using an Arduino Uno and servo motors. The system detects sudden braking conditions and intelligently regulates braking force through servo actuation, minimizing the risk of wheel lock-up or skidding. This project simulates core concepts of Anti-lock Braking Systems (ABS) in real-world vehicles and showcases how embedded systems can improve control and safety in braking mechanisms.",
+		members: ["Shubh Singhal", "Shubhang Dixit", "Roopam Ganguly"],
+		mentors: ["Mr. Devendra Kumar Rathore", "Dr. Ram Manohar Nisarg"],
+	},
+	{
+		name: "Aaroi",
+		image: "images/projects/aaroi.jpg",
+		desc: "This rover is a small robot made to go into places that are dirty narrow, or ot unsafe for people - like inside drains or under the ground. It can move by itself or be controlled from far away, It has a camera to show what's happening around it and can check if the air or water in that area is dirty or dangerous. This robot helps in finding problems like blockagesm bad smells, or harmful gases, without sending any person inside. It's useful fir keeping cities clean and safe.",
+		members: [
+			"Krishna Mittal",
+			"Sparsh Sharma",
+			"Shubh Singhal",
+			"Ansh Agrawal",
+		],
+		mentors: [
+			"Mr. Mradul Vajpayee",
+			"Mr. Devendra Kumar Rathore",
+			"Mr. Pawan Kumar Sharma",
+		],
 	},
 ];
 
