@@ -1,6 +1,5 @@
 // CSEDProjectsGallery.jsx
 import React from "react";
-import ProjectsImg from "../content/Projects.jpg";
 import "./Gallery.css";
 
 const projects = [

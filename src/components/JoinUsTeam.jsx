@@ -71,7 +71,7 @@ export default function JoinUsTeam(props) {
 						<div key={idx} className="department-name">
 							<div>
 								<img
-									src={`src/content/${dept}.png`}
+									src={`images/content/${dept}.png`}
 									alt=""
 									className="deptIcon"
 									style={{

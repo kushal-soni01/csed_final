@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ProjectBG from "../content/alex-knight-2EJCSULRwC8-unsplash.jpg";
 import "./FloatingText.css";
 import { useGSAP } from "@gsap/react";
 

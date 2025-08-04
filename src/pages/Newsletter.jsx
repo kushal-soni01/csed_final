@@ -1,12 +1,11 @@
 import React from "react";
 import GlobalBackgorund from "../components/Team/GlobalBackground";
-import Newsletterback from "../content/newsletter-background.png";
 
 export default function Newsletter() {
 	return (
 		<div>
 			<img
-				src={Newsletterback}
+				src="/images/content/newsletter-background.png"
 				style={{
 					height: "100vh",
 					backgroundSize: "cover",

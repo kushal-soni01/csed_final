@@ -1,7 +1,6 @@
 import React from "react";
 import NeuronAnimation from "../components/NeuronAnimation";
 import FloatingText from "../components/FloatingText";
-import ProjectBG from "../content/alex-knight-2EJCSULRwC8-unsplash.jpg";
 import HomeGradient from "../components/HomeGradient";
 import Phases from "../components/Phases";
 import { Link } from "react-router-dom";
