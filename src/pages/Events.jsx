@@ -194,7 +194,7 @@ export default function App() {
 					name: "Pres. Shubh Singhal",
 					title: "President of CSED Clubr",
 					bio: "Dr. Sarah Johnson is a renowned expert in artificial intelligence with over 15 years of experience leading AI research teams at top tech companies. She has published over 50 papers on machine learning and neural networks.",
-					image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face",
+					image: "/images/team/shubh.jpg",
 					linkedin: "https://linkedin.com/in/sarahjohnson",
 					twitter: "https://twitter.com/sarahj_ai",
 				},
@@ -327,7 +327,7 @@ export default function App() {
 		},
 	];
 
-	const HorizontalRegisterButtonText = "REGISTER NOW";
+	const HorizontalRegisterButtonText = "Coming Soon";
 
 	return (
 		<div className="App" style={{ background: "var(--primary-bg)" }}>
