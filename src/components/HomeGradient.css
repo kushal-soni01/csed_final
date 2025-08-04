@@ -292,20 +292,20 @@
 
 @media (width<375px) {
 	.imp-people-intro {
-		margin-top: 60vh !important;
+		margin-top: 70vh !important;
 		height: 100vh;
 	}
 }
 
 @media (width<400px) {
 	.imp-people-intro {
-		margin-top: 100vh;
+		margin-top: 110vh;
 		height: 130vh;
 	}
 }
 @media (width<450px) {
 	.imp-people-intro {
-		margin-top: 40vh;
+		margin-top: 50vh;
 	}
 }
 
