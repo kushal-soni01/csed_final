@@ -8,6 +8,7 @@ export default function Newsletter() {
 				src="/images/content/newsletter-background.png"
 				style={{
 					height: "100vh",
+					width: "100vw",
 					backgroundSize: "cover",
 					backgroundRepeat: "no-repeat",
 					opacity: 0.2,

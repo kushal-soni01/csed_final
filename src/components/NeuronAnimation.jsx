@@ -56,6 +56,7 @@ const NeuronAnimation = () => {
 		anim.subtext = {
 			content: "Join Us. Explore Innovation.",
 			opacity: 1,
+			fontSize: "12px",
 		};
 
 		anim.csedCoords = getCoordinatesForShape(

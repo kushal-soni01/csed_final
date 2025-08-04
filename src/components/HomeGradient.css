@@ -29,11 +29,12 @@
 	text-align: left;
 	font-weight: 700;
 	line-height: 80px;
-	span {
-		font-size: 50px;
-		font-weight: normal;
-		position: relative;
-	}
+}
+
+.logoLetter span {
+	font-size: 50px;
+	font-weight: normal;
+	position: relative;
 }
 
 .clubtext {
@@ -55,17 +56,6 @@
 	max-width: 1000px;
 	width: 80%;
 	margin: 0 auto;
-}
-
-@media (width<1024px) {
-	.data-details {
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-around;
-	}
-}
-
-@media (width<500px) {
 }
 
 .stats-title {
@@ -238,82 +228,6 @@
 	animation: pulse 2s ease-in-out infinite;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-	.stats-section {
-		padding: 60px 16px;
-	}
-
-	.stats-title {
-		font-size: 2.2rem;
-		margin-bottom: 3rem;
-	}
-
-	.stats-grid {
-		gap: 20px;
-	}
-
-	.stat-card {
-		padding: 30px 20px;
-		min-height: 180px;
-	}
-
-	.stat-icon {
-		font-size: 2.5rem;
-		margin-bottom: 15px;
-	}
-
-	.stat-number {
-		font-size: 3rem;
-	}
-
-	.stat-suffix {
-		font-size: 2rem;
-	}
-
-	.stat-label {
-		font-size: 1.1rem;
-	}
-	.imp-people-intro {
-		flex-direction: column;
-		justify-content: space-evenly;
-		align-items: center;
-	}
-}
-
-@media (max-width: 480px) {
-	.stats-grid {
-		grid-template-columns: 1fr;
-		grid-template-rows: repeat(4, 1fr);
-		gap: 16px;
-	}
-
-	.stats-title {
-		font-size: 1.8rem;
-	}
-
-	.stat-card {
-		padding: 25px 15px;
-		min-height: 160px;
-	}
-
-	.stat-icon {
-		font-size: 2rem;
-	}
-
-	.stat-number {
-		font-size: 2.5rem;
-	}
-
-	.stat-suffix {
-		font-size: 1.8rem;
-	}
-
-	.stat-label {
-		font-size: 1rem;
-	}
-}
-
 /* Loading state animation */
 .stat-card:not(.animated) .stat-number {
 	opacity: 0.5;
@@ -383,15 +297,270 @@
 	background: url("/images/People/Anoop.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .imp-data-area {
 	width: 60%;
-	h3 {
-		text-align: left;
-	}
+}
+
+.imp-data-area h3 {
+	text-align: center;
 }
 
 .imp-desc {
 	text-align: left;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+	.csedFullForm {
+		margin-left: 15px;
+	}
+
+	.imp-people-intro {
+		gap: 40px;
+		padding: 0 30px;
+	}
+
+	.imp-image-area {
+		min-width: 300px;
+		height: 300px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.data-details {
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		padding: 20px 0;
+	}
+
+	.csedFullForm {
+		margin-left: 0;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.clubtext {
+		font-size: 18px;
+		margin-left: 0;
+		text-align: center;
+		padding: 0 20px;
+	}
+
+	.stats-container {
+		width: 90%;
+	}
+
+	.imp-people-intro {
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		gap: 40px;
+		padding: 40px 20px;
+		height: auto;
+		min-height: 75vh;
+	}
+
+	.imp-image-area {
+		min-width: 250px;
+		height: 250px;
+	}
+
+	.imp-data-area {
+		width: 90%;
+		text-align: center;
+	}
+
+	.imp-desc {
+		text-align: center;
+	}
+}
+
+@media (max-width: 768px) {
+	.stats-section {
+		padding: 40px 16px;
+		max-height: none;
+	}
+
+	.stats-title {
+		font-size: 2.2rem;
+		margin-bottom: 3rem;
+	}
+
+	.stats-grid {
+		gap: 20px;
+	}
+
+	.stat-card {
+		padding: 30px 20px;
+		height: 180px;
+	}
+
+	.stat-icon {
+		font-size: 2.5rem;
+		margin-bottom: 15px;
+	}
+
+	.stat-number {
+		font-size: 3rem;
+	}
+
+	.stat-suffix {
+		font-size: 2rem;
+	}
+
+	.stat-label {
+		font-size: 1.1rem;
+	}
+
+	.clubtext {
+		font-size: 16px;
+		padding: 0 15px;
+	}
+
+	.imp-people-intro {
+		padding: 30px 15px;
+	}
+
+	.imp-image-area {
+		min-width: 320px;
+		height: 320px;
+	}
+
+	.imp-data-area {
+		width: 95%;
+	}
+
+	.imp-data-area h1 {
+		font-size: 1.8rem;
+	}
+
+	.imp-data-area h3 {
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 640px) {
+	.clubtext {
+		font-size: 15px;
+	}
+
+	.stats-container {
+		width: 95%;
+	}
+}
+
+@media (max-width: 480px) {
+	.stats-grid {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(4, 1fr);
+		gap: 16px;
+	}
+
+	.stats-title {
+		font-size: 1.8rem;
+	}
+
+	.stat-card {
+		padding: 25px 15px;
+		height: 160px;
+	}
+
+	.stat-icon {
+		font-size: 2rem;
+	}
+
+	.stat-number {
+		font-size: 2.5rem;
+	}
+
+	.stat-suffix {
+		font-size: 1.8rem;
+	}
+
+	.stat-label {
+		font-size: 1rem;
+	}
+
+	.logoLetter span {
+		font-size: 40px;
+	}
+
+	.clubtext {
+		font-size: 14px;
+		padding: 0 10px;
+	}
+
+	.data-details {
+		padding: 15px 0;
+	}
+
+	.imp-people-intro {
+		padding: 20px 10px;
+	}
+
+	.imp-data-area h1 {
+		font-size: 1.5rem;
+	}
+
+	.imp-data-area h3 {
+		font-size: 1rem;
+	}
+
+	.imp-desc {
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 375px) {
+	.clubtext {
+		font-size: 13px;
+	}
+
+	.imp-image-area {
+		min-width: 290px;
+		height: 290px;
+	}
+
+	.imp-data-area h1 {
+		font-size: 1.3rem;
+	}
+
+	.imp-data-area h3 {
+		font-size: 0.9rem;
+	}
+
+	.imp-desc {
+		font-size: 0.85rem;
+	}
+}
+
+@media (max-width: 320px) {
+	.clubtext {
+		font-size: 12px;
+	}
+
+	.imp-image-area {
+		min-width: 140px;
+		height: 140px;
+	}
+
+	.imp-data-area h1 {
+		font-size: 1.2rem;
+	}
+
+	.imp-data-area h3 {
+		font-size: 0.8rem;
+	}
+
+	.imp-desc {
+		font-size: 0.8rem;
+	}
+
+	.stat-card {
+		height: 140px;
+	}
 }

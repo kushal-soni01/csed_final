@@ -178,9 +178,9 @@ export default function HomeGradient() {
 					opacity: 1,
 					ease: "power2.out",
 					scrollTrigger: {
-						trigger: ".imp-people-intro",
-						start: "top top",
-						end: "+=10px",
+						trigger: ".data-details",
+						start: "center top",
+						end: "bottom bottoms",
 						scrub: 1,
 					},
 				}
@@ -196,9 +196,9 @@ export default function HomeGradient() {
 					opacity: 1,
 					ease: "power2.out",
 					scrollTrigger: {
-						trigger: ".imp-people-intro",
-						start: "top top",
-						end: "+=30px",
+						trigger: ".data-details",
+						start: "center top",
+						end: "bottom bottoms",
 						scrub: 1,
 					},
 				}
