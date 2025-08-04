@@ -290,7 +290,20 @@
 	gap: 80px;
 }
 
-@media (width<720px) {
+@media (width<375px) {
+	.imp-people-intro {
+		margin-top: 60vh !important;
+		height: 100vh;
+	}
+}
+
+@media (width<400px) {
+	.imp-people-intro {
+		margin-top: 100vh;
+		height: 130vh;
+	}
+}
+@media (width<450px) {
 	.imp-people-intro {
 		margin-top: 40vh;
 	}
@@ -510,7 +523,7 @@
 	}
 	.imp-image-area {
 		min-width: 320px;
-		height: 320px;
+		min-height: 320px;
 	}
 }
 
@@ -521,7 +534,7 @@
 
 	.imp-image-area {
 		min-width: 290px;
-		height: 290px;
+		min-height: 290px;
 	}
 
 	.imp-data-area h1 {
