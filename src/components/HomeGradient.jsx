@@ -294,7 +294,7 @@ export default function HomeGradient() {
 						Vice Chancellor & Director Institute of Applied Sciences
 						& Humanities Department of English
 					</h3>
-					<h3 className="imp-sub-title">Chief Parton of CSED Club</h3>
+					<h3 className="imp-sub-title">Chief Patron of CSED Club</h3>
 					<span className="imp-desc">
 						<p>
 							Prof. Anup Kumar Gupta serves as the Vice Chancellor
