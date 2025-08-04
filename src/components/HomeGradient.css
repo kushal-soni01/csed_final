@@ -290,9 +290,9 @@
 	gap: 80px;
 }
 
-@media (width<450px) {
+@media (width<600px) {
 	.imp-people-intro {
-		margin-top: 30vh;
+		margin-top: 40vh;
 	}
 }
 
