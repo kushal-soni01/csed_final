@@ -120,7 +120,7 @@ const NeuronAnimation = () => {
 			ctx.fillStyle = `rgba(255, 255, 255, ${
 				0.75 * anim.subtext.opacity
 			})`;
-			ctx.font = "bolder clamp(34px, 6.5vw, 48px) Arial";
+			ctx.font = "bolder clamp(22px, 5.5vw, 44px) Arial";
 			ctx.textAlign = "center";
 			const yPosition = canvas.height / 2 + 200 / 2 + 35;
 			ctx.fillText(anim.subtext.content, canvas.width / 2, yPosition);
