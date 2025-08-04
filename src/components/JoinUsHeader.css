@@ -9,8 +9,8 @@
 
 .teamCell {
 	background-size: cover;
-	height: 50vh;
-	width: 28vw;
+	height: 250px;
+	width: 250px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -20,4 +20,10 @@
 	font-weight: 800;
 	font-size: 44px;
 	cursor: pointer;
+}
+
+@media (width<768px) {
+	.join-us-header-container {
+		flex-direction: column;
+	}
 }

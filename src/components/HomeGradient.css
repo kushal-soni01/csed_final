@@ -290,6 +290,12 @@
 	gap: 80px;
 }
 
+@media (width<450px) {
+	.imp-people-intro {
+		margin-top: 30vh;
+	}
+}
+
 .imp-image-area {
 	min-width: 350px;
 	height: 350px;
@@ -360,8 +366,7 @@
 		align-items: center;
 		gap: 40px;
 		padding: 40px 20px;
-		height: auto;
-		min-height: 75vh;
+		min-height: 100vh;
 	}
 
 	.imp-image-area {
