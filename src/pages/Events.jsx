@@ -130,8 +130,8 @@ export default function App() {
 					title: "Ex-CSED member",
 					bio: "Dr. Sarah Johnson is a renowned expert in artificial intelligence with over 15 years of experience leading AI research teams at top tech companies. She has published over 50 papers on machine learning and neural networks.",
 					image: "/images/People/krishnaMittal.jpg",
-					linkedin: "https://linkedin.com/in/sarahjohnson",
-					twitter: "https://twitter.com/sarahj_ai",
+					linkedin:
+						"https://www.linkedin.com/in/krishna-mittal-8709b322a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 				},
 			],
 		},
@@ -158,8 +158,8 @@ export default function App() {
 					title: "President of CSED Club",
 					bio: "Dr. Sarah Johnson is a renowned expert in artificial intelligence with over 15 years of experience leading AI research teams at top tech companies. She has published over 50 papers on machine learning and neural networks.",
 					image: "/images/team/shubh.jpg",
-					linkedin: "https://linkedin.com/in/sarahjohnson",
-					twitter: "https://twitter.com/sarahj_ai",
+					linkedin:
+						"https://www.linkedin.com/in/shubh-singhal-?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 				},
 			],
 		},
@@ -185,9 +185,9 @@ export default function App() {
 					name: "Mr. Krishna Mittal",
 					title: "Ex-CSED member",
 					bio: "Dr. Sarah Johnson is a renowned expert in artificial intelligence with over 15 years of experience leading AI research teams at top tech companies. She has published over 50 papers on machine learning and neural networks.",
-					image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face",
-					linkedin: "/images/People/krishnaMittal.jpg",
-					twitter: "https://twitter.com/sarahj_ai",
+					image: "/images/People/krishnaMittal.jpg",
+					linkedin:
+						"https://www.linkedin.com/in/krishna-mittal-8709b322a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 				},
 				{
 					id: 1,
@@ -195,8 +195,8 @@ export default function App() {
 					title: "President of CSED Clubr",
 					bio: "Dr. Sarah Johnson is a renowned expert in artificial intelligence with over 15 years of experience leading AI research teams at top tech companies. She has published over 50 papers on machine learning and neural networks.",
 					image: "/images/team/shubh.jpg",
-					linkedin: "https://linkedin.com/in/sarahjohnson",
-					twitter: "https://twitter.com/sarahj_ai",
+					linkedin:
+						"https://www.linkedin.com/in/shubh-singhal-?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 				},
 			],
 		},
@@ -225,7 +225,6 @@ export default function App() {
 					bio: "Alex has been instrumental in developing Ethereum's Layer 2 scaling solutions and has contributed to major DeFi protocols used by millions.",
 					image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face",
 					linkedin: "https://linkedin.com/in/alexcrypto",
-					twitter: "https://twitter.com/alex_blockchain",
 				},
 			],
 		},
@@ -254,7 +253,6 @@ export default function App() {
 					bio: "Dr. Sarah Johnson is a renowned expert in artificial intelligence with over 15 years of experience leading AI research teams at top tech companies. She has published over 50 papers on machine learning and neural networks.",
 					image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face",
 					linkedin: "https://linkedin.com/in/sarahjohnson",
-					twitter: "https://twitter.com/sarahj_ai",
 				},
 			],
 			photos: [
