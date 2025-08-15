@@ -17,6 +17,13 @@ const EventCardsStack = ({
   const [rotatingCardId, setRotatingCardId] = useState(null); // Track which card is rotating
   const [showFloatingCard, setShowFloatingCard] = useState(false); // Track whether to show center floating card
   
+  // Mobile swipe states
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
   // Refs to track timeouts for cleanup
   const timeoutsRef = useRef([]);
 
@@ -53,23 +60,111 @@ const EventCardsStack = ({
     timeoutsRef.current = [];
   };
 
+  // Check if device is mobile/tablet
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  // Mobile swipe handlers
+  const handleTouchStart = (e) => {
+    if (!isMobile) return;
+    setStartX(e.touches[0].clientX);
+    setCurrentX(e.touches[0].clientX);
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isMobile || !isDragging) return;
+    setCurrentX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isMobile || !isDragging) return;
+    
+    const deltaX = currentX - startX;
+    const threshold = 50; // Minimum swipe distance
+    
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX > 0) {
+        // Swipe right - previous card (with looping)
+        setCurrentCardIndex(prev => prev === 0 ? events.length - 1 : prev - 1);
+      } else if (deltaX < 0) {
+        // Swipe left - next card (with looping)
+        setCurrentCardIndex(prev => prev === events.length - 1 ? 0 : prev + 1);
+      }
+    }
+    
+    setIsDragging(false);
+    setStartX(0);
+    setCurrentX(0);
+  };
+
   // Helper function to get responsive transform values
   const getResponsiveTransform = (index, isHovered) => {
     const screenWidth = window.innerWidth;
     
-    // Adjust transform values based on screen size
+    // For mobile/tablet, use enhanced 3D stacking with professional visibility
+    if (isMobile) {
+      const distance = index - currentCardIndex;
+      const dragOffset = isDragging ? ((currentX - startX) / window.innerWidth) * 30 : 0;
+      
+      if (distance === 0) {
+        // Current active card - prominent and elevated
+        return `translateX(${dragOffset}px) translateY(-5px) translateZ(30px) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+      } else if (distance === 1) {
+        // Next card - very subtle hint behind and to the right
+        const stackOffset = 4; // Very minimal horizontal offset
+        const verticalOffset = 3; // Very subtle vertical offset
+        const scaleValue = 0.97; // Minimal scale reduction
+        const zOffset = -15; // Behind current card
+        const rotateX = 2; // Very minimal tilt
+        
+        return `translateX(${stackOffset + dragOffset}px) translateY(${verticalOffset}px) translateZ(${zOffset}px) scale(${scaleValue}) rotateX(${rotateX}deg) rotateY(1deg) rotateZ(0.5deg)`;
+      } else if (distance === -1) {
+        // Previous card - very subtle hint behind and to the left
+        const stackOffset = -4; // Very minimal horizontal offset
+        const verticalOffset = 3; // Very subtle vertical offset
+        const scaleValue = 0.97; // Minimal scale reduction
+        const zOffset = -15; // Behind current card
+        const rotateX = 2; // Very minimal tilt
+        
+        return `translateX(${stackOffset + dragOffset}px) translateY(${verticalOffset}px) translateZ(${zOffset}px) scale(${scaleValue}) rotateX(${rotateX}deg) rotateY(-1deg) rotateZ(-0.5deg)`;
+      } else if (distance > 1) {
+        // Future cards - well hidden behind
+        const stackOffset = 2; // Minimal offset
+        const verticalOffset = 5; // Small vertical offset
+        const scaleValue = 0.94; // More scale reduction
+        const zOffset = -30; // Well behind
+        
+        return `translateX(${stackOffset}px) translateY(${verticalOffset}px) translateZ(${zOffset}px) scale(${scaleValue}) rotateX(3deg) rotateY(2deg) rotateZ(1deg)`;
+      } else {
+        // Past cards - well hidden behind
+        const stackOffset = -2; // Minimal offset
+        const verticalOffset = 5; // Small vertical offset
+        const scaleValue = 0.94; // More scale reduction
+        const zOffset = -30; // Well behind
+        
+        return `translateX(${stackOffset}px) translateY(${verticalOffset}px) translateZ(${zOffset}px) scale(${scaleValue}) rotateX(3deg) rotateY(-2deg) rotateZ(-1deg)`;
+      }
+    }
+    
+    // Desktop stacking style
     let translateXValue, translateYValue;
     
     if (screenWidth <= 575) {
-      // Mobile Portrait: Smaller stacking offsets
-      translateXValue = index * 25; // Reduced from 50px
-      translateYValue = index * 20; // Reduced from 35px
+      translateXValue = index * 25;
+      translateYValue = index * 20;
     } else if (screenWidth <= 768) {
-      // Mobile Landscape / Small Tablets: Medium stacking offsets
-      translateXValue = index * 35; // Reduced from 50px
-      translateYValue = index * 25; // Reduced from 35px
+      translateXValue = index * 35;
+      translateYValue = index * 25;
     } else {
-      // Desktop: Full stacking offsets
       translateXValue = index * 50;
       translateYValue = index * 35;
     }
@@ -565,45 +660,43 @@ const EventCardsStack = ({
 
   return (
     <div className="event-container">
-      <div className="hero-background-shapes"></div>
-      <div className="background-particles">
-        {[...Array(particleCount)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-      </div>
+  {/* Removed background shapes and dots for clean theme */}
 
       <div className="event-wrapper">
         
         {(displayStack || isStackExiting) && (
-          <div className="stack-container">
-            <div className="stack-wrapper">
+          <div className={`stack-container ${isMobile ? 'mobile-stack' : ''}`}>
+            <div 
+              className={`stack-wrapper ${isMobile ? 'mobile-wrapper' : ''}`}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               {events.map((event, index) => (
                 <div
                   key={event.id}
                   className={`
                     stack-card
+                    ${isMobile ? 'mobile-card' : ''}
+                    ${isMobile && index === currentCardIndex ? 'mobile-active' : ''}
                     ${isStackExiting ? 'card-transition-exit' : ''}
                     ${rotatingCardId === event.id ? 'card-rotating' : ''}
                     ${hoveredCard === event.id ? 'hovered' : ''}
                   `}
                   style={{
-                    transform: isStackExiting || rotatingCardId === event.id // If animating out from stack or this specific card is rotating
-                      ? null // Remove inline transform to let CSS animation take over
+                    transform: isStackExiting || rotatingCardId === event.id
+                      ? null
                       : getResponsiveTransform(index, hoveredCard === event.id),
-                    zIndex: events.length - index + (hoveredCard === event.id ? 100 : 0),
+                    zIndex: isMobile 
+                      ? (index === currentCardIndex ? 100 : 100 - Math.abs(index - currentCardIndex))
+                      : events.length - index + (hoveredCard === event.id ? 100 : 0),
                     filter: hoveredCard && hoveredCard !== event.id ? 'brightness(0.7)' : 'brightness(1)',
+                    opacity: isMobile ? (Math.abs(index - currentCardIndex) <= 2 ? (index === currentCardIndex ? 1 : Math.max(0.3, 1 - (Math.abs(index - currentCardIndex) * 0.35))) : 0) : 1,
+                    transition: isMobile && !isDragging ? 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' : undefined,
+                    transformStyle: isMobile ? 'preserve-3d' : undefined,
                   }}
                   onClick={() => handleCardClick(event)}
-                  onMouseEnter={() => !isAnimating && setHoveredCard(event.id)}
+                  onMouseEnter={() => !isAnimating && !isMobile && setHoveredCard(event.id)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div className="card-content">
@@ -761,6 +854,19 @@ const EventCardsStack = ({
               </div>
             )}
           </>
+        )}
+
+        {/* Mobile indicators */}
+        {isMobile && displayStack && events.length > 1 && (
+          <div className="mobile-indicators">
+            {events.map((_, index) => (
+              <button
+                key={index}
+                className={`mobile-indicator ${index === currentCardIndex ? 'active' : ''}`}
+                onClick={() => setCurrentCardIndex(index)}
+              />
+            ))}
+          </div>
         )}
 
         {selectedCard && (

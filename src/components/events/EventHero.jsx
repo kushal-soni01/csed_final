@@ -8,11 +8,12 @@ import "./EventHero.css";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CSSPlugin);
 
-export default function eventHero() {
+export default function EventHero() {
 	const scrollRef = useRef();
 	const tl = gsap.timeline();
 
 	useGSAP(() => {
+		//Event_greet
 		gsap.from(".event_greet", {
 			top: "90px",
 			opacity: 0,
@@ -50,6 +51,7 @@ export default function eventHero() {
 			},
 		});
 
+		//Event_letter
 		tl.fromTo(
 			".event_letter",
 			{
@@ -89,6 +91,7 @@ export default function eventHero() {
 			},
 		});
 
+		//Event_Slogan
 		gsap.from(".event_slogan", {
 			top: "-60px",
 			opacity: 0,
@@ -126,6 +129,17 @@ export default function eventHero() {
 				scrub: true,
 			},
 		});
+		// gsap.from(".entry-bg", {
+		// 	scale: 0.5,
+		// 	autoAlpha: 0,
+		// 	ease: "expo.in",
+		// 	scrollTrigger: {
+		// 		trigger: ".event-hero-container",
+		// 		start: "173px",
+		// 		end: "210px",
+		// 		scrub: 1,
+		// 	},
+		// });
 	}, []);
 
 	useEffect(() => {
@@ -133,13 +147,13 @@ export default function eventHero() {
 			repeat: -1,
 			yoyo: true,
 		});
-		const words_container = document.querySelector(".e_words");
+		const words_container = document.querySelector(".words");
 		let heightResp = parseFloat(
 			getComputedStyle(words_container).getPropertyValue("height")
 		);
 
 		for (let i = 0; i < 4; i++) {
-			newtl.to(".e_words", {
+			newtl.to(".words", {
 				bottom: `+=${heightResp}px`,
 				duration: 1.5,
 				ease: "elastic.inOut",
@@ -149,6 +163,7 @@ export default function eventHero() {
 
 	return (
 		<>
+			{/* <div className="entry-bg"></div> */}
 			<div className="event-hero-container" ref={scrollRef}>
 				<span className="event_greet">
 					We welcome you to the CSED CLUB
@@ -164,25 +179,27 @@ export default function eventHero() {
 				</div>
 				<span className="event_slogan" ref={scrollRef}>
 					Where the artwork ignites&nbsp;
-					<div className="event_words_container">
-						<span className="e_words" id="t_word1">
+					<div className="words_container">
+						<span className="words" id="word1">
 							innovation
 						</span>
-						<span className="e_words" id="t_word2">
+						<span className="words" id="word2">
 							ideas
 						</span>
-						<span className="e_words" id="t_word3">
+						<span className="words" id="word3">
 							minds
 						</span>
-						<span className="e_words" id="t_word4">
+						<span className="words" id="word4">
 							dreams
 						</span>
-						<span className="e_words" id="t_word5">
+						<span className="words" id="word5">
 							future
 						</span>
 					</div>
 				</span>
 			</div>
+			<div className="event-gallery"></div>
+			
 		</>
 	);
 }
