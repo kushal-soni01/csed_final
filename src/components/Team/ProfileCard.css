@@ -25,7 +25,7 @@
 	--card-radius: clamp(12px, 2vw, 20px);
 
 	/* Responsive sizing variables */
-	--card-width: clamp(260px, 30vw, 350px);
+	--card-width: clamp(250px, 30vw, 350px);
 	--card-height: clamp(340px, 40vw, 450px);
 	--card-padding: clamp(0.75rem, 2vw, 1.5rem);
 	--font-size-name: clamp(1rem, 2.5vw, 1.3rem);
@@ -98,6 +98,9 @@
 .hierarchy-executive,
 .hierarchy-secretary,
 .hierarchy-head,
+.hierarchy-team-head,
+.hierarchy-co-head,
+.hierarchy-advisor,
 .hierarchy-regular {
 	display: flex;
 	justify-content: center;

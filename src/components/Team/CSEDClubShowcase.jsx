@@ -246,17 +246,36 @@ const CSEDClubShowcase = () => {
 	};
 
 	// Function to get grid class based on hierarchy position for pyramid structure
-	const getGridClassForHierarchy = (position) => {
+	const getGridClassForHierarchy = (position, memberName, departmentName) => {
+		// Check if member is a Head based on department name
+		if (departmentName === "Head") {
+			// Special classes for each Head to ensure proper row placement
+			if (memberName === "Kavya Upadhyay") {
+				return "team-card-container hierarchy-team-head hierarchy-head-tech leader-row team-head-row"; // Tech Head - position 1
+			} else if (memberName === "Devansh Kumar Dhangar") {
+				return "team-card-container hierarchy-team-head hierarchy-head-operations leader-row team-head-row"; // Operations Head - position 2
+			} else if (memberName === "Shivendra Kumar") {
+				return "team-card-container hierarchy-team-head hierarchy-head-media leader-row team-head-row"; // Media Head - position 3
+			} else {
+				return "team-card-container hierarchy-team-head leader-row team-head-row"; // Fallback for other heads
+			}
+		}
+		
 		switch (position) {
 			case "President":
+				return "team-card-container hierarchy-executive hierarchy-president leader-row executive-row upper-executive"; // Executive row - 1 card per row on mobile, 2 on large screens only
 			case "Vice President":
-				return "team-card-container hierarchy-executive leader-row executive-row upper-executive"; // Executive row - 1 card per row on mobile, 2 on large screens only
+				return "team-card-container hierarchy-executive hierarchy-vice-president leader-row executive-row upper-executive"; // Executive row - 1 card per row on mobile, 2 on large screens only
 			case "General Secretary":
 			case "Joint Secretary":
 				return "team-card-container hierarchy-secretary leader-row secretary-row lower-executive"; // Secretary row - exactly 2 cards per row
 			case "Head":
+				// This case should not be reached anymore since we check departmentName first
+				return "team-card-container hierarchy-team-head leader-row team-head-row"; // Fallback for other heads
 			case "Co-Head":
-				return "team-card-container hierarchy-head leader-row"; // 4 cards per row
+				return "team-card-container hierarchy-co-head leader-row co-head-row"; // Department co-heads
+			case "Advisor":
+				return "team-card-container hierarchy-advisor leader-row advisor-row"; // Advisors
 			default:
 				return "team-card-container hierarchy-regular member-row"; // Regular grid - 4 cards per row
 		}
@@ -289,32 +308,51 @@ const CSEDClubShowcase = () => {
 			}
 		});
 
-		// Define hierarchy order - maintain original hierarchy even when filtering
-		const hierarchyOrder = {
-			President: 1,
-			"Vice President": 1, // Same level as President to appear in same row
-			"General Secretary": 2,
-			"Joint Secretary": 2, // Same level as General Secretary to appear in same row
-			Head: 4,
-			"Co-Head": 4, // Same level as Head
-			default: 5, // Everyone else comes after leaders
-		};
+		// Sort by hierarchy first, then by specific order for Heads, then alphabetically
+		const sortedMembers = allMembers.sort((a, b) => {
+			// Check if member is a Head based on department name instead of position
+			const aIsHead = a.departmentName === "Head";
+			const bIsHead = b.departmentName === "Head";
+			
+			// Hierarchy order - now includes department-based Head detection
+			const getHierarchy = (member) => {
+				if (member.position === "President") return 1;
+				if (member.position === "Vice President") return 2;
+				if (member.position === "General Secretary") return 3;
+				if (member.position === "Joint Secretary") return 4;
+				if (member.departmentName === "Head") return 5; // Head department comes after secretaries
+				if (member.position === "Co-Head") return 6;
+				if (member.position === "Advisor") return 7;
+				return 99; // Regular members
+			};
 
-		// Sort by hierarchy first, then alphabetically within each hierarchy level
-		return allMembers.sort((a, b) => {
-			const aHierarchy =
-				hierarchyOrder[a.position] || hierarchyOrder["default"];
-			const bHierarchy =
-				hierarchyOrder[b.position] || hierarchyOrder["default"];
+			const aHierarchy = getHierarchy(a);
+			const bHierarchy = getHierarchy(b);
 
-			// First sort by hierarchy level
 			if (aHierarchy !== bHierarchy) {
 				return aHierarchy - bHierarchy;
 			}
 
-			// Within same hierarchy level, sort alphabetically by name
+			// Special order for Heads (when both are in Head department)
+			if (aIsHead && bIsHead) {
+				const headOrder = {
+					"Kavya Upadhyay": 1,
+					"Devansh Kumar Dhangar": 2, 
+					"Shivendra Kumar": 3,
+				};
+				
+				const aOrder = headOrder[a.name] || 999;
+				const bOrder = headOrder[b.name] || 999;
+				
+				if (aOrder !== bOrder) {
+					return aOrder - bOrder;
+				}
+			}
+
 			return a.name.localeCompare(b.name);
 		});
+		
+		return sortedMembers;
 	};
 
 	// Function to get all unique departments across all teams
@@ -333,8 +371,8 @@ const CSEDClubShowcase = () => {
 		return Array.from(allDepartments).sort();
 	};
 
-	// Mentor data
-	const mentorData = [
+	// Mentor data organized by sections
+	const patronData = [
 		{
 			name: "Dr. Anoop Gupta",
 			title: "Chief Patron",
@@ -349,6 +387,9 @@ const CSEDClubShowcase = () => {
 			avatarUrl:
 				"https://via.placeholder.com/300x400/059669/ffffff?text=DG",
 		},
+	];
+
+	const mentorData = [
 		{
 			name: "Mr. Deepansh Goyal",
 			title: "Mentor",
@@ -371,21 +412,92 @@ const CSEDClubShowcase = () => {
 				"https://via.placeholder.com/300x400/10b981/ffffff?text=LY",
 		},
 		{
+			name: "Mr. Pawan Kumar Sharma",
+			title: "Snr. Technical Mentor",
+			// avatarUrl:
+			// 	"https://via.placeholder.com/300x400/8b5cf6/ffffff?text=PKS",
+		},
+	];
+
+	const studentMentorData = [
+		{
 			name: "Lovely Yadav",
 			title: "Student Mentor",
 			// avatarUrl:
 			// 	"https://via.placeholder.com/300x400/10b981/ffffff?text=LY",
 		},
+		{
+			name: "Abhishek Goswami",
+			title: "Student Mentor",
+			avatarUrl:
+				"https://via.placeholder.com/300x400/6b7280/ffffff?text=Coming+Soon",
+		},
 	];
 
 	const teamData = [
+		// LEADERSHIP TEAM FIRST - This ensures it gets processed first
+		{
+			key: "leadership", 
+			title: "Executive Leadership",
+			description:
+				"The executive team provides strategic direction and overall leadership.",
+			subTeams: ["Executive Board"],
+			members: {
+				"Executive Board": [
+					{
+						name: "Shubh Singhal",
+						title: "Club President",
+						position: "President",
+						avatarUrl: "/images/team/shubh.jpg",
+						linkedin: "https://www.linkedin.com/in/shubh-singhal-/",
+						github: "https://github.com/Shubh-Singhal-Taken",
+					},
+					{
+						name: "Devansh Kumar Dhangar",
+						title: "Vice President",
+						position: "Vice President",
+						avatarUrl: "/images/team/devansh.jpg",
+						linkedin:
+							"https://www.linkedin.com/in/devansh-kumar-dhangar-837b55223/",
+						github: "https://github.com/Roccodevil",
+					},
+					{
+						name: "Shivendra Kumar",
+						title: "Secretary",
+						position: "General Secretary",
+						avatarUrl: "/images/team/shivendra.jpg",
+						linkedin: "https://www.linkedin.com/in/shivendra-kumar-467b9a2a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+						github:"https://github.com/SHIVENDRA3030"
+					},
+					{
+						name: "Bhoomika Agarwal",
+						title: "Treasurer",
+						position: "Joint Secretary",
+						avatarUrl: "/images/team/bhoomika.jpg",
+						linkedin:
+							"https://www.linkedin.com/in/bhoomika-agarwal-981196326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+						github: "https://github.com/bhoomikaa9",
+					},
+				],
+			},
+		},
 		{
 			key: "tech",
 			title: "Tech Cell",
 			description:
 				"Our tech team drives innovation through cutting-edge development and research.",
-			subTeams: ["IOT", "Robotics", "AIML", "Full-stack"],
+			subTeams: ["Head", "IOT", "Robotics", "AIML", "Full-stack"],
 			members: {
+				Head: [
+					{
+						name: "Kavya Upadhyay",
+						title: "Tech Head",
+					
+						avatarUrl: "/images/team/kavya.jpg",
+						linkedin: "https://www.linkedin.com/in/kavya-upadhyay-7600362b0/",
+						github: "https://github.com/Kavya-Upadhyay",
+					},
+				],
 				IOT: [
 					{
 						name: "Karan Pal",
@@ -429,7 +541,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Arju Shrivastava",
 						title: "Full-stack Developer",
-						position: "Head",
+						position: "Co-Head",
 						avatarUrl: "/images/team/arju.jpg",
 					},
 					{
@@ -439,14 +551,6 @@ const CSEDClubShowcase = () => {
 						linkedin: "https://www.linkedin.com/in/Zmy-Shaurya/",
 						github: "https://github.com/zmy-shaurya/",
 					},
-					{
-						name: "Kavya Upadhyay",
-						title: "Full-stack Developer",
-						avatarUrl: "/images/team/kavya.jpg",
-						linkedin:
-							"https://www.linkedin.com/in/kavya-upadhyay-7600362b0/",
-						github: "https://github.com/Kavya-Upadhyay",
-					},
 				],
 			},
 		},
@@ -455,13 +559,23 @@ const CSEDClubShowcase = () => {
 			title: "Operations & Relations",
 			description:
 				"The operations team ensures smooth functioning of all club activities.",
-			subTeams: ["CR PR", "Event & Hospitality", "Data"],
+			subTeams: ["Head", "CR PR", "Event & Hospitality", "Data"],
 			members: {
+				Head: [
+					{
+						name: "Devansh Kumar Dhangar",
+						title: "Operations Head",
+						
+						avatarUrl: "/images/team/devansh.jpg",
+						linkedin: "https://www.linkedin.com/in/devansh-kumar-dhangar-837b55223/",
+						github: "https://github.com/Roccodevil",
+					},
+				],
 				"CR & PR": [
 					{
 						name: "Anmol Sharma",
 						title: "CR/PR Head",
-						position: "Head",
+						position: "Co-Head",
 						avatarUrl: "/images/team/anmol.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/anmol-sharma-26a67b324",
@@ -470,6 +584,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Debraj Mondal",
 						title: "CR/PR",
+						position: "Advisor",
 						avatarUrl: "/images/team/debraj.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/debraj-mondal-9ba1b52b2/",
@@ -503,7 +618,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Shilpi Tiwari",
 						title: "Event Coordinator",
-						position: "Head",
+						position: "Co-Head",
 						avatarUrl: "/images/team/shilpi.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/shilpi-tiwari-416180328/",
@@ -512,24 +627,16 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Shubham Singh",
 						title: "Hospitality Manager",
-						position: "Head",
+						position: "Co-Head",
 						avatarUrl: "/images/team/shubham.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/shubham-kumar-singh-981874338/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 						github: "https://github.com/shubhamsingh900",
 					},
 					{
-						name: "Devansh Kumar Dhangar",
-						title: "Head",
-						position: "Head",
-						avatarUrl: "/images/team/devansh.jpg",
-						linkedin:
-							"https://www.linkedin.com/in/devansh-kumar-dhangar-837b55223/",
-						github: "https://github.com/Roccodevil",
-					},
-					{
 						name: "Piyush Maurya",
 						title: "Venue Coordinator",
+						position: "Advisor",
 						avatarUrl: "/images/team/piyush.jpg",
 					},
 					{
@@ -575,7 +682,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Kishlay Kumar",
 						title: "Data Analyst",
-						position: "Head",
+						position: "Co-Head",
 						avatarUrl: "/images/team/kishlay.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/kishlay-kumar-19318a210?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -592,6 +699,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Ansh Agarwal",
 						title: "Data Scientist",
+						position: "Advisor",
 						avatarUrl: "/images/team/ansh.jpg",
 					},
 					{
@@ -610,22 +718,23 @@ const CSEDClubShowcase = () => {
 			title: "Media Operations",
 			description:
 				"Our media team crafts compelling visual narratives and manages digital presence.",
-			subTeams: ["Design", "Content"],
+			subTeams: ["Head", "Design", "Content"],
 			members: {
-				Design: [
+				Head: [
 					{
 						name: "Shivendra Kumar",
-						title: "UI/UX Designer",
-						position: "Head",
+						title: "Media Head",
+						
 						avatarUrl: "/images/team/shivendra.jpg",
-						linkedin:
-							"https://www.linkedin.com/in/shivendra-kumar-467b9a2a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+						linkedin: "https://www.linkedin.com/in/shivendra-kumar-467b9a2a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 						github: "https://github.com/SHIVENDRA3030",
 					},
+				],
+				Design: [
 					{
 						name: "Tanmay Pathak",
 						title: "Graphic Designer",
-						position: "Head",
+						position: "Co-Head",
 						avatarUrl: "/images/team/tanmay.jpg",
 					},
 					{
@@ -653,7 +762,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Muskan Singh",
 						title: "Content Writer",
-						position: "Head",
+						position: "Co-Head",
 						avatarUrl: "/images/team/muskan.jpg",
 						linkedin:
 							"https://www.linkedin.com/in/muskan-singh-454405314/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -662,6 +771,7 @@ const CSEDClubShowcase = () => {
 					{
 						name: "Ankush Kaushik",
 						title: "Copy Writer",
+						position: "Advisor",
 						avatarUrl: "/images/team/ankush.jpg",
 						linkedin: "www.linkedin.com/in/ankush212",
 						github: "https://github.com/ankushman",
@@ -680,51 +790,6 @@ const CSEDClubShowcase = () => {
 						linkedin:
 							"https://www.linkedin.com/in/anwesha-kumari-3a55a3326/",
 						github: "https://github.com/Anweshakumari77",
-					},
-				],
-			},
-		},
-		{
-			key: "leadership",
-			title: "Executive Leadership",
-			description:
-				"The executive team provides strategic direction and overall leadership.",
-			subTeams: ["Executive Board"],
-			members: {
-				"Executive Board": [
-					{
-						name: "Shubh Singhal",
-						title: "Club President",
-						position: "President",
-						avatarUrl: "/images/team/shubh.jpg",
-						linkedin: "https://www.linkedin.com/in/shubh-singhal-/",
-						github: "https://github.com/Shubh-Singhal-Taken",
-					},
-					{
-						name: "Sparsh Sharma",
-						title: "Vice President",
-						position: "Vice President",
-						avatarUrl: "/images/team/sparsh.jpg",
-						linkedin:
-							"https://www.linkedin.com/in/sparsh-sharma-356761289/",
-						github: "https://github.com/ryan-kumar",
-					},
-					{
-						name: "Aditya Yadav",
-						title: "Secretary",
-						position: "General Secretary",
-						avatarUrl: "/images/team/aditya.jpg",
-						linkedin:
-							"https://www.linkedin.com/in/aditya-yadav-570846289/",
-					},
-					{
-						name: "Bhoomika Agarwal",
-						title: "Treasurer",
-						position: "Joint Secretary",
-						avatarUrl: "/images/team/bhoomika.jpg",
-						linkedin:
-							"https://www.linkedin.com/in/bhoomika-agarwal-981196326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-						github: "https://github.com/bhoomikaa9",
 					},
 				],
 			},
@@ -901,51 +966,113 @@ const CSEDClubShowcase = () => {
 			{/* Hero Section with TeamHero */}
 			<TeamHero />
 
-			{/* Mentors Section */}
+			{/* Mentors Section - Split into Three Subsections */}
 			<div className="mentors-section">
 				<div className="mentors-container">
-					<div className="mentors-header-wrapper">
-						<div className="mentors-header-container">
-							<h1 className="mentors-main-title">OUR MENTORS</h1>
+					{/* Patrons Subsection */}
+					<div className="mentor-subsection patrons-subsection">
+						<div className="mentors-header-wrapper">
+							<div className="mentors-header-container">
+								<h1 className="mentors-main-title">OUR PATRONS</h1>
+							</div>
 						</div>
-					</div>
 
-					{/* Mentor Cards - Hierarchical Layout */}
-					<div className="mentors-grid">
-						{mentorData.map((mentor, index) => {
-							// Determine grid class based on position in array for hierarchical layout
-							let gridClass;
-							if (index === 0) {
-								// First mentor - single card in first row (full width centered)
-								gridClass =
-									"mentor-card-container hierarchy-mentor-head mentor-row";
-							} else if (index === 1 || index === 2) {
-								// Second and third mentors - 2 cards in second row
-								gridClass =
-									"mentor-card-container hierarchy-mentor-senior mentor-row";
-							} else {
-								// Fourth and subsequent mentors - 2 cards in third row
-								gridClass =
-									"mentor-card-container hierarchy-mentor-regular mentor-row";
-							}
-
-							return (
-								<div key={index} className={gridClass}>
+						{/* Patron Cards - 2 cards side by side */}
+						<div className="patrons-grid">
+							{patronData.map((patron, index) => (
+								<div
+									key={index}
+									className="patron-card-container patron-row"
+								>
 									<ProfileCardComponent
 										member={{
-											name: mentor.name,
-											title: "Mentor",
-											position: mentor.title,
-											avatarUrl: mentor.avatarUrl,
-											linkedin: mentor.linkedin,
-											github: mentor.github,
+											name: patron.name,
+											title: "Patron",
+											position: patron.title,
+											avatarUrl: patron.avatarUrl,
+											linkedin: patron.linkedin,
+											github: patron.github,
 										}}
 										enableTilt={true}
 										enableMobileTilt={true}
 									/>
 								</div>
-							);
-						})}
+							))}
+						</div>
+					</div>
+
+					{/* Mentors Subsection */}
+					<div className="mentor-subsection mentors-subsection">
+						<div className="mentors-header-wrapper">
+							<div className="mentors-header-container">
+								<h1 className="mentors-main-title">OUR MENTORS</h1>
+							</div>
+						</div>
+
+						{/* Mentor Cards - Hierarchical Layout */}
+						<div className="mentors-grid">
+							{mentorData.map((mentor, index) => {
+								// First mentor (index 0) - centered in first row
+								// Next three mentors (index 1-3) - three cards in second row
+								let gridClass;
+								if (index === 0) {
+									gridClass =
+										"mentor-card-container hierarchy-mentor-head mentor-row";
+								} else {
+									gridClass =
+										"mentor-card-container hierarchy-mentor-senior mentor-row";
+								}
+
+								return (
+									<div key={index} className={gridClass}>
+										<ProfileCardComponent
+											member={{
+												name: mentor.name,
+												title: "Mentor",
+												position: mentor.title,
+												avatarUrl: mentor.avatarUrl,
+												linkedin: mentor.linkedin,
+												github: mentor.github,
+											}}
+											enableTilt={true}
+											enableMobileTilt={true}
+										/>
+									</div>
+								);
+							})}
+						</div>
+					</div>
+
+					{/* Student Mentors Subsection */}
+					<div className="mentor-subsection student-mentors-subsection">
+						<div className="mentors-header-wrapper">
+							<div className="mentors-header-container">
+								<h1 className="mentors-main-title">OUR STUDENT MENTORS</h1>
+							</div>
+						</div>
+
+						{/* Student Mentor Cards - 2 cards side by side */}
+						<div className="student-mentors-grid">
+							{studentMentorData.map((studentMentor, index) => (
+								<div
+									key={index}
+									className="student-mentor-card-container student-mentor-row"
+								>
+									<ProfileCardComponent
+										member={{
+											name: studentMentor.name,
+											title: "Student Mentor",
+											position: studentMentor.title,
+											avatarUrl: studentMentor.avatarUrl,
+											linkedin: studentMentor.linkedin,
+											github: studentMentor.github,
+										}}
+										enableTilt={true}
+										enableMobileTilt={true}
+									/>
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -1004,24 +1131,38 @@ const CSEDClubShowcase = () => {
 					</div>
 
 					<div ref={teamsGridRef} className="teams-grid">
-						{getAllMembersAlphabetically().map((member, index) => (
-							<div
-								key={`${member.name}-${index}`}
-								className={getGridClassForHierarchy(
-									member.position
-								)}
-							>
-								<ProfileCardComponent
-									member={{
-										...member,
-										teamName: member.teamName,
-										departmentName: member.departmentName,
-									}}
-									enableTilt={true}
-									enableMobileTilt={true}
-								/>
-							</div>
-						))}
+						{getAllMembersAlphabetically().map((member, index, array) => {
+							// Check if this is the last Head and the next member is a Co-Head
+							const isLastHead = member.departmentName === "Head" && 
+								index < array.length - 1 && 
+								array[index + 1].position === "Co-Head";
+							
+							return (
+								<React.Fragment key={`${member.name}-${index}`}>
+									<div
+										className={getGridClassForHierarchy(
+											member.position,
+											member.name,
+											member.departmentName
+										)}
+									>
+										<ProfileCardComponent
+											member={{
+												...member,
+												teamName: member.teamName,
+												departmentName: member.departmentName,
+											}}
+											enableTilt={true}
+											enableMobileTilt={true}
+										/>
+									</div>
+									{/* Add row break after last head */}
+									{isLastHead && (
+										<div className="grid-row-break"></div>
+									)}
+								</React.Fragment>
+							);
+						})}
 					</div>
 
 					<div className="apply-now-wrapper">

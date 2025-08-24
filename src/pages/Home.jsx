@@ -77,7 +77,6 @@ export default function Home() {
 						<div className="overline-effect"></div>
 						<span
 							style={{
-								background: "#7b68ee",
 								background:
 									"linear-gradient(135deg,rgba(123, 104, 238, 1) 0%,rgba(14, 51, 134, 1) 100%)",
 								backgroundSize: "cover",

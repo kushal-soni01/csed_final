@@ -125,84 +125,38 @@
 	justify-content: center;
 }
 
-/* Grid System Replacement */
+/* Clean Grid System for Mentors */
 .mentors-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: 1fr;
 	gap: 1.5rem;
 	justify-content: center;
 	margin-bottom: 3rem;
 	padding: 0 1rem;
-}
-
-/* New Grid Styles for Three Mentor Sections */
-/* Patrons Grid - 2 cards side by side */
-.patrons-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 2rem;
-	justify-content: center;
-	margin-bottom: 3rem;
-	padding: 0 1rem;
-	max-width: 800px;
+	max-width: 400px;
 	margin: 0 auto 3rem auto;
 }
 
-/* Base mobile-first styles for mentors grid */
-.mentors-grid {
-	display: grid;
-	grid-template-columns: 1fr !important; /* Mobile first: single column */
-	gap: 1.5rem !important;
-	justify-content: center;
-	justify-items: center !important; /* Center all items */
-	margin-bottom: 3rem;
-	padding: 0 1rem;
-	width: 100% !important; /* Use full width */
-	max-width: 1200px !important; /* Allow more space */
-	margin: 0 auto 3rem auto;
-}
-
-/* Desktop styles - apply only on large screens */
+/* Desktop: Simple 3-column layout */
 @media (min-width: 1200px) {
 	.mentors-grid {
-		grid-template-columns: repeat(3, 1fr) !important; /* 3 columns on desktop */
-		grid-template-rows: auto auto !important;
-		gap: 2rem !important;
-		max-width: 1200px !important; /* Increased max-width */
-		justify-items: center !important;
-		width: 100% !important;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
+		max-width: 1000px;
+		justify-items: center;
 	}
-
+	
 	.hierarchy-mentor-head {
-		grid-column: 1 / -1 !important; /* Span all columns on desktop */
-		grid-row: 1 !important;
-		justify-self: center !important; /* Center horizontally within grid */
-		margin-bottom: 2rem !important;
-		width: auto !important; /* Allow natural width */
-		position: static !important; /* Remove position relative */
-		left: auto !important;
-		right: auto !important;
-		transform: none !important; /* Remove transform */
-		display: flex !important;
-		justify-content: center !important;
+		grid-column: 2; /* Center column only */
+		justify-self: center;
 	}
-
-	.hierarchy-mentor-senior {
-		grid-column: span 1 !important; /* Each takes one column */
-		grid-row: 2 !important; /* All in second row */
-	}
-
-	/* Desktop positioning for specific senior mentors */
+	
 	.hierarchy-mentor-senior:nth-of-type(1) {
-		grid-column: 1 !important;
+		grid-column: 1; /* Left column */
 	}
-
+	
 	.hierarchy-mentor-senior:nth-of-type(2) {
-		grid-column: 2 !important;
-	}
-
-	.hierarchy-mentor-senior:nth-of-type(3) {
-		grid-column: 3 !important;
+		grid-column: 3; /* Right column */
 	}
 }
 
@@ -220,16 +174,15 @@
 
 .teams-grid {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr); /* Back to 4 columns for Members/Co-heads */
-	gap: 3rem 2rem; /* Normal gaps */
+	grid-template-columns: repeat(4, 1fr);
+	gap: 3rem 2.5rem; /* Increase vertical gap to 3rem, keep horizontal at 2.5rem */
 	justify-content: center;
-	justify-items: center; /* Keep center for regular members */
+	justify-items: center;
 	padding: 0 2rem;
 	grid-auto-rows: auto;
 	align-items: start;
-	max-width: 1200px; /* Back to normal size */
+	max-width: 1200px;
 	margin: 0 auto;
-	min-height: auto;
 }
 
 /* Card Container Classes */
@@ -253,30 +206,36 @@
 	align-items: center;
 }
 
-/* President - Pyramid apex (span all 3 columns) */
+/* President - First row, centered, with clear spacing */
 .hierarchy-president {
-	grid-column: 1 / -1; /* Span all columns like mentor head */
-	justify-self: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0 auto 3rem auto;
-	width: auto;
-	text-align: center;
-	padding: 0;
+	grid-column: 1 / -1 !important;
+	justify-self: center !important;
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	margin: 0 auto 3rem auto !important;
+	width: 100% !important;
+	text-align: center !important;
+	padding: 0 !important;
+	position: relative !important;
+	left: 0 !important;
+	right: 0 !important;
 }
 
-/* Vice President - Second tier (span all 3 columns) */
+/* Vice President - Second row, centered, with clear spacing */
 .hierarchy-vice-president {
-	grid-column: 1 / -1; /* Span all columns like mentor head */
-	justify-self: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 1rem auto 3rem auto;
-	width: auto;
-	text-align: center;
-	padding: 0;
+	grid-column: 1 / -1 !important;
+	justify-self: center !important;
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	margin: 1rem auto 3rem auto !important;
+	width: 100% !important;
+	text-align: center !important;
+	padding: 0 !important;
+	position: relative !important;
+	left: 0 !important;
+	right: 0 !important;
 }
 
 .hierarchy-secretary {
@@ -287,387 +246,31 @@
 	margin-bottom: 2rem; /* Add spacing after secretaries */
 }
 
-/* Team Heads - Follow the same structure as Senior Technical Mentors */
-.hierarchy-team-head {
+.hierarchy-head {
+	grid-column: span 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 3rem;
-	/* Remove size constraints to allow individual Head cards to control their size */
-	width: auto;
-	max-width: none;
-	min-width: auto;
-}
-
-/* Override any conflicting width settings with maximum specificity */
-.teams-grid .hierarchy-team-head {
-	width: auto !important;
-	max-width: none !important;
-	min-width: auto !important;
-}
-
-/* Force Head cards to ignore any inherited sizing */
-.teams-grid .team-card-container.hierarchy-team-head {
-	width: auto !important;
-	max-width: none !important;
-	min-width: auto !important;
-}
-
-/* Ensure the profile card component inside Head cards is also consistent */
-.teams-grid .hierarchy-head-tech .pc-card-wrapper,
-.teams-grid .hierarchy-head-operations .pc-card-wrapper,
-.teams-grid .hierarchy-head-media .pc-card-wrapper {
-	width: 320px !important;
-	max-width: 320px !important;
-	min-width: 320px !important;
-}
-
-/* COMPLETELY RESET HEAD CARDS - START FRESH */
-
-/* Remove all special head card positioning - back to normal grid with increased spacing */
-.hierarchy-head-tech,
-.hierarchy-head-operations,
-.hierarchy-head-media {
-	/* Normal grid positioning - no special rules */
-	width: 320px !important;
-	max-width: 320px !important;
-	min-width: 320px !important;
-}
-
-/* Head Cards Row - Use grid column positioning to center the group */
-.teams-grid .hierarchy-head-tech.team-card-container {
-	grid-column: 1; /* Start from first column */
-	justify-self: end !important; /* Align to right of first column */
-	width: 320px !important;
-	max-width: 320px !important;
-	min-width: 320px !important;
-	margin-right: 1rem !important; /* Space to next card */
-}
-
-.teams-grid .hierarchy-head-operations.team-card-container {
-	grid-column: 2 / 4; /* Span middle columns */
-	justify-self: center !important; /* Center in the span */
-	width: 320px !important;
-	max-width: 320px !important;
-	min-width: 320px !important;
-	margin: 0 0.5rem !important; /* Small margins on both sides */
-}
-
-.teams-grid .hierarchy-head-media.team-card-container {
-	grid-column: 4; /* Last column */
-	justify-self: start !important; /* Align to left of last column */
-	width: 320px !important;
-	max-width: 320px !important;
-	min-width: 320px !important;
-	margin-left: 1rem !important; /* Space from previous card */
-}
-
-/* Remove the global justify-items override */
-.teams-grid {
-	justify-items: center; /* Back to normal centering */
-}
-
-/* RESPONSIVE DESIGN FOR HEAD CARDS */
-
-/* Tablet View (1025px - 1199px) */
-@media (max-width: 1199px) and (min-width: 769px) {
-	.teams-grid .hierarchy-head-tech.team-card-container,
-	.teams-grid .hierarchy-head-operations.team-card-container,
-	.teams-grid .hierarchy-head-media.team-card-container {
-		grid-column: auto !important; /* Reset grid columns */
-		justify-self: center !important; /* Center all cards */
-		width: 280px !important; /* Slightly smaller for tablets */
-		max-width: 280px !important;
-		min-width: 280px !important;
-		margin: 0 1rem !important; /* Equal spacing */
-	}
-	
-	.teams-grid {
-		grid-template-columns: repeat(3, 1fr) !important; /* 3 columns for tablets */
-		gap: 2rem 1.5rem !important; /* Smaller gaps */
-	}
-}
-
-/* Mobile View (max-width: 1025px) - STANDARDIZE ALL CARD SIZES */
-@media (max-width: 1025px) {
-	.teams-grid .hierarchy-head-tech.team-card-container,
-	.teams-grid .hierarchy-head-operations.team-card-container,
-	.teams-grid .hierarchy-head-media.team-card-container {
-		grid-column: 1 / -1 !important; /* Full width */
-		justify-self: center !important; /* Center each card */
-		width: 280px !important; /* Mobile friendly size */
-		max-width: 280px !important;
-		min-width: 280px !important;
-		margin: 1rem 0 !important; /* Vertical spacing only */
-	}
-	
-	.teams-grid {
-		grid-template-columns: 1fr !important; /* Single column */
-		gap: 1.5rem !important; /* Smaller gaps */
-		padding: 0 1rem !important; /* Side padding */
-	}
-	
-	/* STANDARDIZE ALL CONTAINERS FIRST */
-	.team-card-container,
-	.hierarchy-president,
-	.hierarchy-vice-president,
-	.hierarchy-executive,
-	.hierarchy-secretary,
-	.hierarchy-co-head,
-	.hierarchy-regular,
-	.hierarchy-head-tech,
-	.hierarchy-head-operations,
-	.hierarchy-head-media {
-		width: 280px !important;
-		max-width: 280px !important;
-		min-width: 280px !important;
-		margin: 1rem auto !important;
-	}
-	
-	/* STANDARDIZE ALL CARD SIZES TO MATCH ANMOL SHARMA'S CARD */
-	.teams-grid .pc-card,
-	.hierarchy-head-tech .pc-card,
-	.hierarchy-head-operations .pc-card, 
-	.hierarchy-head-media .pc-card,
-	.hierarchy-co-head .pc-card,
-	.hierarchy-regular .pc-card,
-	.hierarchy-president .pc-card,
-	.hierarchy-vice-president .pc-card,
-	.hierarchy-secretary .pc-card,
-	.hierarchy-executive .pc-card,
-	.patron-row .pc-card,
-	.hierarchy-mentor-head .pc-card,
-	.hierarchy-mentor-senior .pc-card,
-	.student-mentor-row .pc-card {
-		width: 280px !important;
-		max-width: 280px !important;
-		min-width: 280px !important;
-		margin: 0 auto !important;
-		transform: scale(1) !important; /* Reset any scaling */
-	}
-}
-
-/* Small Mobile View (max-width: 480px) - MAINTAIN STANDARDIZED SIZES */
-@media (max-width: 480px) {
-	.teams-grid .hierarchy-head-tech.team-card-container,
-	.teams-grid .hierarchy-head-operations.team-card-container,
-	.teams-grid .hierarchy-head-media.team-card-container {
-		width: 250px !important; /* Even smaller for small phones */
-		max-width: 250px !important;
-		min-width: 250px !important;
-		margin: 0.75rem 0 !important; /* Tighter vertical spacing */
-	}
-	
-	.teams-grid {
-		gap: 1rem !important; /* Even smaller gaps */
-		padding: 0 0.5rem !important; /* Minimal side padding */
-	}
-	
-	/* STANDARDIZE ALL CONTAINERS FOR SMALL MOBILE */
-	.team-card-container,
-	.hierarchy-president,
-	.hierarchy-vice-president,
-	.hierarchy-executive,
-	.hierarchy-secretary,
-	.hierarchy-co-head,
-	.hierarchy-regular,
-	.hierarchy-head-tech,
-	.hierarchy-head-operations,
-	.hierarchy-head-media {
-		width: 250px !important;
-		max-width: 250px !important;
-		min-width: 250px !important;
-		margin: 0.75rem auto !important;
-	}
-	
-	/* STANDARDIZE ALL CARD SIZES FOR SMALL MOBILE */
-	.teams-grid .pc-card,
-	.hierarchy-head-tech .pc-card,
-	.hierarchy-head-operations .pc-card, 
-	.hierarchy-head-media .pc-card,
-	.hierarchy-co-head .pc-card,
-	.hierarchy-regular .pc-card,
-	.hierarchy-president .pc-card,
-	.hierarchy-vice-president .pc-card,
-	.hierarchy-secretary .pc-card,
-	.hierarchy-executive .pc-card,
-	.patron-row .pc-card,
-	.hierarchy-mentor-head .pc-card,
-	.hierarchy-mentor-senior .pc-card,
-	.student-mentor-row .pc-card {
-		width: 250px !important;
-		max-width: 250px !important;
-		min-width: 250px !important;
-		margin: 0 auto !important;
-		transform: scale(1) !important; /* Reset any scaling */
-	}
-}
-
-/* Ensure head cards use normal card sizing */
-.teams-grid .hierarchy-head-tech .pc-card,
-.teams-grid .hierarchy-head-operations .pc-card,
-.teams-grid .hierarchy-head-media .pc-card {
-	width: 320px !important;
-	max-width: 320px !important;
-	min-width: 320px !important;
-}
-
-/* CLEAN Desktop layout - NO HEAD CARD SPECIAL POSITIONING YET */
-@media (min-width: 1200px) {
-	.teams-grid {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr) !important;
-		gap: 3rem 2rem !important;
-		max-width: 1200px !important; 
-		justify-items: center !important;
-		padding: 0 2rem !important;
-	}
-	
-	/* Normal card sizing for all members */
-	.hierarchy-co-head .pc-card,
-	.hierarchy-regular .pc-card {
-		max-width: 230px !important;
-		width: 230px !important;
-		transform: scale(1) !important;
-		margin: 0 auto !important;
-	}
-}
-
-/* Pyramid Layout - Secretaries (back to 4-column positioning) */
-.hierarchy-secretary:nth-of-type(1) {
-	grid-column: 2; /* Column 2 (center-left) */
-	justify-self: center;
-}
-
-.hierarchy-secretary:nth-of-type(2) {
-	grid-column: 3; /* Column 3 (center-right) */
-	justify-self: center;
-}
-
-/* Force heads to be in the same row by using grid-row */
-.team-head-row {
-	grid-row: auto; /* Let grid auto-assign row for heads */
-}
-
-/* Ensure Co-Heads start on a new row after heads */
-.hierarchy-co-head {
-	grid-column: span 1; /* Take one column */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 2rem; /* Add spacing before co-heads */
-	margin-bottom: 2rem; /* Add spacing after co-heads */
-	width: 100%; /* Ensure full width */
-	box-sizing: border-box;
-	padding: 0; /* Remove padding to prevent extra space */
-}
-
-/* Regular Members - normal grid flow */
-.hierarchy-regular {
-	grid-column: span 1; /* Take one column */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 2rem;
-	width: 100%; /* Ensure full width */
-	box-sizing: border-box;
-	padding: 0; /* Remove padding to prevent extra space */
-}
-
-/* Override teams grid for better Co-head and Member display */
-@media (min-width: 1025px) {
-	.teams-grid {
-		display: grid;
-		grid-template-columns: repeat(4, 320px) !important; /* Fixed width columns to prevent overlapping */
-		gap: 3rem; /* Much larger gap between cards */
-		justify-content: center; /* Center the entire grid */
-		width: 100%;
-		max-width: 100%; /* Use full width available */
-		margin: 0 auto;
-		padding: 0 2rem; /* More padding on the sides */
-	}
-	
-	/* Secretaries positioning in 4-column grid */
-	.hierarchy-secretary:nth-of-type(1) {
-		grid-column: 2 !important;
-	}
-	
-	.hierarchy-secretary:nth-of-type(2) {
-		grid-column: 3 !important;
-	}
-	
-	/* Ensure co-heads and regular members match Head card dimensions */
-	.hierarchy-co-head .pc-card,
-	.hierarchy-regular .pc-card {
-		max-width: 320px !important;
-		width: 100% !important;
-		margin: 0 auto !important;
-		box-sizing: border-box;
-		min-width: 280px !important;
-	}
+	margin-bottom: 2rem; /* Add spacing after heads */
 }
 
 /* New separated hierarchy classes */
-/* Team Heads - Force to be in their own row with proper centering */
 .hierarchy-team-head {
+	grid-column: span 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 3rem; /* Add more spacing after heads before co-heads */
+	margin-bottom: 2rem; /* Add spacing after team heads */
 	padding: 1rem 0; /* Add vertical padding */
-	width: 100%; /* Full width */
-}
-
-/* Keep heads at normal size */
-.teams-grid .hierarchy-team-head {
-	width: auto; /* Normal card width */
-	max-width: 320px; /* Reasonable max width */
-	min-width: 280px; /* Prevent cards from getting too small */
-}
-
-/* Force Co-Heads to start on a completely new row */
-.hierarchy-co-head:first-of-type {
-	grid-column: 1;
-	grid-row: auto; /* Force to new row */
-	margin-top: 3rem; /* Extra spacing from heads */
-	width: 100%; /* Ensure full width within grid cell */
-}
-
-/* Force heads to be in the same row by using grid-row */
-.team-head-row {
-	grid-row: auto; /* Let grid auto-assign row for heads */
-}
-
-/* Heads will follow DOM order - no specific CSS order needed */
-
-/* Force grid row break after heads */
-.grid-row-break {
-	grid-column: 1 / -1; /* Take full width */
-	height: 0; /* No visible height */
-	margin: 0;
-	width: 100%; /* Ensure full width */
-	display: block; /* Ensure proper display */
-	clear: both; /* Clear floats */
-	padding: 0;
-	content: "";
-	display: block;
-	width: 100%;
 }
 
 .hierarchy-co-head {
-	grid-column: span 1; /* Normal grid behavior */
+	grid-column: span 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 3rem; /* Extra spacing from heads */
 	margin-bottom: 1.5rem; /* Add spacing after co-heads */
 	padding: 0.8rem 0; /* Add vertical padding */
-	width: 100%; /* Ensure full width within grid cell */
-}
-
-/* Subsequent co-heads flow normally */
-.hierarchy-co-head:not(:first-of-type) {
-	margin-top: 0; /* Remove extra top margin for subsequent co-heads */
 }
 
 .hierarchy-advisor {
@@ -685,32 +288,22 @@
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 1rem; /* Add spacing for regular members */
-	width: 100%; /* Ensure full width within grid cell */
 }
 
-/* Base mobile-first hierarchy classes for mentors */
+/* Simple hierarchy classes for mentors */
 .hierarchy-mentor-head {
-	grid-column: span 1 !important; /* Mobile first: single column */
-	display: flex !important;
-	justify-content: center !important;
-	align-items: center !important;
-	margin: 0 auto 1.5rem auto !important;
-	width: 100% !important;
-	text-align: center !important;
-	padding: 0 !important;
-	position: static !important; /* Mobile first: static positioning */
-	left: auto !important;
-	right: auto !important;
-	transform: none !important; /* Mobile first: no transform */
-	justify-self: center !important; /* Ensure centering in grid */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1.5rem;
+	width: 100%;
 }
 
 .hierarchy-mentor-senior {
-	grid-column: span 1 !important; /* Mobile first: single column */
-	display: flex !important;
-	justify-content: center !important;
-	align-items: center !important;
-	margin-bottom: 1.5rem !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1.5rem;
 }
 
 .hierarchy-mentor-regular {
@@ -744,31 +337,20 @@
 	margin: 0 auto;
 }
 
-.hierarchy-mentor-head .pc-card {
-	max-width: 450px !important;
-	margin: 0 auto !important;
-	width: 100% !important;
-	transform: scale(1) !important; /* Ensure no scaling */
-	min-width: 400px !important;
-}
-
+/* Uniform card sizes for all mentor cards */
+.hierarchy-mentor-head .pc-card,
 .hierarchy-mentor-senior .pc-card {
-	max-width: 450px !important; /* Same size as mentor head card */
-	margin: 0 auto !important;
-	width: 100% !important;
-	transform: scale(1) !important; /* Ensure no scaling */
-	min-width: 400px !important;
+	max-width: 400px;
+	width: 100%;
+	margin: 0 auto;
 }
 
 /* Responsive Grid Adjustments */
 @media (min-width: 769px) {
 	.teams-grid {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1.5rem; /* Consistent gap for better alignment */
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2.5rem 2rem; /* Maintain larger vertical gap */
 		justify-items: center;
-		width: 100%;
-		max-width: 1400px;
-		margin: 0 auto;
 	}
 
 	/* Ensure President and VP are centered across all columns */
@@ -806,9 +388,8 @@
 	.mentors-grid {
 		grid-template-columns: 1fr !important; /* Single column for tablet */
 		gap: 1.5rem !important;
-		max-width: 100% !important; /* Use full width */
+		max-width: 500px !important;
 		margin: 0 auto 3rem auto !important;
-		justify-items: center !important; /* Center items */
 	}
 
 	/* Reset mentor positioning for tablet */
@@ -821,9 +402,6 @@
 		transform: none !important;
 		width: 100% !important;
 		margin-bottom: 1.5rem !important;
-		justify-self: center !important; /* Center in grid */
-		display: flex !important;
-		justify-content: center !important;
 	}
 
 	/* Ensure uniform card sizes on tablet */
@@ -831,6 +409,9 @@
 	.hierarchy-mentor-senior .pc-card {
 		max-width: 400px !important;
 		margin: 0 auto !important;
+		width: 100% !important;
+		transform: scale(1) !important; /* Ensure no scaling */
+		height: auto !important; /* Ensure consistent height */
 	}
 }
 
@@ -842,26 +423,8 @@
 	}
 
 	.mentors-grid {
-		grid-template-columns: repeat(3, 1fr) !important; /* Update to 3 columns for larger screens */
-		gap: 2rem !important;
-		justify-items: center !important; /* Center all items */
-		max-width: 1200px !important;
-	}
-
-	/* Ensure mentor head is centered in 992px+ screens */
-	.hierarchy-mentor-head {
-		grid-column: 1 / -1 !important; /* Span all columns */
-		justify-self: center !important;
-		display: flex !important;
-		justify-content: center !important;
-		margin-bottom: 2rem !important;
-	}
-
-	.hierarchy-mentor-senior {
-		grid-column: span 1 !important;
-		justify-self: center !important;
-		display: flex !important;
-		justify-content: center !important;
+		grid-template-columns: repeat(3, 1fr); /* Update to 3 columns for larger screens */
+		gap: 1.5rem;
 	}
 
 	.hierarchy-head,
@@ -870,33 +433,6 @@
 	.hierarchy-advisor,
 	.hierarchy-regular {
 		grid-column: span 1;
-	}
-
-	/* Ensure Head cards maintain proper spacing and positioning on larger screens */
-	.hierarchy-head-tech {
-		grid-column: 1;
-		justify-self: center;
-		margin-bottom: 2rem;
-		padding-left: 2rem; /* Add left padding for centering */
-	}
-	
-	.hierarchy-head-operations {
-		grid-column: 2;
-		justify-self: center;
-		margin-bottom: 2rem;
-	}
-	
-	.hierarchy-head-media {
-		grid-column: 3;
-		justify-self: center;
-		margin-bottom: 2rem;
-		padding-right: 2rem; /* Add right padding for centering */
-	}
-
-	/* Center the heads visually in the available space */
-	.hierarchy-team-head {
-		margin: 0 auto;
-		max-width: 300px; /* Slightly larger on desktop */
 	}
 
 	/* Maintain centered layout for President and VP across all columns */
@@ -962,7 +498,7 @@
 }
 
 /* Responsive Design for New Mentor Sections */
-@media (max-width: 1025px) {
+@media (max-width: 768px) {
 	.mentors-section {
 		padding: 3rem 0;
 		padding-top: 10vh;
@@ -987,10 +523,9 @@
 	.student-mentors-grid {
 		grid-template-columns: 1fr !important;
 		gap: 1.5rem !important;
-		max-width: 100% !important; /* Use full width instead of 400px */
+		max-width: 400px !important;
 		margin: 0 auto 3rem auto !important;
 		padding: 0 1rem !important;
-		justify-items: center !important; /* Center all items */
 	}
 
 	/* Reset hierarchy for mobile - all cards same treatment */
@@ -1003,8 +538,6 @@
 		display: flex !important;
 		justify-content: center !important;
 		align-items: center !important;
-		justify-self: center !important; /* Ensure grid-level centering */
-		width: 100% !important;
 	}
 
 	.hierarchy-mentor-head {
@@ -1026,8 +559,11 @@
 	.hierarchy-mentor-head .pc-card,
 	.hierarchy-mentor-senior .pc-card,
 	.student-mentor-row .pc-card {
-		max-width: 350px;
-		margin: 0 auto;
+		max-width: 350px !important;
+		margin: 0 auto !important;
+		width: 100% !important;
+		transform: scale(1) !important; /* Ensure no scaling */
+		height: auto !important; /* Ensure consistent height */
 	}
 }
 
@@ -1047,10 +583,9 @@
 	.patrons-grid,
 	.mentors-grid,
 	.student-mentors-grid {
-		gap: 1rem !important;
-		max-width: 100% !important; /* Use full width instead of 320px */
-		padding: 0 0.5rem !important;
-		justify-items: center !important; /* Center all items */
+		gap: 1rem;
+		max-width: 320px;
+		padding: 0 0.5rem;
 	}
 
 	/* Smaller cards on very small screens */
@@ -1058,7 +593,11 @@
 	.hierarchy-mentor-head .pc-card,
 	.hierarchy-mentor-senior .pc-card,
 	.student-mentor-row .pc-card {
-		max-width: 300px;
+		max-width: 300px !important;
+		margin: 0 auto !important;
+		width: 100% !important;
+		transform: scale(1) !important; /* Ensure no scaling */
+		height: auto !important; /* Ensure consistent height */
 	}
 
 	/* Reset positioning for very small mobile */
@@ -1069,10 +608,6 @@
 		transform: none !important;
 		width: 100% !important;
 		grid-column: span 1 !important;
-		justify-self: center !important; /* Ensure centering */
-		display: flex !important;
-		justify-content: center !important;
-		margin: 0 auto 1.5rem auto !important;
 	}
 }
 
@@ -1094,6 +629,8 @@
 		width: 100% !important;
 		transform: scale(1) !important; /* Ensure no scaling */
 		min-width: 400px !important;
+		height: auto !important; /* Ensure consistent height */
+		margin: 0 auto !important;
 	}
 
 	.hierarchy-mentor-senior .pc-card {
@@ -1101,6 +638,8 @@
 		width: 100% !important;
 		transform: scale(1) !important; /* Ensure no scaling */
 		min-width: 400px !important;
+		height: auto !important; /* Ensure consistent height */
+		margin: 0 auto !important;
 	}
 }
 
@@ -1116,24 +655,6 @@
 	.teams-container,
 	.mentors-container {
 		padding: 0 0.5rem;
-	}
-
-	/* Pyramid layout for mobile - single column but centered */
-	.hierarchy-president,
-	.hierarchy-vice-president,
-	.hierarchy-secretary,
-	.hierarchy-head-tech,
-	.hierarchy-head-operations,
-	.hierarchy-head-media {
-		grid-column: span 1 !important;
-		justify-self: center !important;
-		margin-bottom: 2rem;
-		max-width: 300px !important;
-	}
-
-	/* Mobile grid should be single column */
-	.teams-grid {
-		grid-template-columns: 1fr !important;
 	}
 
 	/* Reset mentor head positioning for mobile */
@@ -1393,7 +914,7 @@
 }
 
 /* Responsive font sizes */
-@media (max-width: 1025px) {
+@media (max-width: 768px) {
 	.teams-main-title {
 		font-size: clamp(2rem, 10vw, 4rem);
 		letter-spacing: 0.02em;
@@ -1677,10 +1198,6 @@
 }
 
 @keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(-20px);
-	}
 	to {
 		opacity: 1;
 		transform: translateY(0);
@@ -2151,36 +1668,34 @@
 	min-width: 350px !important;
 }
 
-/* Head cards and regular members - all cards same size as Head cards */
+/* Head cards and regular members - larger size for 4 per row */
 .hierarchy-head .pc-card,
 .hierarchy-team-head .pc-card,
 .hierarchy-co-head .pc-card,
 .hierarchy-advisor .pc-card,
 .hierarchy-regular .pc-card {
-	max-width: 320px !important; /* Match the Head card size */
-	width: 100% !important; /* Responsive width instead of fixed */
-	margin: 0 auto !important; /* Force center alignment */
-	transform: scale(1) !important; /* Remove scaling */
-	min-width: 280px !important; /* Match the Head card min-width */
-	box-sizing: border-box;
-	height: var(--card-height) !important; /* Ensure consistent height */
+	max-width: 480px;
+	margin: 0 auto;
+	transform: scale(1.1); /* Increase size by 10% */
 }
 
 /* Mentor hierarchy styles */
 .hierarchy-mentor-head .pc-card {
-	max-width: 480px;
-	margin: 0 auto;
+	max-width: 480px !important;
+	margin: 0 auto !important;
 	width: 100% !important;
 	transform: scale(1) !important; /* Ensure no scaling */
 	min-width: 400px !important;
+	height: auto !important; /* Ensure consistent height */
 }
 
 	.hierarchy-mentor-senior .pc-card {
-		max-width: 480px; /* Same size as mentor head for consistency */
-		margin: 0 auto;
+		max-width: 480px !important; /* Same size as mentor head for consistency */
+		margin: 0 auto !important;
 		width: 100% !important;
 		transform: scale(1) !important; /* Ensure no scaling */
 		min-width: 400px !important;
+		height: auto !important; /* Ensure consistent height */
 	}.hierarchy-mentor-regular .pc-card {
 	max-width: 400px;
 	margin: 0 auto;
@@ -2219,86 +1734,6 @@
 }
 
 /* Responsive Design */
-/* Mobile specific adjustments */
-@media (max-width: 480px) {
-	.teams-grid {
-		display: grid;
-		grid-template-columns: 1fr !important; /* Single column on mobile */
-		gap: 1rem;
-		justify-items: center;
-	}
-	
-	/* INCLUDE ALL HIERARCHY TYPES FOR CONSISTENT SIZING */
-	.hierarchy-co-head .pc-card,
-	.hierarchy-regular .pc-card,
-	.hierarchy-president .pc-card,
-	.hierarchy-vice-president .pc-card,
-	.hierarchy-executive .pc-card,
-	.hierarchy-secretary .pc-card,
-	.hierarchy-head-tech .pc-card,
-	.hierarchy-head-operations .pc-card,
-	.hierarchy-head-media .pc-card {
-		max-width: 250px !important;
-		width: 250px !important;
-		min-width: 250px !important;
-		margin: 0 auto !important;
-		transform: scale(1) !important;
-	}
-	
-	/* FORCE IDENTICAL SIZING FOR PRESIDENT AND VICE PRESIDENT CARDS */
-	.hierarchy-president,
-	.hierarchy-vice-president {
-		width: 250px !important;
-		max-width: 250px !important;
-		min-width: 250px !important;
-		margin: 1rem auto !important;
-		padding: 0 !important;
-		display: flex !important;
-		justify-content: center !important;
-		align-items: center !important;
-		grid-column: 1 / -1 !important;
-		box-sizing: border-box !important;
-	}
-	.hierarchy-president .pc-card,
-	.hierarchy-vice-president .pc-card {
-		width: 250px !important;
-		max-width: 250px !important;
-		min-width: 250px !important;
-		margin: 0 auto !important;
-		padding: 0 !important;
-		box-sizing: border-box !important;
-		transform: scale(1) !important;
-	}
-}
-
-/* Tablet specific adjustments */
-@media (min-width: 481px) and (max-width: 1025px) {
-	.teams-grid {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* 2 columns on tablet with minimum width of 0 */
-		gap: 1rem;
-		justify-items: center;
-	}
-	
-	/* INCLUDE ALL HIERARCHY TYPES FOR CONSISTENT SIZING */
-	.hierarchy-co-head .pc-card,
-	.hierarchy-regular .pc-card,
-	.hierarchy-president .pc-card,
-	.hierarchy-vice-president .pc-card,
-	.hierarchy-executive .pc-card,
-	.hierarchy-secretary .pc-card,
-	.hierarchy-head-tech .pc-card,
-	.hierarchy-head-operations .pc-card,
-	.hierarchy-head-media .pc-card {
-		max-width: 280px !important;
-		width: 280px !important;
-		min-width: 280px !important;
-		margin: 0 auto !important;
-		transform: scale(1) !important;
-	}
-}
-
-/* Desktop adjustments */
 @media (max-width: 1200px) {
 	.navbar-teams {
 		gap: 1.5rem;
@@ -2326,7 +1761,7 @@
 	}
 }
 
-@media (max-width: 1025px) {
+@media (max-width: 768px) {
 	.particle-navbar {
 		height: 200px;
 		margin-top: 10px;
@@ -2577,7 +2012,7 @@
 }
 
 /* Mobile responsive mentor title boxes */
-@media (max-width: 1025px) {
+@media (max-width: 768px) {
 	.hierarchy-mentor-head .member-position-box,
 	.hierarchy-mentor-senior .member-position-box,
 	.hierarchy-mentor-regular .member-position-box {
@@ -2643,19 +2078,7 @@
 }
 
 /* Mobile Navbar Responsiveness */
-@media (max-width: 1025px) {
-	/* Adjust grid for tablets - 2 columns */
-	.teams-grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-		gap: 1rem;
-	}
-
-	/* Ensure cards fit properly in 2-column layout */
-	.hierarchy-co-head .pc-card,
-	.hierarchy-regular .pc-card {
-		max-width: 250px !important;
-	}
-
+@media (max-width: 768px) {
 	.particle-navbar {
 		height: 85px; /* Increased to prevent collision on tablets */
 		margin-top: 10px;
@@ -2698,19 +2121,6 @@
 }
 
 @media (max-width: 480px) {
-	/* Adjust grid for mobile - single column */
-	.teams-grid {
-		grid-template-columns: repeat(1, 1fr) !important;
-		gap: 1rem;
-	}
-
-	/* Ensure cards fit properly in single column layout */
-	.hierarchy-co-head .pc-card,
-	.hierarchy-regular .pc-card {
-		max-width: 280px !important;
-		margin: 0 auto !important;
-	}
-
 	.particle-navbar {
 		height: 75px; /* Increased for better button spacing */
 		margin-top: 20px;
@@ -2827,7 +2237,7 @@
 	}
 }
 
-@media (max-width: 1025px) {
+@media (max-width: 768px) {
 	.hierarchy-secretary .pc-card,
 	.hierarchy-president .pc-card {
 		max-width: 350px !important;
@@ -2838,7 +2248,7 @@
 @media (max-width: 480px) {
 	.hierarchy-secretary .pc-card,
 	.hierarchy-president .pc-card {
-		max-width: 250px !important;
+		max-width: 280px !important;
 		transform: scale(1) !important;
 	}
 }
