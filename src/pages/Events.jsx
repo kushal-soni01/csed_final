@@ -328,9 +328,8 @@ export default function App() {
 	const HorizontalRegisterButtonText = "Coming Soon";
 
 	return (
-		<div className="App" style={{ background: "var(--primary-bg)" }}>
-			<div className="hero-background-shapes"></div>{" "}
-			{/* Single, full-page background animation */}
+		   <div className="App events-theme-bg">
+			   {/* Consistent theme background, removed extra shapes */}
 			<link rel="preconnect" href="https://fonts.googleapis.com" />
 			<link
 				rel="preconnect"
@@ -351,19 +350,17 @@ export default function App() {
 				description={eventData.description}
 				stats={eventData.stats}
 			/>
-			<main className="content-wrapper">
-				<ScrollRevealText>
-					<h2>Upcoming Events</h2>
-					<p>Discover amazing experiences waiting for you</p>
-				</ScrollRevealText>
-			</main>
-			<EventCardsStack
-				events={events}
-				title={events.title}
-				subtitle={events.subtitle}
-				particleCount={events.particleCount}
-				categoryColors={events.categoryColors}
-			/>
+			   <main className="content-wrapper">
+				   <ScrollRevealText>
+					   <h2>Upcoming Events</h2>
+					   <p>Discover amazing experiences waiting for you</p>
+				   </ScrollRevealText>
+			   </main>
+			   <EventCardsStack
+				   events={events}
+				   particleCount={30} // Always show particles (dots)
+				   categoryColors={events.categoryColors}
+			   />
 			<main className="content-wrapper">
 				<ScrollRevealText>
 					<h2>Completed Events</h2>

@@ -198,16 +198,7 @@ const CompletedEventCard = ({ completedEvent }) => {
 										</button>
 									</motion.div>
 
-									{/* Bottom accent line */}
-									<motion.div
-										initial={{ scaleX: 0 }}
-										animate={{ scaleX: 1 }}
-										transition={{
-											delay: 0.6,
-											duration: 0.8,
-										}}
-										className="completed-event-accent-line"
-									/>
+									{/* Bottom accent line removed as requested */}
 								</div>
 							</motion.div>
 						)}

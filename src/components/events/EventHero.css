@@ -19,6 +19,18 @@
 	--height_word_container_responsive: clamp(33px, 4.65vh, 48px);
 }
 
+body {
+	background-color: black;
+	color: white;
+	height: 100vh;
+	width: 100%;
+}
+
+.entry-bg {
+	height: 100%;
+	background-color: #232323;
+}
+
 .event-hero-container {
 	width: 100%;
 	height: 100vh;
@@ -40,7 +52,6 @@
 	line-height: clamp(180px, 21vw, 460px);
 	position: relative;
 	overflow: hidden;
-	margin-top: -7px;
 }
 .event_letter {
 	position: relative;
@@ -59,7 +70,7 @@
 	align-content: center;
 }
 
-.event_words_container {
+.words_container {
 	display: flex;
 	justify-content: flex-start;
 	flex-direction: column;
@@ -69,7 +80,7 @@
 	overflow: hidden;
 }
 
-.e _words {
+.words {
 	background: linear-gradient(
 		90deg,
 		rgb(136, 138, 229) 0%,
@@ -83,6 +94,26 @@
 	color: transparent;
 }
 
+/* .entry-bg {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #232323;
+	z-index: 2;
+} */
+
+/* .video-gallery-container {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 250px;
+	overflow-x: hidden;
+} */
+
 @media (width>768px) {
 	.event_greet {
 		font-size: clamp(16px, 3.7vh, 32px);
@@ -91,8 +122,11 @@
 	.event_slogan {
 		font-size: var(--font-size-responsive);
 	}
-	.event_letter_container {
-		/* height: clamp(33px, 4.65vh, 48px); */
+	.words_container {
+		height: clamp(33px, 4.65vh, 48px);
 		margin-top: -3px;
+	}
+	#word1 {
+		margin-top: 2px;
 	}
 }
